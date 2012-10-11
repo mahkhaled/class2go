@@ -765,6 +765,12 @@ class Video(TimestampMixin, Stageable, Sortable, Deletable, models.Model):
 
     def ret_url(self):
         return "https://www.youtube.com/analytics#dt=lt,fi=v-" + self.url + ",r=retention"
+    
+    def srt_url(self):
+        return "http://www.universalsubtitles.org/widget/download_srt/?video_id="+self.url
+    
+    def txt_url(self):
+        return "http://www.universalsubtitles.org/widget/download_txt/?video_id="+self.url
 
     def runtime(self):
         if not self.duration:
