@@ -1077,8 +1077,9 @@ var Khan = (function() {
 
     function makeProblem(id, seed) {
 
-        // Enable scratchpad (unless the exercise explicitly disables it later)
-        Khan.scratchpad.enable();
+        // [C2G] Disable scratchpad 
+        Khan.scratchpad.disable();  // hides link
+        $('#scratchpad-not-available').css('display', 'none');  // hides disabled message 
 
         // [C2G] Build and return a localStorage key
         function getLSSeedKey () {
@@ -2057,7 +2058,8 @@ var Khan = (function() {
 
         // If the textbox is empty disable "Check Answer" button
         // Note: We don't do this for number line etc.
-        if (answerType === "text" || answerType === "number") {
+        if (!($("#survey-checkbox-list").length) /* special case checkboxes otherwise checkanswer is disabled*/
+            && (answerType === "text" || answerType === "number")) {
             var checkAnswerButton = $("#check-answer-button");
             checkAnswerButton.attr("disabled", "disabled").attr(
                 "title", "Type in an answer first.");
@@ -2958,6 +2960,22 @@ var Khan = (function() {
             setProblemNum(userExercise.totalDone + 1);
         }
     }
+    // --directly from django documentation: https://docs.djangoproject.com/en/dev/ref/contrib/csrf/#ajax
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 
     function request(method, data, fn, fnError, queue) {
 
@@ -2997,9 +3015,16 @@ var Khan = (function() {
             user_selection_val = "";
         }
         user_choices = [];
-        $('#solutionarea span.value').each(function () {
-            user_choices.push($(this).text());
-        });
+                                          
+        if (exAssessType == "survey" && $('#survey-checkbox-list').length) {
+            $("#solutionarea #survey-checkbox-list label").each(function () {
+                user_choices.push($(this).text());
+            });
+        } else {
+            $('#solutionarea span.value').each(function () {
+                user_choices.push($(this).text());
+            });
+        }
         
         // [C2G] Correct attempt count for when a user reloads the page
         if ($.isNumeric($('#attempt-count').text())) {
@@ -3026,12 +3051,14 @@ var Khan = (function() {
             KhanC2G.PSActivityLog.problems[problemIdx].userEntered = user_selection_val;
         }
 
+        data = $.extend(data, {"csrfmiddlewaretoken": getCookie('csrftoken')});
+       
         //URL starts with problemsets/attempt to direct to a view to collect data.
         //problemId is the id of the problem the information is being created for
         var request = {
             // Do a request to the server API
             //url: server + "/api/v1/user/exercises/" + exerciseId + "/" + method,
-            url: "/problemsets/attempt/2",
+            url: "/problemsets/attempt_protect/2",
             type: "POST",
             data: data,
             dataType: "json",
@@ -3562,24 +3589,6 @@ var Khan = (function() {
                 }
             }
 
-            // [C2G] Add keyboard nav to questions
-            $(document).keydown(function (ev) {
-                var allCards = $('#questions-stack li');
-                var currentIdx = parseInt(allCards.index($('.current-question')));
-                var moveToCard = function (idx) {
-                    idx = parseInt(idx);
-                    if (idx < 0) idx = allCards.length - 1;
-                    if (idx >= allCards.length) idx = 0;
-                    $(allCards[idx]).trigger("click");
-                };
-
-                if (ev.keyCode == "37" || ev.keyCode == "38") {
-                    moveToCard(currentIdx - 1);
-                } else if (ev.keyCode == "39" || ev.keyCode == "40") {
-                    moveToCard(currentIdx + 1);
-                }
-            });
-
             // [C2G] Add "View Progress" button to all problem sets
             $('#answer_area').append('<div class="info-box"><input type="button" class="simple-button green full-width" id="view-progress-button" /></div>');
             if (exAssessType == "survey") {
@@ -3689,6 +3698,12 @@ var Khan = (function() {
         $('#questions-viewed li:first-child').addClass('current-question');
 
         $('#next-question-button').click(function () {
+
+            // if part of in-video quiz, make sure we first hide quiz overlay
+            if ($('#playerdiv').length > 0) {
+                KhanC2G.hideVideoQuiz();
+                player.playVideo();
+            }
 
             var currentQCard = $('.current-question');
 
@@ -3866,8 +3881,39 @@ var Khan = (function() {
 
     }
 
+    // [C2G] Separate function/method to hide quiz data
+    KhanC2G.hideVideoQuiz = function () {
+
+        $('#questionBG').remove();
+        $('#questionPane').remove();
+        $('#problemarea').css('z-index', 0);
+
+        $('#playerdiv').fadeTo('slow', 1.0);
+        $('.video-overlay-question').hide();
+        $('.video-overlay-hint').hide();
+        $('#answer_area').fadeOut('slow');
+        $("#slideIndex").show();
+
+    };
+
+    // [C2G] Add Skip Question ability
+    KhanC2G.addSkipQuestionButton = function () {
+        // if skip button doesn't exist, add it
+        if ($('#skip-button').length == 0) { 
+            var skipBtn = document.createElement('input');
+            $(skipBtn).attr('id', 'skip-button');
+            $(skipBtn).attr('type', 'button');
+            $(skipBtn).attr('value', 'Skip Question');
+            $(skipBtn).attr('title', 'Skip this question');
+            $(skipBtn).addClass('simple-button').addClass('green').addClass('full-width');
+            $('#check-answer-button').after($(skipBtn));
+            $(skipBtn).click(function () { $('#next-question-button').trigger('click'); })
+        }
+    };
+
     // [C2G] Called for in-video exercises
     KhanC2G.initVideoExercises = function () {
+
         $('.current-card-contents').append($('div.content'));
         $('.current-card-contents').css('min-height', '600px');
         $('div.content').css('position', 'absolute').css('top', '10px').css('left','10px');
@@ -3875,29 +3921,12 @@ var Khan = (function() {
         $('#container').css('padding-top',0);
         $('#examples-show').hide();
 
-        var skipBtn = document.createElement('input');
-        $(skipBtn).attr('id', 'skip-button');
-        $(skipBtn).attr('type', 'button');
-        $(skipBtn).attr('value', 'Skip Question');
-        $(skipBtn).attr('title', 'Skip this question and return to the video');
-        $(skipBtn).addClass('simple-button').addClass('green').addClass('full-width');
-        $('#check-answer-button').after($(skipBtn));
-        $(skipBtn).click(function () { $('#next-question-button').trigger('click'); })
+        KhanC2G.addSkipQuestionButton();
         $('#next-question-button').val("Correct! Resume Video");
 
         $('#next-question-button').unbind('click');
         $('#next-question-button').click(function () {
-
-            $('#questionBG').remove();
-            $('#questionPane').remove();
-            $('#problemarea').css('z-index', 0);
-
-            $('#playerdiv').fadeTo('slow', 1.0);
-            $('.video-overlay-question').hide();
-            $('.video-overlay-hint').hide();
-            $('#answer_area').fadeOut('slow');
-            $("#slideIndex").show();
-
+            KhanC2G.hideVideoQuiz();
             player.playVideo();
         });
     };

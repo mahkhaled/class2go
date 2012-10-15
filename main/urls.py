@@ -48,6 +48,7 @@ urlpatterns = patterns('',
     #for data collection
     url(r'^videos/save/', 'courses.videos.actions.save_video_progress'),
     url(r'^problemsets/attempt/(?P<problemId>\d+)/?$', 'problemsets.views.attempt'),
+    url(r'^problemsets/attempt_protect/(?P<problemId>\d+)/?$', 'problemsets.views.attempt_protect'),
 
     # accounts app for user management
     url(r'^accounts/profile/?$', 'accounts.views.profile', name='accounts_profile'),
@@ -141,7 +142,7 @@ urlpatterns = patterns('',
     url(r'^get_video_exercises/?$', 'courses.videos.views.get_video_exercises'),
 
     #Problem Sets
-    url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/(?P<course_suffix>[a-zA-Z0-9_-]+)/problemsets/?$', 'problemsets.views.list'),
+    url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/(?P<course_suffix>[a-zA-Z0-9_-]+)/problemsets/?$', 'problemsets.views.listAll'),
     url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/(?P<course_suffix>[a-zA-Z0-9_-]+)/problemsets/(?P<pset_slug>[a-zA-Z0-9_-]+)?$', 'problemsets.views.show'),
     url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/(?P<course_suffix>[a-zA-Z0-9_-]+)/createproblemset/?$', 'problemsets.views.create_form'),
     url(r'^createproblemsetaction/?', 'problemsets.views.create_action'),
