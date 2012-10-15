@@ -175,7 +175,7 @@ def get_quiz_data(ready_quiz, get_visits = False):
 
                 if is_summative:
                     (stud_score, stud_score_after_late_penalty) = compute_score_summative(stud_attempt_number, ex_times_created[i], resubmission_penalty, submissions_permitted, grace_deadline, partial_credit_deadline, late_penalty)
-                if is_formative:
+                if is_formative or is_video:
                     stud_score = 1.0
                     stud_score_after_late_penalty = 1.0
 
@@ -285,7 +285,8 @@ def get_most_freq_inc_attempts(attempts, completes):
     num_incorrect_attempts = 0
     for i in range(len(attempts)):
         if completes[i] == 0:
-            if not attempts[i] in incorrect_attempts_freqs: incorrect_attempts_freqs[attempts[i]] = 0
+            if not attempts[i] in incorrect_attempts_freqs:
+                incorrect_attempts_freqs[attempts[i]] = 0
             incorrect_attempts_freqs[attempts[i]] += 1
             num_incorrect_attempts += 1
             

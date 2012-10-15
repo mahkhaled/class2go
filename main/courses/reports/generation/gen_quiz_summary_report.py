@@ -97,11 +97,11 @@ def WriteQuizSummaryReportContent(ready_quiz, rw, full=False):
     
     for ex_id in exercise_summaries:
         ex_summary = exercise_summaries[ex_id]
-        #import pdb; pdb.set_trace()
+        
         content = [ex_summary['slug']]
         if quiz_summary['assessment_type'] == 'summative': content.extend([mean(ex_summary['scores']), max(ex_summary['scores'])])
         
-        most_freq_incorrect_answer_str = ""
+        most_freq_incorrect_answer_str = "Too few, or no high freq, incorrect attempts"
         if len(ex_summary['most_frequent_incorrect_answers']) > 0:
             most_freq_incorrect_answer_str = "%s (%.2f%% of all incorrect attempts)" % (ex_summary['most_frequent_incorrect_answers'][0][0], ex_summary['most_frequent_incorrect_answers'][0][1])
         content.extend([ex_summary['num_attempts'], ex_summary['num_attempting_students'], ex_summary['num_correct_attempts'], ex_summary['num_correct_first_attempts'], ex_summary['num_correct_second_attempts'], ex_summary['num_correct_third_attempts'], ex_summary['median_num_attempts_to_fca'], ex_summary['median_attempt_time'], most_freq_incorrect_answer_str])
