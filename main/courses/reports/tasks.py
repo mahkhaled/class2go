@@ -1,15 +1,15 @@
 import logging
 from celery import task
-from courses.reports.generation.course_dashboard import *
-from courses.reports.generation.course_quizzes import *
-from courses.reports.generation.quiz_data import *
+from courses.reports.generation.gen_course_dashboard_report import *
+from courses.reports.generation.gen_quiz_summary_report import *
+from courses.reports.generation.gen_quiz_full_report import *
 from settings import SERVER_EMAIL
 
 from django.core.mail import EmailMessage
 
 logger = logging.getLogger(__name__)
 
-@task()
+#@task()
 def generate_and_email_reports(username, course_handle, requested_reports, email_title, email_message):
     # Generates the list of reports in requested_reports, and sends it to the staff of the given course.
     ready_course = Course.objects.get(handle=course_handle, mode='ready')
