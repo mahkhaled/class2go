@@ -20,6 +20,7 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
         if rr['type'] == 'dashboard':
             logger.info("User %s requested to generate dashboard report for course %s." % (username, course_handle))
             report = gen_course_dashboard_report(ready_course, save_to_s3=True)
+            report['type'] = rr['type']
             if report:
                 reports.append(report)
                 logger.info("Dashboard report for course %s generated successfully for user %s." % (course_handle, username))
@@ -29,6 +30,7 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
         elif rr['type'] == 'course_quizzes':
             logger.info("User %s requested to generate course quizzes report for course %s." % (username, course_handle))
             report = gen_course_quizzes_report(ready_course, save_to_s3=True)
+            report['type'] = rr['type']
             if report:
                 reports.append(report)
                 logger.info("Course quizzes report for course %s generated successfully for user %s." % (course_handle, username))
@@ -49,6 +51,7 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
                     quiz = ProblemSet.objects.get(course=ready_course.image, slug=slug)
                     
                 report = gen_quiz_full_report(ready_course, quiz, save_to_s3=True)
+                report['type'] = rr['type']
                 if report:
                     reports.append(report)
                     logger.info("Problemset full report for course %s problemset %s generated successfully for user %s." % (course_handle, slug, username))
@@ -69,6 +72,7 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
                     quiz = ProblemSet.objects.get(course=ready_course.image, slug=slug)
                     
                 report = gen_quiz_summary_report(ready_course, quiz, save_to_s3=True)
+                report['type'] = rr['type']
                 if report:
                     reports.append(report)
                     logger.info("Problemset summary report for course %s problemset %s generated successfully for user %s." % (course_handle, slug, username))
@@ -88,6 +92,7 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
                     quiz = Video.objects.get(course=ready_course.image, slug=slug)
                     
                 report = gen_quiz_full_report(ready_course, quiz, save_to_s3=True)
+                report['type'] = rr['type']
                 if report:
                     reports.append(report)
                     logger.info("Video full report for course %s video %s generated successfully for user %s." % (course_handle, slug, username))
@@ -107,11 +112,13 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
                     quiz = Video.objects.get(course=ready_course.image, slug=slug)
                     
                 report = gen_quiz_summary_report(ready_course, quiz, save_to_s3=True)
+                report['type'] = rr['type']
                 if report:
                     reports.append(report)
                     logger.info("Video summary report for course %s video %s generated successfully for user %s." % (course_handle, slug, username))
                 else:
                     logger.info("Failed to generate video summary report for course %s video %s for user %s." % (course_handle, slug, username))
+                    
             
     # Email Generated Reports
     staff_email = ready_course.contact
@@ -129,7 +136,12 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
             [staff_email, 'c2g-dev@cs.stanford.edu'], # To
         )
         for report in reports:
-            email.attach(report['name'], report['content'], 'text/csv')
+            if report['type'] in ['problemset_summary', 'video_summary']:
+                report_name = report['name'][:-4] + '_summary.csv'
+            else:
+                report_name = report['name']
+                
+            email.attach(report_name, report['content'], 'text/csv')
             
         email.send()
         

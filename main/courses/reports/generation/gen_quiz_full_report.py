@@ -22,9 +22,10 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
     rw = C2GReportWriter(save_to_s3, s3_filepath)
     
     ### 2- Get the quiz data
-    quiz_data = get_quiz_data(ready_quiz)
+    quiz_data = get_quiz_data(ready_quiz, get_visits = True)
     per_student_data = quiz_data['per_student_data']
     exercise_summaries = quiz_data['exercise_summaries']
+    ex_ids = [ex_summ['id'] for ex_summ in exercise_summaries]
     
     ### 3- Writeout
     rw.write(["Activity for %s" % quiz_data['quiz_summary']['title']], nl = 1) 
@@ -44,9 +45,7 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
     header1.extend(["", "", "Num page visits", "Visit date/times"])
     header2.extend(["", "", "", ""])
         
-    for ex_id in exercise_summaries:
-        ex_summary = exercise_summaries[ex_id]
-        
+    for ex_summary in exercise_summaries:
         header1.extend(["", "", ex_summary['slug'], "", "", ""])
         header2.extend(["", "", "Completed", "Attempts", "Score", "Median attempt time"])
         if is_summative:
@@ -74,7 +73,7 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
         # Student visit data
         content.extend([ "", "", len(stud_quiz_data['visits']), ", ".join(stud_quiz_data['visits']) ])
         
-        for ex_id in exercise_summaries:
+        for ex_id in ex_ids:
             if ex_id in stud_quiz_data['exercise_activity']: ex_res = stud_quiz_data['exercise_activity'][ex_id]
             else: ex_res = {'completed': '', 'attempts': '', 'score': '', 'last_attempt_timestamp': '', 'score_after_late_penalty': '', 'median_attempt_time': ''}
             

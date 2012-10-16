@@ -84,27 +84,56 @@ def WriteQuizSummaryReportContent(ready_quiz, rw, full=False):
         rw.write(content = ["No exercises have been added yet."], indent = 1, nl = 1)
         return
     
-    
+    # Summative problem sets get their mean and max scores written in the report
     if quiz_summary['assessment_type'] == 'summative':
         if len(quiz_summary['scores']) > 0:
-            rw.write(["Mean score", mean(quiz_summary['scores']), "Max score", max(quiz_summary['scores']), "", "Mean score after late penalty", mean(quiz_summary['scores_after_late_penalty']), "Max score after late penalty", max(quiz_summary['scores_after_late_penalty'])], indent = 1, nl = 1)
+            rw.write([
+                "Mean score", mean(quiz_summary['scores']),
+                "Max score", max(quiz_summary['scores']),
+                "",
+                "Mean score after late penalty", mean(quiz_summary['scores_after_late_penalty']),
+                "Max score after late penalty", max(quiz_summary['scores_after_late_penalty']),
+            ], indent = 1, nl = 1)
         
-    
+    # Exercise summary table header
     content = ["Exercise"]
     if quiz_summary['assessment_type'] == 'summative': content.extend(["Mean score", "Max score"])
-    content.extend(["Total attempts", "Students who have attempted", "Correct attempts", "Correct 1st attempts", "Correct 2nd attempts", "Correct 3rd attempts", "Median attempts to (and including) first correct attempt", "Median attempt time", "Most freq incorrect answer"])
+    content.extend([
+        "Total attempts",
+        "Students who have attempted",
+        "Correct attempts",
+        "Correct 1st attempts",
+        "Correct 2nd attempts",
+        "Correct 3rd attempts",
+        "Median attempts to (and including) first correct attempt",
+        "Median attempt time",
+        "Most freq incorrect answer",
+    ])
     rw.write(content, indent = 1)
     
-    for ex_id in exercise_summaries:
-        ex_summary = exercise_summaries[ex_id]
-        
+    # Exercise summary table rows
+    for ex_summary in exercise_summaries:
         content = [ex_summary['slug']]
         if quiz_summary['assessment_type'] == 'summative': content.extend([mean(ex_summary['scores']), max(ex_summary['scores'])])
         
-        most_freq_incorrect_answer_str = "Too few, or no high freq, incorrect attempts"
+        most_freq_inc_ans_str = "Too few, or no high freq, incorrect attempts"
         if len(ex_summary['most_frequent_incorrect_answers']) > 0:
-            most_freq_incorrect_answer_str = "%s (%.2f%% of all incorrect attempts)" % (ex_summary['most_frequent_incorrect_answers'][0][0], ex_summary['most_frequent_incorrect_answers'][0][1])
-        content.extend([ex_summary['num_attempts'], ex_summary['num_attempting_students'], ex_summary['num_correct_attempts'], ex_summary['num_correct_first_attempts'], ex_summary['num_correct_second_attempts'], ex_summary['num_correct_third_attempts'], ex_summary['median_num_attempts_to_fca'], ex_summary['median_attempt_time'], most_freq_incorrect_answer_str])
+            most_freq_inc_ans_content = ex_summary['most_frequent_incorrect_answers'][0][0]
+            most_freq_inc_ans_percent = ex_summary['most_frequent_incorrect_answers'][0][1]
+            most_freq_inc_ans_str = "%s (%.2f%% of all incorrect attempts)" % (most_freq_inc_ans_content, most_freq_inc_ans_percent)
+            
+        content.extend([
+            ex_summary['num_attempts'],
+            ex_summary['num_attempting_students'],
+            ex_summary['num_correct_attempts'],
+            ex_summary['num_correct_first_attempts'],
+            ex_summary['num_correct_second_attempts'],
+            ex_summary['num_correct_third_attempts'],
+            ex_summary['median_num_attempts_to_fca'],
+            ex_summary['median_attempt_time'],
+            most_freq_inc_ans_str,
+        ])
+        
         rw.write(content, indent = 1)
         
     rw.write([""])

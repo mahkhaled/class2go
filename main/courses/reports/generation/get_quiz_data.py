@@ -105,6 +105,7 @@ def get_quiz_data(ready_quiz, get_visits = False):
     if get_visits:
         page_type = ('video' if is_video else 'problemset')
         visits = PageVisitLog.objects.filter(page_type = page_type, object_id = str(ready_quiz.id)).order_by('user', 'time_created')
+        
         for visit in visits:
             username = visit.user.username
             if not username in per_student_data: continue # Visit is by a non course-student
@@ -227,9 +228,10 @@ def get_quiz_data(ready_quiz, get_visits = False):
         quiz_summary['late_penalty'] = ready_quiz.late_penalty
     
     ### 7- Get exercise stats
-    exercise_summaries = {}
+    exercise_summaries = []
     for ex in exercises:
-        exercise_summaries[ex.id] = {
+        exercise_summaries.append({
+            'id': ex.id,
             'slug': ex.get_slug(),
             'num_attempts': sum(exs_nums_attempts[ex.id]),
             'num_attempting_students': len(exs_nums_attempts[ex.id]),
@@ -243,7 +245,7 @@ def get_quiz_data(ready_quiz, get_visits = False):
             'scores': exs_scores[ex.id],
             'scores_after_late_penalty': exs_scores_after_late_penalty[ex.id],
             'most_frequent_incorrect_answers': exs_most_frequent_incorrect_answers[ex.id],
-        }
+        })
         
     return {'quiz_summary': quiz_summary, 'exercise_summaries': exercise_summaries, 'per_student_data': per_student_data}
     

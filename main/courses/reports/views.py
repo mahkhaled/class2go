@@ -124,6 +124,9 @@ def download_report(request, course_prefix, course_suffix, report_subfolder, rep
     
     report_content = report_file.read()
     
+    if report_subfolder in ['problemsets_summary', 'videos_summary']:
+        report_name = report_name[:-4] + '_summary.csv'
+    
     response = HttpResponse(report_content, content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=' + report_name
     response['Content-Length'] = str(len(report_content))
