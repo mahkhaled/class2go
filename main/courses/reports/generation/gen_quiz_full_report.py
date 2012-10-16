@@ -42,8 +42,11 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
     header1 = ["", ""]
     header2 = ["", ""]
     
-    header1.extend(["", "", "Num page visits", "Visit date/times"])
-    header2.extend(["", "", "", ""])
+    header1.extend(["", "Total score / %d"  % len(exercise_summaries)])
+    if is_summative: header1.extend(["Total score after late penalty"])
+    
+    header1.extend(["", "Num page visits", "Visit date/times"])
+    header2.extend(["", "", ""])
         
     for ex_summary in exercise_summaries:
         header1.extend(["", "", ex_summary['slug'], "", "", ""])
@@ -51,9 +54,6 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
         if is_summative:
             header1.extend(["",""])
             header2.extend(["First correct attempt timestamp", "Score after late penalty"])
-        
-    header1.extend(["", "Total score / %d"  % len(exercise_summaries)])
-    if is_summative: header1.extend(["Total score after late penalty"])
     
     rw.write(header1)
     rw.write(header2)
@@ -70,8 +70,14 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
         # User- and full name
         content = [u, stud_quiz_data['name']]
         
+        # Total scores
+        content.extend(["", stud_score])
+        if is_summative:
+            content.append(stud_score_after_late_penalty)
+            
+        
         # Student visit data
-        content.extend([ "", "", len(stud_quiz_data['visits']), ", ".join(stud_quiz_data['visits']) ])
+        content.extend(["", len(stud_quiz_data['visits']), ", ".join(stud_quiz_data['visits']) ])
         
         for ex_id in ex_ids:
             if ex_id in stud_quiz_data['exercise_activity']: ex_res = stud_quiz_data['exercise_activity'][ex_id]
@@ -85,10 +91,6 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
             stud_score += (ex_res['score'] if isinstance(ex_res['score'], float) else 0)
             if is_summative and isinstance(ex_res['score_after_late_penalty'], float):
                 stud_score_after_late_penalty += ex_res['score_after_late_penalty']
-
-        content.extend(["", stud_score])
-        if is_summative:
-            content.append(stud_score_after_late_penalty)
             
         rw.write(content)
         
