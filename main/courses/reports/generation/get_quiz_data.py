@@ -1,8 +1,15 @@
 from c2g.models import *
 from operator import itemgetter
 import json
+import re
 
 mean = lambda k: sum(k)/len(k)
+re_prog = re.compile(r'[\x7f-\xff]')
+
+def sanitize_attempt_content(attempt_content):
+    attempt_content = attempt_content.replace("\r", "").replace("\n", ";")
+    attempt_content = re.sub(re_prog, '', attempt_content)
+    return attempt_content
 
 def get_quiz_data(ready_quiz, get_visits = False):
     # get_quiz_data: Returns a dict of dicts with quiz and quiz exercise information and per-student quiz data
@@ -169,7 +176,7 @@ def get_quiz_data(ready_quiz, get_visits = False):
             
             stud_attempt_number += 1
             stud_attempt_times.append(ex_times_taken[i])
-            stud_attempts.append(ex_attempts_content[i].replace("\r", "").replace("\n", ";"))
+            stud_attempts.append(sanitize_attempt_content(ex_attempts_content[i]))
             
             if ex_completes[i] == 1:
                 stud_is_completed = True

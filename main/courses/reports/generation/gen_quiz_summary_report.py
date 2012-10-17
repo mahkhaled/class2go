@@ -18,24 +18,23 @@ def gen_course_quizzes_report(ready_course, save_to_s3=False):
     rw = C2GReportWriter(save_to_s3, s3_filepath)
     
     ### 2- Write the Report Title
-    rw.write(content = ["Course Quizzes for %s (%s %d)" % (ready_course.title, ready_course.term.title(), ready_course.year)], nl = 1)
+    rw.write(content = ["Course Quiz Summaries for %s (%s %d)" % (ready_course.title, ready_course.term.title(), ready_course.year)], nl = 1)
     
-    ### 3- Get a list of Quizzes (Problem sets and videos with exercises) to Add theit Report Content
-    quizzes = []
-    problemsets = ProblemSet.objects.getByCourse(course=ready_course)
-    for ps in problemsets:
-        quizzes.append(ps)
-        
-    videos = Video.objects.getByCourse(course=ready_course)
-    for vd in videos:
-        quizzes.append(vd)
-        
-    quizzes = sorted(quizzes, key=lambda k:k.live_datetime, reverse=True)
+    ### 3- Write problem set reports
+    rw.write(content = ["Problem sets"], nl = 1)
     
-    ### 4- Write out the report content for each quiz
-    for q in quizzes:
+    problemsets = ProblemSet.objects.getByCourse(course=ready_course).order_by('section__index', 'index')
+    for q in problemsets:
         WriteQuizSummaryReportContent(q, rw, full=False)
-
+    
+    ### 4- Write video reports
+    rw.write(content = ["Videos"], nl = 1)
+    
+    videos = Video.objects.getByCourse(course=ready_course).order_by('section__index', 'index')
+    for q in videos:
+        WriteQuizSummaryReportContent(q, rw, full=False)
+    
+    
     ### 5- Proceed to write out and return
     report_content = rw.writeout()
     return {'name': report_name, 'content': report_content, 'path': s3_filepath}
