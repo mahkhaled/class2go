@@ -42,7 +42,7 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
     header2 = ["", ""]
     
     header1.extend(["", "Total score / %d"  % len(exercise_summaries)])
-    header1.extend(["", ""])
+    header2.extend(["", ""])
     if is_summative:
         header1.extend(["Total score after late penalty"])
         header2.extend([""])
