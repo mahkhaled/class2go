@@ -32,9 +32,9 @@ class C2GReportWriter:
         for item in content:
             if isinstance(item, (int, long)): padded_content.append(str(item))
             elif isinstance(item, float): padded_content.append("%.2f" % item)
-            else: padded_content.append(item)
+            else: padded_content.append(sanitize_string(item))
         
-        self.csv_writer.writerow(sanitize_string(padded_content))
+        self.csv_writer.writerow(padded_content)
         for i in range(nl): self.csv_writer.writerow([""])
         
     def writeout(self):
