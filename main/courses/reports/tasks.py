@@ -3,6 +3,7 @@ from celery import task
 from courses.reports.generation.gen_course_dashboard_report import *
 from courses.reports.generation.gen_quiz_summary_report import *
 from courses.reports.generation.gen_quiz_full_report import *
+from courses.reports.generation.gen_class_roster import *
 from settings import SERVER_EMAIL
 
 from django.core.mail import EmailMessage
@@ -118,6 +119,16 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
                     logger.info("Video summary report for course %s video %s generated successfully for user %s." % (course_handle, slug, username))
                 else:
                     logger.info("Failed to generate video summary report for course %s video %s for user %s." % (course_handle, slug, username))
+                    
+        elif rr['type'] == 'class_roster':
+            logger.info("User %s requested to generate class roster for course %s." % (username, course_handle))
+            report = gen_class_roster(ready_course, save_to_s3=True)
+            report['type'] = rr['type']
+            if report:
+                reports.append(report)
+                logger.info("Class roster for course %s generated successfully for user %s." % (course_handle, username))
+            else:
+                logger.info("Failed to generate class roster for course %s for user %s." % (course_handle, username))
                     
             
     # Email Generated Reports

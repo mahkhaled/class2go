@@ -33,7 +33,7 @@ def main(request, course_prefix, course_suffix):
     problemset_summ_reports = list_reports_in_dir("%s/%s/reports/problemsets_summary/" % (course_prefix, course_suffix))
     video_full_reports = list_reports_in_dir("%s/%s/reports/videos/" % (course_prefix, course_suffix))
     video_summ_reports = list_reports_in_dir("%s/%s/reports/videos_summary/" % (course_prefix, course_suffix))
-    
+    class_rosters = list_reports_in_dir("%s/%s/reports/class_roster/" % (course_prefix, course_suffix))
     
     # 3- Divide ps and video reports into lists of dicts ready for grouped display by object
     ps_quiz_full_reports_list_of_dicts = ClassifyReportsBySlug(problemsets, problemset_full_reports)
@@ -41,12 +41,12 @@ def main(request, course_prefix, course_suffix):
     vd_quiz_full_reports_list_of_dicts = ClassifyReportsBySlug(videos, video_full_reports)
     vd_quiz_summ_reports_list_of_dicts = ClassifyReportsBySlug(videos, video_summ_reports)
     
-    
     # 4- Render to response
     return render_to_response('reports/main.html', {
         'common_page_data':request.common_page_data,
         'dashboard_reports': dashboard_reports,
         'course_quizzes_reports': course_quizzes_reports,
+        'class_rosters': class_rosters,
         'ps_quiz_full_reports': ps_quiz_full_reports_list_of_dicts,
         'ps_quiz_summ_reports': ps_quiz_summ_reports_list_of_dicts,
         'vd_quiz_full_reports': vd_quiz_full_reports_list_of_dicts,
@@ -104,6 +104,10 @@ def generate_report(request):
         slug = request.POST["slug"]
         email_title = "[Class2Go] Video Summary Report for %s %s" % (course_handle_pretty, slug)
         req_reports = [{'type': 'video_summary', 'slug': slug}]
+        
+    elif report_type == 'class_roster':
+        email_title = "[Class2Go] Class Roster for %s" % (course_handle_pretty)
+        req_reports = [{'type': 'class_roster'}]
     
     email_message = "The report is attached. You can also download it by going to the reports page under Course Administration->Reports, or by visiting https://class.stanford.edu/%s/browse_reports." % course_handle.replace('--', '/')
     

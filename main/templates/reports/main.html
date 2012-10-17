@@ -8,13 +8,14 @@
     <div class="container">  
     <div class="row">  
         <div class="tabbable span12">  
-            <ul class="nav nav-tabs">  
+            <ul class="nav nav-tabs" style='font-size: 10pt;'>  
                 <li class="active"><a href="#dashboard" data-toggle="tab">Course Dashboard</a></li>
                 <li><a href="#all_quiz_summary" data-toggle="tab">Combined Summary of all Quizzes</a></li>
                 <li><a href="#psets_full" data-toggle="tab">Problem set Student Data</a></li>
                 <li><a href="#psets_summary" data-toggle="tab">Problem set Summary</a></li>
                 <li><a href="#videos_full" data-toggle="tab">Video Student Data</a></li>
                 <li><a href="#videos_summary" data-toggle="tab">Video Summary</a></li>
+                <li><a href="#class_roster" data-toggle="tab">Class Roster</a></li>
             </ul>
             <div class="tab-content">
                 <div id="dashboard" class="tab-pane active" style="padding-left: 10px;">
@@ -165,6 +166,27 @@
                             <label style="margin-left: 40px;">No summary reports available for this video.</label>
                         {% endif %}
                     {% endfor %}
+                </div>
+                
+                <div id="class_roster" class="tab-pane" style="padding-left: 10px;">
+                    <h3>Generate new class roster</h3>
+                    <p style="color: red;">Note: After clicking the button below, you will return to this page. Please refresh it periodically if you want to see the new report. Report may take a few minutes to generate. It will be emailed to the course staff email once available.</p>
+                    <form action="{% url 'courses.reports.views.generate_report' %}" method="POST">
+                        <input type="submit" class='btn' value="Generate new class roster" style="margin-left: 10px;" />
+                        <input type="hidden" name="course_handle" value="{{request.common_page_data.course_prefix}}--{{request.common_page_data.course_suffix}}" />
+                        <input type="hidden" name="type" value="class_roster" />
+                        {% csrf_token %}
+                    </form>
+                    <h3>Download Class Roster</h3>
+                    {% if class_rosters|length > 0 %}
+                        <table class="table table-striped" style="margin-left: 40px;width: 600px;">
+                            {% for rep in class_rosters %}
+                                <tr><td style="width: 600px;"><a href="{% url 'courses.reports.views.download_report' request.common_page_data.course_prefix request.common_page_data.course_suffix 'class_roster' rep.s3_name %}">{{ rep.name }}</a></td></tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <label style="margin-left: 40px;">No class roster has been generated yet for this course.</label>
+                    {% endif %}
                 </div>
                 
             </div>
