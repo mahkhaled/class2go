@@ -73,6 +73,14 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
         content = [u, stud_quiz_data['name']]
         
         # Total scores
+        for ex_id in ex_ids:
+            if ex_id in stud_quiz_data['exercise_activity']:
+                ex_res = stud_quiz_data['exercise_activity'][ex_id]
+            
+                stud_score += (ex_res['score'] if isinstance(ex_res['score'], float) else 0)
+                if is_summative and isinstance(ex_res['score_after_late_penalty'], float):
+                    stud_score_after_late_penalty += ex_res['score_after_late_penalty']
+        
         content.extend(["", stud_score])
         if is_summative:
             content.append(stud_score_after_late_penalty)
@@ -89,10 +97,6 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
             if is_summative:
                 first_correct_attempt_timestamp = get_friendly_datetime(ex_res['last_attempt_timestamp']) if ex_res['completed'] else ""
                 content.extend([first_correct_attempt_timestamp, ex_res['score_after_late_penalty']])
-            
-            stud_score += (ex_res['score'] if isinstance(ex_res['score'], float) else 0)
-            if is_summative and isinstance(ex_res['score_after_late_penalty'], float):
-                stud_score_after_late_penalty += ex_res['score_after_late_penalty']
             
         rw.write(content)
         
