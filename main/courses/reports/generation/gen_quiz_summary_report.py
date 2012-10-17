@@ -2,6 +2,7 @@ from c2g.models import *
 from courses.reports.generation.C2GReportWriter import *
 from courses.reports.generation.get_quiz_data import *
 import math
+import json
 
 mean = lambda k: sum(k)/len(k)
 
@@ -130,7 +131,7 @@ def WriteQuizSummaryReportContent(ready_quiz, rw, full=False):
             ex_summary['num_correct_third_attempts'],
             ex_summary['median_num_attempts_to_fca'],
             ex_summary['median_attempt_time'],
-            most_freq_inc_ans_str,
+            json.dumps(most_freq_inc_ans_str),
         ])
         
         rw.write(content, indent = 1)

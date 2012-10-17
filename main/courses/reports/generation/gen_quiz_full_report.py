@@ -1,6 +1,5 @@
 from c2g.models import *
 from datetime import datetime
-import json
 from courses.reports.generation.C2GReportWriter import *
 from courses.reports.generation.get_quiz_data import *
 
@@ -43,7 +42,10 @@ def gen_quiz_full_report(ready_course, ready_quiz, save_to_s3=False):
     header2 = ["", ""]
     
     header1.extend(["", "Total score / %d"  % len(exercise_summaries)])
-    if is_summative: header1.extend(["Total score after late penalty"])
+    header1.extend(["", ""])
+    if is_summative:
+        header1.extend(["Total score after late penalty"])
+        header2.extend([""])
     
     header1.extend(["", "Num page visits", "Visit date/times"])
     header2.extend(["", "", ""])

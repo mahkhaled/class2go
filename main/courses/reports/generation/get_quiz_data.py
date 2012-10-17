@@ -4,14 +4,9 @@ import json
 import re
 
 mean = lambda k: sum(k)/len(k)
-#re_prog_x = re.compile(r"[\x7f-\xff]")
-#re_prog_u = re.compile(r"[\u007f-\uffff]")
 
 def sanitize_string(s):
-    s = s.replace("\r", "").replace("\n", ";")
-    #s = re.sub(re_prog_x, '', s)
-    #s = re.sub(re_prog_u, '', s)
-    return s
+    return s.replace("\r", "").replace("\n", ";")
 
 def get_quiz_data(ready_quiz, get_visits = False):
     # get_quiz_data: Returns a dict of dicts with quiz and quiz exercise information and per-student quiz data
