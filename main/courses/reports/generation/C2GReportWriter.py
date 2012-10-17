@@ -6,14 +6,6 @@ from storages.backends.s3boto import S3BotoStorage
 from django.core.files.storage import default_storage
 from datetime import datetime, timedelta
 
-re_prog_x = re.compile(r"[\x7f-\xff]")
-re_prog_u = re.compile(r"[\u007f-\uffff]")
-
-def sanitize_string(s):
-    s = s.replace("\r", "").replace("\n", ";")
-    s = re.sub(re_prog_x, '', s)
-    s = re.sub(re_prog_u, '', s)
-    return s
     
 class C2GReportWriter:
     def __init__(self, save_to_s3_arg, s3_filepath = ''):
@@ -32,7 +24,7 @@ class C2GReportWriter:
         for item in content:
             if isinstance(item, (int, long)): padded_content.append(str(item))
             elif isinstance(item, float): padded_content.append("%.2f" % item)
-            else: padded_content.append(sanitize_string(item))
+            else: padded_content.append(item)
         
         try:
             self.csv_writer.writerow(padded_content)
