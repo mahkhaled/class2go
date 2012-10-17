@@ -114,7 +114,11 @@ def WriteQuizSummaryReportContent(ready_quiz, rw, full=False):
     # Exercise summary table rows
     for ex_summary in exercise_summaries:
         content = [ex_summary['slug']]
-        if quiz_summary['assessment_type'] == 'summative': content.extend([mean(ex_summary['scores']), max(ex_summary['scores'])])
+        if quiz_summary['assessment_type'] == 'summative':
+            if len(ex_summary['scores']) > 0:
+                content.extend([mean(ex_summary['scores']), max(ex_summary['scores'])])
+            else:
+                content.extend(["", ""])
         
         most_freq_inc_ans_str = "Too few, or no high freq, incorrect attempts"
         if len(ex_summary['most_frequent_incorrect_answers']) > 0:
