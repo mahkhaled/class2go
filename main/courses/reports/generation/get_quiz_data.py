@@ -2,16 +2,11 @@ from c2g.models import *
 from operator import itemgetter
 import json
 import re
+from C2GReportWriter import sanitize_string
 
 mean = lambda k: sum(k)/len(k)
 re_prog_x = re.compile(r"[\x7f-\xff]")
 re_prog_u = re.compile(r"[\u007f-\uffff]")
-
-def sanitize_attempt_content(attempt_content):
-    attempt_content = attempt_content.replace("\r", "").replace("\n", ";")
-    attempt_content = re.sub(re_prog_x, '', attempt_content)
-    attempt_content = re.sub(re_prog_u, '', attempt_content)
-    return attempt_content
 
 def get_quiz_data(ready_quiz, get_visits = False):
     # get_quiz_data: Returns a dict of dicts with quiz and quiz exercise information and per-student quiz data
@@ -66,7 +61,7 @@ def get_quiz_data(ready_quiz, get_visits = False):
     students = ready_quiz.course.student_group.user_set.order_by('username').all().values_list('id', 'username', 'first_name', 'last_name')
     course_students = {}
     for s in students:
-        s = (s[0], sanitize_attempt_content(s[1]), sanitize_attempt_content(s[2]), sanitize_attempt_content(s[3]))
+        s = (s[0], sanitize_string(s[1]), sanitize_string(s[2]), sanitize_string(s[3]))
         course_students[s[0]] = s[1]
         per_student_data[s[1]] = {
             'name': s[2] + " " + s[3],
@@ -154,7 +149,7 @@ def get_quiz_data(ready_quiz, get_visits = False):
         ex_times_created = [item[4] for item in ex_atts]
         
         for i in range(len(ex_attempts_content)):
-            ex_attempts_content[i] = sanitize_attempt_content(ex_attempts_content[i])
+            ex_attempts_content[i] = sanitize_string(ex_attempts_content[i])
         
         exs_nums_attempts[ex.id] = [] # We will not count any attempts after a student's first correct one
         exs_nums_attempts_to_fca[ex.id] = []
