@@ -4,11 +4,13 @@ import json
 import re
 
 mean = lambda k: sum(k)/len(k)
-re_prog = re.compile(r'[\x7f-\xff]')
+re_prog_x = re.compile(r'[\x7f-\xff]')
+re_prog_u = re.compile(r'[\u007f-\uffff]')
 
 def sanitize_attempt_content(attempt_content):
     attempt_content = attempt_content.replace("\r", "").replace("\n", ";")
-    attempt_content = re.sub(re_prog, '', attempt_content)
+    attempt_content = re.sub(re_prog_x, '', attempt_content)
+    attempt_content = re.sub(re_prog_u, '', attempt_content)
     return attempt_content
 
 def get_quiz_data(ready_quiz, get_visits = False):
