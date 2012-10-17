@@ -4,8 +4,8 @@ import json
 import re
 
 mean = lambda k: sum(k)/len(k)
-re_prog_x = re.compile(r'[\x7f-\xff]')
-re_prog_u = re.compile(r'[\u007f-\uffff]')
+re_prog_x = re.compile(r"[\x7f-\xff]")
+re_prog_u = re.compile(r"[\u007f-\uffff]")
 
 def sanitize_attempt_content(attempt_content):
     attempt_content = attempt_content.replace("\r", "").replace("\n", ";")
