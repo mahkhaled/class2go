@@ -64,6 +64,7 @@ def get_quiz_data(ready_quiz, get_visits = False):
     students = ready_quiz.course.student_group.user_set.order_by('username').all().values_list('id', 'username', 'first_name', 'last_name')
     course_students = {}
     for s in students:
+        s = (s[0], sanitize_attempt_content(s[1]), sanitize_attempt_content(s[2]), sanitize_attempt_content(s[3]))
         course_students[s[0]] = s[1]
         per_student_data[s[1]] = {
             'name': s[2] + " " + s[3],
@@ -150,6 +151,9 @@ def get_quiz_data(ready_quiz, get_visits = False):
         ex_attempts_content = [item[3] for item in ex_atts]
         ex_times_created = [item[4] for item in ex_atts]
         
+        for i in range(len(ex_attempts_content)):
+            ex_attempts_content[i] = sanitize_attempt_content(ex_attempts_content[i])
+        
         exs_nums_attempts[ex.id] = [] # We will not count any attempts after a student's first correct one
         exs_nums_attempts_to_fca[ex.id] = []
         exs_median_attempt_times[ex.id] = median(ex_times_taken)
@@ -176,7 +180,7 @@ def get_quiz_data(ready_quiz, get_visits = False):
             
             stud_attempt_number += 1
             stud_attempt_times.append(ex_times_taken[i])
-            stud_attempts.append(sanitize_attempt_content(ex_attempts_content[i]))
+            stud_attempts.append(ex_attempts_content[i])
             
             if ex_completes[i] == 1:
                 stud_is_completed = True
