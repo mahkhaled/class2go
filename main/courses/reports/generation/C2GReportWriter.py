@@ -1,4 +1,5 @@
 import csv
+import re
 from cStringIO import StringIO
 from settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_SECURE_STORAGE_BUCKET_NAME
 from storages.backends.s3boto import S3BotoStorage
