@@ -34,7 +34,10 @@ class C2GReportWriter:
             elif isinstance(item, float): padded_content.append("%.2f" % item)
             else: padded_content.append(sanitize_string(item))
         
-        self.csv_writer.writerow(padded_content)
+        try:
+            self.csv_writer.writerow(padded_content)
+        except UnicodeEncodeError:
+            print padded_content
         for i in range(nl): self.csv_writer.writerow([""])
         
     def writeout(self):
