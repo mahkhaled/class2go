@@ -20,11 +20,13 @@ execute "pip pil" do
     action :run
 end
 
-package "ffmpeg" do
+package "libx264-dev" do
     action :install
 end
 
-package "x264" do
-    action :install
+cookbook_file "/usr/local/bin/ffmpeg" do
+    owner "root"
+    mode 00777
+    action :create
 end
 

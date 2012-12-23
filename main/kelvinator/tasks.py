@@ -25,6 +25,8 @@ import Image
 import time
 from celery import task
 from utility import *
+import numpy as np
+import shutil
 
     
 ##
@@ -33,12 +35,13 @@ from utility import *
 
 def extract(notify_buf, working_dir, jpeg_dir, video_file, start_offset, extraction_frame_rate):
     infoLog(notify_buf, "Kicking off ffmpeg, hold onto your hats")
-    cmdline= [ 'ffmpeg', 
-        '-i', working_dir + "/" + video_file,  # input
-        '-ss', str(start_offset),              # start a few seconds late
-        '-r', str(extraction_frame_rate),      # thumbs per second to extract
-        '-f', 'image2',                        # thumb format
-        jpeg_dir + '/img%5d.jpeg',             # thumb filename template
+    cmdline = [ ffmpeg_cmd() ]
+    cmdline += \
+        [ '-i', working_dir + "/" + video_file, # input
+          '-ss', str(start_offset),             # start a few seconds late
+          '-r', str(extraction_frame_rate),     # thumbs per second to extract
+          '-f', 'image2',                       # thumb format
+          jpeg_dir + '/img%5d.jpeg',            # thumb filename template
         ]
     infoLog(notify_buf, "EXTRACT: " + " ".join(cmdline))
     returncode = subprocess.call(cmdline)
@@ -63,7 +66,17 @@ def difference(notify_buf, working_dir, jpeg_dir, extraction_frame_rate, frames_
         h2 = Image.open(file2).histogram()
         rms = math.sqrt(reduce(operator.add, map(lambda a,b: (a-b)**2, h1, h2))/len(h1))
         return rms
-    
+
+    # get local maximum values from an array, which are also larger the threshold. 
+    # local maximum is extracted by comparing current with three neighbors in both directions. 
+    def localMaximum(candidates, threshold):
+        cuts = [];
+        for i in range(3, len(candidates)-4):
+            cur_score = candidates[i][0]
+            if cur_score > threshold and cur_score > candidates[i-1][0] and cur_score > candidates[i-2][0] and cur_score > candidates[i-3][0] and cur_score > candidates[i+1][0] and cur_score > candidates[i+2][0] and cur_score > candidates[i+3][0] :
+                cuts.append(candidates[i])
+        return cuts
+
     image_list = os.listdir(jpeg_dir)
     if len(image_list) == 0:
         cleanup_working_dir(notify_buf, working_dir)
@@ -74,51 +87,77 @@ def difference(notify_buf, working_dir, jpeg_dir, extraction_frame_rate, frames_
     duration = len(image_list)/extraction_frame_rate    # in seconds
     infoLog(notify_buf, "Video duration: %d seconds" % duration)
     infoLog(notify_buf, "Initial keyframes: %d" % len(image_list))
-    infoLog(notify_buf, "Target keyframes per minute: %d" % frames_per_minute_target)
-    
+    infoLog(notify_buf, "Target keyframes per minute: %d" % frames_per_minute_target) 
     max_keyframes = int(math.ceil(frames_per_minute_target * duration/60.0))
     infoLog(notify_buf, "Upper bound on number of keyframes kelvinator will output: %d" % max_keyframes)
-    infoLog(notify_buf, "Internal differencing threshold: 1000")
+    infoLog(notify_buf, "Internal differencing threshold: average of all scores")
+    image_num = len(image_list)
 
-    differences = [1000000000]
-    differences_sorted = [1000000000]
-    for i in range(len(image_list)-1):
-        diff = computeDiff(jpeg_dir+"/"+image_list[i], jpeg_dir+"/"+image_list[i+1])
-        differences.append(diff)
-        differences_sorted.append(diff)
+    # window size, all the frames in the window centered at 
+    # current frame are used to determine shot boundary. 
+    # this value doesn't need to be changed for different videos.
+    k = 5
+
+    # calculate difference matrix
+    difference_matrix = np.zeros((image_num,image_num))
+    for i in range(0, image_num-1-k):
+        for j in range(i+1, i+k):
+            difference_matrix[i, j] = computeDiff(jpeg_dir+"/"+image_list[i], jpeg_dir+"/"+image_list[j])
+    difference_matrix = difference_matrix + difference_matrix.transpose()
     
-    differences_sorted.sort(reverse=True)
-    if len(differences_sorted) <= max_keyframes:
-        # The number of extracted keyframes is lte to the max allowable 
-        # keyframe count. Keep all
-        threshold = differences_sorted[len(differences_sorted)-1] 
-        term_reason = "Number of initial frames was lte to the maximum number of keyframes allowed"
-    elif differences_sorted[max_keyframes-1] > 1000: 
-        # Too many keyframes will be generated. Choose higher threshold to 
-        # force the number of keyframes down to max_keyframes.
-        threshold = differences_sorted[max_keyframes-1]
-        term_reason = "Capped by maximum number of keyframes allowed"
-    else:
-        threshold = 1000
-        term_reason = "Capped by internal threshold"
-    
+    # callate shot boundary scores for each frames, score = cut(A,B)/associate(A) + cut(A,B)/associate(B) 
+    candidates = []
+    for i in range(k, image_num-1-k):
+        cutAB = np.sum(difference_matrix[i-k:i, i:i+k])
+        assocA = np.sum(difference_matrix[i-k:i, i-k:i])
+        assocB = np.sum(difference_matrix[i:i+k, i:i+k])
+        if (assocA!=0) and (assocB!=0):
+            score = cutAB/assocA + cutAB/assocB
+        else:
+            score = 0
+        candidates.append((score, i))
+
+    # extract local maximum as the shot boundaries.
+    # the threshold is assigned to be the mean of all the scores. 
+    # [important] we may want to change the threshold to control the number of key frames. 
+    # higher threshold generates fewer shot boundaries.
+    threshold = np.mean([pair[0] for pair in candidates]);
+    cuts = localMaximum(candidates, threshold)
+
+    # limit shot boundary number fewer than max_keyframes
+    if len(cuts) >= max_keyframes :
+        # sort key frames by score 
+        cuts.sort(reverse=True)
+        cuts = cuts[:max_keyframes];
+
+    # select the 3nd frame after each shot boundary as the key frame.
+    # alternatively, we can also select middle frame between two shot boundaries as the key frame.
+    cut_offset = 2
+
+    # below code is used to output keyframes.
     keep_frames = []
     keep_times = []
-    
-    for i in range(len(image_list)-1):
-        if differences[i] >= threshold:
-            keep_frames.append(image_list[i])
-            keep_times.append(i)
-        else:
-            os.remove(jpeg_dir+"/"+image_list[i])
+    jpeg_dir_parent = os.path.abspath(os.path.join(jpeg_dir, os.path.pardir))
+    jpeg_dir_result = jpeg_dir_parent + "/tmp"
+    if os.path.exists(jpeg_dir_result):
+        pass
+    else:
+        os.mkdir(jpeg_dir_result)
+    # sort key frames by index
+    sorted(cuts, key=lambda x: x[1])     
 
-    infoLog(notify_buf, "Keyframes selected: %d" % len(keep_frames))
-    infoLog(notify_buf, "Termination reason: %s" % term_reason)
-    
-    os.remove(jpeg_dir+"/"+image_list[len(image_list)-1])
+    # move key frames into a tmp folder, then move back.
+    for i in range(len(cuts)):
+        index = min(cuts[i][1] + cut_offset, len(image_list) - 1)
+        shutil.move(jpeg_dir+"/"+image_list[index], jpeg_dir_result)
+        keep_frames.append(image_list[index])
+        keep_times.append(index)
+
+    cleanup_working_dir(notify_buf, jpeg_dir)
+    os.rename(jpeg_dir_result, jpeg_dir)  
 
     return (keep_frames, keep_times)
-
+    
 
 def write_manifest(notify_buf, jpeg_dir, keep_frames, keep_times):
     outfile_name = jpeg_dir + "/manifest.txt"
@@ -146,7 +185,8 @@ def put_thumbs(notify_buf, jpeg_dir, prefix, suffix, video_id, store_loc):
         root = getattr(settings, 'MEDIA_ROOT')
         store_path = root + "/" + prefix + "/" + suffix + "/videos/" + str(video_id) + "/jpegs"
         if default_storage.exists(store_path):
-                dirRemove(store_path) 
+            infoLog(notify_buf, "Found prior directory, removing: %s" % store_path)
+            dirRemove(store_path) 
         os.mkdir(store_path)
     else:
         store_path = prefix + "/" + suffix + "/videos/" + str(video_id) + "/jpegs"
@@ -156,12 +196,14 @@ def put_thumbs(notify_buf, jpeg_dir, prefix, suffix, video_id, store_loc):
     image_list = os.listdir(jpeg_dir)
     image_list.sort()
     for fname in image_list:
+        infoLog(notify_buf, "Uploading: %s" % fname)
         local_file = open(jpeg_dir + "/" + fname, 'rb')
         store_file = default_storage.open(store_path + "/" + fname, 'wb')
-        file_data = local_file.read();
+        file_data = local_file.read()
         store_file.write(file_data)
         local_file.close()
         store_file.close()
+    infoLog(notify_buf, "Uploaded: %s files" % str(len(image_list)))
 
 
 # Main Kelvinator Task (CELERY)
@@ -216,44 +258,25 @@ def kelvinate(store_path_raw, frames_per_minute_target=2, notify_addr=None):
 
 # video sizes we support: key is size name (used for target subdirectory) and value
 # are the parameters (as a list) that we'll pass to ffmpeg.
-sizes = {}
-sizes['darwin'] = \
-        { "large":  [ "-crf", "23", "-s", "1280x720" ],   # original size, compressed
-          "medium": [ "-crf", "27", "-s", "wvga" ],       # wvga = 852x480 at 16:9
+sizes = { "large":  [ "-crf", "23", "-s", "1280x720" ],   # original size, compressed
+          "medium": [ "-crf", "27", "-s", "852x480" ],    # wvga at 16:9
           "small":  [ "-crf", "30", "-s", "640x360" ],    
           "tiny":   [ "-crf", "40", "-s", "320x180" ],
         }
 
-sizes['linux2'] = \
-        { "large":  [ "--crf", "23", "--vf", "resize:1280,720" ],
-          "medium": [ "--crf", "27", "--vf", "resize:852,480" ],
-          "small":  [ "--crf", "30", "--vf", "resize:640,360" ],    
-          "tiny":   [ "--crf", "40", "--vf", "resize:320,180" ],
-        }
 
+# Actually transcode the video down 
+def do_resize(notify_buf, working_dir, target_dir, video_file, target_size):
+    cmdline = [ ffmpeg_cmd() ]
+    cmdline += [ "-i", working_dir + "/" + video_file,  # infile
+                 "-c:v", "libx264",          # video codec
+                 "-profile:v", "baseline",   # most compatible
+                 "-strict", "-2",            # magic to allow aac audio enc
+               ]
+    cmdline += sizes[target_size]
+    cmdline += [ target_dir + "/" + video_file ]  # outfile
 
-# Hack: since we're using the x264 command line utility that doesn't understand the MOV
-# conatiner format, we use ffmpeg to just change the container to mp4 before actually
-# doing the transcoding.  Bleh.
-def change_muxer(notify_buf, working_dir, target_dir, video_file, target_size):
-    platform = sys.platform
-    cmdline = []
-
-    video_stem_list = video_file.split(".")[0:-1]
-    new_video_file = "".join(video_stem_list) + ".mp4"
-
-    if platform == "darwin":
-        return video_file
-
-    elif platform == "linux2":
-        cmdline += [ "ffmpeg" ]
-        cmdline += [ "-i", working_dir+"/"+video_file ]  # infile
-        cmdline += [ "-vcodec", "copy", "-acodec", "copy" ]
-        cmdline += [ working_dir+"/"+new_video_file ]      # outfile
-    else:
-        VideoError("Platform not supported, got \"%s\" expected darwin or linux2")
-
-    infoLog(notify_buf, "CHANGE_MUXER: " + " ".join(cmdline))
+    infoLog(notify_buf, "RESIZE: " + " ".join(cmdline))
     returncode = subprocess.call(cmdline)
 
     if returncode == 0:
@@ -261,43 +284,7 @@ def change_muxer(notify_buf, working_dir, target_dir, video_file, target_size):
     else:
         errorLog(notify_buf, "completed with returncode %d" % returncode)
         cleanup_working_dir(notify_buf, working_dir)
-        raise VideoError("change_muxer error %d" % returncode)
-
-    return new_video_file
-
-
-# Actually transcode the video down.
-def scaledown(notify_buf, working_dir, target_dir, video_file, target_size):
-    platform = sys.platform
-    cmdline = []
-
-    if platform == "darwin":                   
-        cmdline += [ "ffmpeg" ]
-        cmdline += [ "-i", working_dir + "/" + video_file,  # infile
-                     "-c:v", "libx264",          # video codec
-                     "-profile:v", "baseline",   # most compatible
-                     "-c:a", "libfaac" ]         # audio codec
-        cmdline += sizes[platform][target_size]
-        cmdline += [ target_dir + "/" + video_file ]  # outfile
-
-    elif platform == "linux2":
-        cmdline += [ "x264" ]
-        cmdline += [ "--profile", "baseline" ]
-        cmdline += sizes[platform][target_size]
-        cmdline += [ "-o", target_dir + "/" + video_file,  # outfile
-                working_dir + "/" + video_file ]           # infile
-    else:
-        VideoError("Platform not supported, got \"%s\" expected darwin or linux2")
-
-    infoLog(notify_buf, "SCALEDOWN: " + " ".join(cmdline))
-    returncode = subprocess.call(cmdline)
-
-    if returncode == 0:
-        infoLog(notify_buf, "completed with returncode %d" % returncode)
-    else:
-        errorLog(notify_buf, "completed with returncode %d" % returncode)
-        cleanup_working_dir(notify_buf, working_dir)
-        raise VideoError("scaledown error %d" % returncode)
+        raise VideoError("do_resize error %d" % returncode)
 
 
 def upload(notify_buf, target_dir, target_part, prefix, suffix, video_id, video_file, store_loc):
@@ -306,11 +293,15 @@ def upload(notify_buf, target_dir, target_part, prefix, suffix, video_id, video_
         root = getattr(settings, 'MEDIA_ROOT')
         store_path = root + "/" + prefix + "/" + suffix + "/videos/" + str(video_id) + "/" + target_part
         if default_storage.exists(store_path):
-                dirRemove(store_path) 
+            infoLog(notify_buf, "Found prior directory, removing: %s" % store_path)
+            dirRemove(store_path) 
         os.mkdir(store_path)
     else:
         store_path = prefix + "/" + suffix + "/videos/" + str(video_id) + "/" + target_part
         default_storage.delete(store_path)
+
+    statinfo = os.stat(target_dir + "/" + video_file)
+    infoLog(notify_buf, "Final file size: %s" % str(statinfo.st_size))
 
     local_file = open(target_dir + "/" + video_file, 'rb')
     store_file = default_storage.open(store_path + "/" + video_file, 'wb')
@@ -333,12 +324,8 @@ def resize(store_path_raw, target_raw, notify_addr=None):
     notify_buf = []
     infoLog(notify_buf, "Resize: converting %s version of %s" % (target_raw, store_path_raw))
 
-    platform = sys.platform
-    if platform not in sizes.keys():
-        VideoError("Platform not supported, got \"%s\" expected darwin or linux")
-
     target = target_raw.lower()
-    if target not in sizes[platform].keys():
+    if target not in sizes.keys():
         VideoError("Target size \"%s\" not supported" % target)
 
     (store_path, course_prefix, course_suffix, video_id, video_file) = splitpath(store_path_raw)
@@ -347,16 +334,12 @@ def resize(store_path_raw, target_raw, notify_addr=None):
     if getattr(settings, 'AWS_ACCESS_KEY_ID') == 'local':
         store_loc = 'local'
 
-
     work_dir = None
     try:
         (work_dir, smaller_dir) = create_working_dirs("resize", notify_buf, target)
         get_video(notify_buf, work_dir, video_file, store_path)
-        if video_file.split(".")[-1].lower() == "mov":
-            video_file = change_muxer(notify_buf, work_dir, smaller_dir, video_file, target)
-        scaledown(notify_buf, work_dir, smaller_dir, video_file, target)
+        do_resize(notify_buf, work_dir, smaller_dir, video_file, target)
         upload(notify_buf, smaller_dir, target, course_prefix, course_suffix, video_id, video_file, store_loc)
-
     except:
         if work_dir: cleanup_working_dir(notify_buf, work_dir)
         notify("Resize (%s)" % target, notify_buf, notify_addr, course_prefix, course_suffix, 

@@ -24,10 +24,18 @@ default_attributes \
     "main" => {
         "production" => "False",
         "instance" => "stage",
+        "maint" => "False",
         "admin_name" => "Class2Go Example",
         "admin_email" => "crash@class.stanford.edu",
         "snippet_email" => "c2g-dev@cs.stanford.edu",
         "django_secret" => "class2go"
+    },
+    "apps" => {
+        "class2go" => {
+            "servername" => "https://example.class.university.edu",
+            "serveralias" => "*.example.class.university.edu",
+            "git_branch" => "origin/master"
+        }
     },
     "util" => {
         "celery_database" => "/opt/class2go/celery/celerydb.sqlite",
@@ -39,6 +47,9 @@ default_attributes \
         "access_secret" => "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
         "zone" => "c2gops.com",
         "ttl" => 300
+    },
+    "grader" => {
+        "endpoint" => "nnnnnnnnnnnnnnnnnnnn.us-west-2.elb.amazonaws.com"
     },
     "piazza" => {
         "endpoint" => "https://piazza.com/basic_lti",

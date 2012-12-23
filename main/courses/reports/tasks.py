@@ -11,7 +11,7 @@ from django.core.mail import EmailMessage
 logger = logging.getLogger(__name__)
 
 @task()
-def generate_and_email_reports(username, course_handle, requested_reports, email_title, email_message):
+def generate_and_email_reports(username, course_handle, requested_reports, email_title, email_message, attach_reports_to_email = True):
     # Generates the list of reports in requested_reports, and sends it to the staff of the given course.
     ready_course = Course.objects.get(handle=course_handle, mode='ready')
     
@@ -130,6 +130,17 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
             else:
                 logger.info("Failed to generate class roster for course %s for user %s." % (course_handle, username))
                     
+        elif rr['type'] == 'course_assessments':
+            logger.info("User %s requested to generate course assessments report for course %s." % (username, course_handle))
+            report = gen_course_assessments_report(ready_course, save_to_s3=True)
+            report['type'] = rr['type']
+            if report:
+                reports.append(report)
+                logger.info("Course assessments report for course %s generated successfully for user %s." % (course_handle, username))
+            else:
+                logger.info("Failed to generate course assessments report for course %s for user %s." % (course_handle, username))
+                
+            
             
     # Email Generated Reports
     staff_email = ready_course.contact
@@ -144,15 +155,16 @@ def generate_and_email_reports(username, course_handle, requested_reports, email
             email_title, # Title
             email_message, # Message
             SERVER_EMAIL, # From
-            [staff_email, 'c2g-dev@cs.stanford.edu'], # To
+            [staff_email, ],  # To
         )
-        for report in reports:
-            if report['type'] in ['problemset_summary', 'video_summary']:
-                report_name = report['name'][:-4] + '_summary.csv'
-            else:
-                report_name = report['name']
-                
-            email.attach(report_name, report['content'], 'text/csv')
+        if attach_reports_to_email:
+            for report in reports:
+                if report['type'] in ['problemset_summary', 'video_summary']:
+                    report_name = report['name'][:-4] + '_summary.csv'
+                else:
+                    report_name = report['name']
+                    
+                email.attach(report_name, report['content'], 'text/csv')
             
         email.send()
         

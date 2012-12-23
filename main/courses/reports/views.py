@@ -35,6 +35,9 @@ def main(request, course_prefix, course_suffix):
     video_summ_reports = list_reports_in_dir("%s/%s/reports/videos_summary/" % (course_prefix, course_suffix))
     class_rosters = list_reports_in_dir("%s/%s/reports/class_roster/" % (course_prefix, course_suffix))
     
+    #New assessment reports
+    course_assessment_reports = list_reports_in_dir("%s/%s/reports/course_assessments/" % (course_prefix, course_suffix))
+    
     # 3- Divide ps and video reports into lists of dicts ready for grouped display by object
     ps_quiz_full_reports_list_of_dicts = ClassifyReportsBySlug(problemsets, problemset_full_reports)
     ps_quiz_summ_reports_list_of_dicts = ClassifyReportsBySlug(problemsets, problemset_summ_reports)
@@ -53,6 +56,7 @@ def main(request, course_prefix, course_suffix):
         'vd_quiz_summ_reports': vd_quiz_summ_reports_list_of_dicts,
         'videos': videos.order_by('title'),
         'problemsets': problemsets.order_by('title'),
+        'course_assessment_reports': course_assessment_reports,
     }, context_instance=RequestContext(request))
     
     
@@ -77,6 +81,10 @@ def generate_report(request):
     report_type = request.POST["type"]
     course_handle = request.POST["course_handle"]
     course_handle_pretty = course_handle.replace('--','-')
+    
+    email_message = "The report is attached. You can also download it by going to the reports page under Course Administration->Reports, or by visiting https://class.stanford.edu/%s/browse_reports." % course_handle.replace('--', '/')
+    attach_reports_to_email = True
+    
     if report_type == 'dashboard':
         email_title = "[Class2Go] Dashboard Report for %s" % course_handle_pretty
         req_reports = [{'type': 'dashboard'}]
@@ -88,6 +96,9 @@ def generate_report(request):
     elif report_type == 'problemset_full':
         slug = request.POST["slug"]
         email_title = "[Class2Go] Problemset Full Report for %s %s" % (course_handle_pretty, slug)
+        # TODO: Remove the following message  and attachement flag override after report email attachment is fixed
+        attach_reports_to_email = False
+        email_message = "The report has been generated. You can download it by going to the reports page under Course Administration->Reports, or by visiting https://class.stanford.edu/%s/browse_reports." % course_handle.replace('--', '/')
         req_reports = [{'type': 'problemset_full', 'slug': slug}]
         
     elif report_type == 'problemset_summary':
@@ -98,6 +109,9 @@ def generate_report(request):
     elif report_type == 'video_full':
         slug = request.POST["slug"]
         email_title = "[Class2Go] Video Full Report for %s %s" % (course_handle_pretty, slug)
+        # TODO: Remove the following message and attachment flag override after report email attachment is fixed
+        attach_reports_to_email = False
+        email_message = "The report has been generated. You can download it by going to the reports page under Course Administration->Reports, or by visiting https://class.stanford.edu/%s/browse_reports." % course_handle.replace('--', '/')
         req_reports = [{'type': 'video_full', 'slug': slug}]
         
     elif report_type == 'video_summary':
@@ -109,9 +123,12 @@ def generate_report(request):
         email_title = "[Class2Go] Class Roster for %s" % (course_handle_pretty)
         req_reports = [{'type': 'class_roster'}]
     
-    email_message = "The report is attached. You can also download it by going to the reports page under Course Administration->Reports, or by visiting https://class.stanford.edu/%s/browse_reports." % course_handle.replace('--', '/')
+    #Reports for the new assessments
+    elif report_type == 'course_assessments':
+        email_title = "[Class2Go] Course Assessments Report for %s" % course_handle_pretty
+        req_reports = [{'type': 'course_assessments'}]
     
-    generate_and_email_reports.delay(request.user.username, course_handle, req_reports, email_title, email_message)
+    generate_and_email_reports.delay(request.user.username, course_handle, req_reports, email_title, email_message, attach_reports_to_email)
     
     return redirect(request.META.get('HTTP_REFERER', None))
 
