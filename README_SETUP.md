@@ -298,16 +298,22 @@ be installed for Mac (and probably Windows too)
 
     vim .bashrc
 
-6. ...and add the following (without the backslashes at the start):
+6. ...and add the following:
 
-    \# virtualenv setup -- use Distribute by default
+    virtualenv setup #-- use Distribute by default
+    
     export VIRTUALENV_DISTRIBUTE=true
 
-    \# virtualenvwrapper setup
+    virtualenvwrapper setup
+    
     export WORKON_HOME=~/DevEnvs 
+    
     export PROJECT_HOME=~/DevProjects
+    
     export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+    
     export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+    
     source /usr/local/bin/virtualenvwrapper.sh
 
 7. Source login script so env vars take effect:
@@ -373,11 +379,17 @@ be installed for Mac (and probably Windows too)
 21. Install modules for Amazon S3
 
     pip install django_storages
+    
     pip install boto
+
+    pip install django-celery django-celery-email pytz
+    
+    pip install gdata
 
 22. Go to "main" dir and copy over database settings file:
 
     cd main
+
     cp database_example.py database.py
 
 23. Edit file and add db name, username and password:
@@ -387,8 +399,8 @@ be installed for Mac (and probably Windows too)
 24. Run syncdb to create database tables 
 
     ./manage.py syncdb
-    Might need to issue "syncdb" command a couple times if there are errors. The 
-    first time, it will ask you for username and password for the database 
+
+    Might need to issue "syncdb" command a couple times if there are errors. The first time, it will ask you for username and password for the database 
 
 25. Migrate user stuff over: 
 
