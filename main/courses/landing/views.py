@@ -32,6 +32,4 @@ def landing(request):
     
 
 def hiring(request):
-    context = RequestContext(request)
-    site = getattr(settings, 'SITE_NAME_SHORT')
-    return render_to_response("sites/%s/hiring.html" % site, context_instance=context)
+    return False

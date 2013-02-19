@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Available Courses | Stanford Online{% endblock title %}
+{% block title %}Arabic Programming Courses | CodeMasry{% endblock title %}
 {% block topnav %} {% endblock topnav %}
 {% block navbar %} {% endblock navbar %}
 {% load url from future %}
@@ -13,8 +13,8 @@
 <div class="row-fluid hero-header">
     <div class="container">
         <div class="row hero">
-            <h1>Class2Go</h1>
-            <h2>Take Stanford Online Classes. <strong>Anywhere.</strong></h2>
+            <h1>Online Arabic</h1>
+            <h2>Programming Courses.<strong>Anywhere.</strong></h2>
         </div>
     </div>
 </div>
@@ -51,15 +51,6 @@
                 <p>We don't want to build or maintain more than we have to. We're standing on the shoulders of developments from Piazza, YouTube, MySQL, Python Django, Amazon AWS, Opscode, Github, and Popcorn.js.</p>
             </div>
         </div>
-        {%  if hiring %}
-        <div class="row-fluid">
-            <div align=center>
-                <h3>
-                    Did we mention that <strong><a href="hiring">We're Hiring!</a></strong>
-                </h3>
-            </div>
-        </div>
-        {%  endif %}
     </div>
 </div>
 <div>
@@ -119,9 +110,6 @@
     </div>
 </div>
 
-{% if hiring %}
-<a href="hiring"><img src="{{ STATIC_URL }}graphics/core/hiring_ribbon.gif" border="0" width="150" height="150" style="position:absolute; right:0px; top:0px; margin:0px; padding:0px"></a>
-{% endif %}
 
 <!--facebook-->
 <div id="fb-root"></div>

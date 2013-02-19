@@ -280,7 +280,8 @@ body.home {
     display:none;
 }
 .home .hero-header {
-    background:url(../../graphics/core/bg-hero-header.jpg) no-repeat top center;
+    background:url(../../graphics/core/codemasry.png) no-repeat top right;
+    background-color: brown;
 }
 .home .hero-header .hero {
     width:520px;
