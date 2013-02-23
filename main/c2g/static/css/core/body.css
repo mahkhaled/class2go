@@ -283,15 +283,21 @@ body.home {
     background:url(../../graphics/core/codemasry.png) no-repeat top right;
     background-color: brown;
 }
+#global-header .stanford-logo a, .stanford-logo a:hover{
+    color: #fff;
+    font-size: 20px;
+}
 .home .hero-header .hero {
     width:520px;
     margin-top: 55px;
-    margin-bottom: 55px;
+    margin-bottom: 20px;
+    min-height: 233px;
 }
 .home .hero-header .hero h1,
 .home .hero-header .hero h2 {
     color:#fff;
     text-shadow:1px 1px 5px #333;
+    width: 580px;
 }
 .home .hero-header .hero h1 {
     font-size:37px;
@@ -342,12 +348,24 @@ body.home {
     font-weight: normal;
     margin-bottom:0;
 }
-.databases {
+.datastructure{
+    background:#fff url(/static/graphics/core/linked-list.png) no-repeat top left; 
+    padding:20px 20px 20px 320px;
+}
+.database{
     background:#fff url(/static/graphics/core/dbLogo.jpg) no-repeat top left; 
     padding:20px 20px 20px 320px;
 }
-.computernetworking {
-    background:#fff url(/static/graphics/core/computer-networking.jpg) no-repeat top left; 
+.algorithms{
+    background:#fff url(/static/graphics/core/super.png) no-repeat top left; 
+    padding:20px 20px 20px 320px;
+}
+.programming {
+    background:#fff url(/static/graphics/core/dream_computer_programming.jpg) no-repeat top left; 
+    padding:20px 20px 20px 320px;
+}
+.oop {
+    background:#fff url(/static/graphics/core/oop.jpg) no-repeat top left; 
     padding:20px 20px 20px 320px;
 }
 .solarcells {
@@ -429,7 +447,7 @@ small.date {
     width:160px;
     height:19px;
     */
-    text-indent: -999px;
+    /*text-indent: -999px;*/
     display:block;
     overflow:hidden;
 }

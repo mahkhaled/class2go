@@ -1,28 +1,27 @@
 {% load url from future %}
 
 <div class="row-fluid class2go">
-    <small><a href="http://class2go.stanford.edu">Powered by Class2Go</a></small>
+    <small><a href="http://class2go.stanford.edu">Powered by Class2Go Stanford University</a></small>
 </div>
 
 {% if not request.session.headless %}
 <div id="global-footer" class="footer hidden-phone">
     <div class="container">
         <div class="row">
-            <div id="bottom-logo" class="span2"><a href="http://www.stanford.edu" style="border: none; "><img src="/static/graphics/core/footer-stanford-logo.png" width="100" alt="Stanford University"></a></div>
-                <div id="bottom-text" class="span10">
-                    <div id="bottom-menu">
-                        <ul class="unstyled">
-                            <li><a href="http://www.stanford.edu">Stanford University Home</a></li>
-                            <li><a href="http://visit.stanford.edu/plan/maps.html">Maps &amp; Directions</a></li>
-                            <li><a href="http://www.stanford.edu/search/">Search Stanford</a></li>
-                            <li><a href="{% url 'c2g.views.tos' %}">Terms of Use</a></li>
-                            <li><a href="{% url 'c2g.views.tos' %}#copyright">Copyright Complaints</a></li>
-                            <li><a href="{% url 'c2g.views.contactus' %}">Technical Support</a></li>
-                        </ul>
-                    </div>
-                    <p class="vcard">&copy; <span class="fn org">Stanford University</span>, <span class="adr"><span class="locality">Stanford</span>, <span class="region">California</span> <span class="postal-code">94305</span></span></p>
+            <div id="bottom-logo" class="span2"><a href="http://codemasry.com" style="border: none; "><img src="/static/graphics/core/codemasry.png" width="100" alt="CodeMasry"></a></div>
+            <div id="bottom-text" class="span7">
+                <div id="bottom-menu">
+                    <ul class="unstyled">
+                        <li><a href="http://codemasry.com">CodeMasry Home</a></li>
+                        <li><a href="https://www.facebook.com/CodeMasry/app_14167664298" target="_blank">Why CodeMasry?</a></li>
+                        <li><a href="https://www.facebook.com/CodeMasry?v=app_194080173963949" target="_blank">About Us</a></li>
+                        <li><a href="{% url 'c2g.views.contactus' %}">Contact Us</a></li>
+                    </ul>
                 </div>
+                <p class="vcard">&copy; <span class="fn org">CodeMasry</span>, <span class="adr"> <span class="postal-code">2013</span></span></p>
             </div>
+            <div id="bottom-logo" class="span1"><a href="http://www.youtube.com/channel/UCNy1EO4T0EM4w3I3-1-AnbA" style="border: none; float:right;" target="_blank"><img src="/static/graphics/core/youtube.png" width="55" alt="CodeMasry Youtube"></a></div>
+            <div id="bottom-logo" class="span1"><a href="https://www.facebook.com/CodeMasry" style="border: none; float:right;" target="_blank"><img src="/static/graphics/core/fb.png" width="55" alt="CodeMasry Facebook"></a></div>
         </div>
     </div>
 </div>

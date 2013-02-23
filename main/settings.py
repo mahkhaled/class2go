@@ -72,7 +72,7 @@ MANAGERS = ADMINS
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = 'Africa/Cairo'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -91,8 +91,8 @@ try:
 except NameError:
     SITE_ID = 1
     SITE_NAME_SHORT = 'Stanford'
-    SITE_NAME_LONG = 'Stanford University'
-    SITE_TITLE = 'Stanford Class2Go'
+    SITE_NAME_LONG = 'CodeMasry'
+    SITE_TITLE = 'CodeMasry'
 
 
 # If you set this to False, Django will make some optimizations so as not

@@ -45,14 +45,7 @@
       {% if not request.session.headless %}
         <div id="global-header">
             <h1 class="stanford-logo">
-            	{% if SITE_NAME_SHORT == 'Stanford' %}
-                <a href="http://codemasry.com">
-                    <img src="/static/graphics/core/header-stanford-logo.png" width="160" alt="CodeMasry">
-                    CodeMasry
-                </a>
-                {% else %}
-                <a href="http://www.uwa.edu.au">{{ SITE_NAME_LONG }}</a>
-                {% endif %}
+                <a href="http://codemasry.com">CodeMasry</a>
             </h1>
             <p id="skip-nav"><a href="#main-content" class="hidden-accessible">{% trans 'Jump to content' %}</a></p>
         </div>
