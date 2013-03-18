@@ -1,0 +1,19 @@
+{% load i18n %}
+{% for submission in submissions %}
+   <div class="announcement">
+      Submission Time: {{submission.submittime}}
+      <br>
+      Language: {{submission.langid}}
+      <br>
+      Result: {{submission.judging.result}}
+      <br>
+      Details:
+      <ul>
+         <li> Run: {{submission.judging.judgingrun.output_run}} </li>
+         <li> Diff: {{submission.judging.judgingrun.output_diff}} </li>
+         <li> Error: {{submission.judging.judgingrun.output_error}} </li>
+      </ul>
+   </div>
+{% empty %}
+   <p style="margin:20px;">{% trans 'No Submissions to display.' %}</p>
+{% endfor %}
