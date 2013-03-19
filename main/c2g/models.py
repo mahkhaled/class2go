@@ -2947,7 +2947,7 @@ class Submission(models.Model):
     contest = models.ForeignKey(Contest, db_column='cid')
     team = models.ForeignKey(Team, db_column='teamid')
     langid = models.CharField(max_length=20)
-    submittime = models.DateTimeField()
+    submittime = models.DateTimeField(auto_now_add=True)
     objects = SubmissionManager()
 
     class Meta:
@@ -2955,9 +2955,10 @@ class Submission(models.Model):
 
 class SubmissionFile(models.Model):
     submitfileid = models.IntegerField(primary_key=True)
-    submisson = models.ForeignKey(Submission, db_column='submitid')
-    source_code = models.TextField(db_column='sourceode')
+    submitid = models.IntegerField()
+    source_code = models.TextField(db_column='sourcecode')
     file_name = models.TextField(max_length=200, db_column='filename')
+    rank = models.IntegerField()
 
     class Meta:
         db_table = u'submission_file'

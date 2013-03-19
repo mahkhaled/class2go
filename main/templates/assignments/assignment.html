@@ -13,9 +13,11 @@
    {% for problem in problems %}
      <a href="{% url 'courses.problems.views.view' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.probid %}">{{problem.name}}</a>
 
-     <form action="{% url 'courses.announcements.actions.add_announcement' %}" method="POST" enctype="multipart/form-data">
-         <label> Upload your solution file </label>
-         <input name="submission" type="file"></input>
+     <form action="{% url 'courses.problems.views.submit' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.probid %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label> Upload your solution file </label>
+      <input name="submission" type="file"></input>
+      <input type="submit"></input>
      </form>
      <br>
    {% empty %}
