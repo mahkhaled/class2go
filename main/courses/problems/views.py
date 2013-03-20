@@ -39,7 +39,7 @@ def submit(request, course_prefix, course_suffix, assignment_id, problem_id):
       
       submission = Submission(problem=problem, contest=assignment.contest, team=team[0], langid=langid)
       submission.save()
-      submission_file = SubmissionFile(submitid=30, source_code=submission_code, file_name=submission_file, rank=0)
+      submission_file = SubmissionFile(submission=submission, source_code=submission_code, file_name=submission_file, rank=0)
       submission_file.save()
 
 

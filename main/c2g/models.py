@@ -2942,7 +2942,7 @@ class SubmissionManager(models.Manager):
         return self.filter(team=team)
 
 class Submission(models.Model):
-    submitid = models.IntegerField(primary_key=True)
+    submitid = models.AutoField(primary_key=True)
     problem = models.ForeignKey(Problem, db_column='probid')
     contest = models.ForeignKey(Contest, db_column='cid')
     team = models.ForeignKey(Team, db_column='teamid')
@@ -2955,7 +2955,7 @@ class Submission(models.Model):
 
 class SubmissionFile(models.Model):
     submitfileid = models.IntegerField(primary_key=True)
-    submitid = models.IntegerField()
+    submission = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
     source_code = models.TextField(db_column='sourcecode')
     file_name = models.TextField(max_length=200, db_column='filename')
     rank = models.IntegerField()
