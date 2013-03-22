@@ -7,12 +7,11 @@
       <br>
       Result: {{submission.judging.result}}
       <br>
-      Details:
-      <ul>
-         <li> Run: {{submission.judging.judgingrun.output_run}} </li>
-         <li> Diff: {{submission.judging.judgingrun.output_diff}} </li>
-         <li> Error: {{submission.judging.judgingrun.output_error}} </li>
-      </ul>
+      Error: {{submission.judging.judgingrun.output_error}}
+      <br>
+      <a href="{% url 'courses.problems.views.submission_run' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Run</a> |
+      <a href="{% url 'courses.problems.views.submission_diff' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Diff</a>
+      
    </div>
 {% empty %}
    <p style="margin:20px;">{% trans 'No Submissions to display.' %}</p>
