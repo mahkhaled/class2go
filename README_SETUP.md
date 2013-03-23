@@ -413,7 +413,7 @@ probably Windows too).
 
 3. Once inside virtual env/project directory, install django:
 
-        pip install django
+        pip install django==1.4.2
 
 3. Clone class2go repo from github:
 
