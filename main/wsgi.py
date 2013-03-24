@@ -14,6 +14,11 @@ framework.
 
 """
 import os
+import sys
+
+sys.path.append('/var/www/django/DevEnvs/class2go2/lib/python2.7/site-packages/')
+sys.path.append('/var/www/django/DevProjects/class2go2/class2go/')
+sys.path.append('/var/www/django/DevProjects/class2go2/class2go/main/')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 
