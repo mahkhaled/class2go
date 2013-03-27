@@ -1143,7 +1143,7 @@ class Video(TimestampMixin, Stageable, Sortable, Deletable, models.Model):
                 return ""
             if is_storage_local():
                 # FileSystemStorage returns a path, not a url
-                loc_raw = get_site_url() + self.file.storage.url(videoname)
+                loc = get_site_url() + self.file.storage.url(videoname)
             else:
                 loc = self.file.storage.url_monkeypatched(videoname,
                     response_headers={'response-content-disposition': 'attachment'})
