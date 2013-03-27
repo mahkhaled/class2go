@@ -16,18 +16,34 @@ framework.
 import os
 import sys
 
-sys.path.append('/var/www/django/DevEnvs/class2go2/lib/python2.7/site-packages/')
-sys.path.append('/var/www/django/DevProjects/class2go2/class2go/')
+#sys.path = []
+
+#sys.path.append('/usr/lib/python2.7/')
+#sys.path.append('/usr/lib/python2.7/dist-packages')
+sys.path.append('/root/virtualenvs/class2go/bin')
+sys.path.append('/root/virtualenvs/class2go/lib/python2.7/')
+
+sys.path.append('/root/virtualenvs/class2go/lib/python2.7/site-packages/')
+sys.path.append('/root/virtualenvs/class2go/lib/python2.7/site-packages/django/')
 sys.path.append('/var/www/django/DevProjects/class2go2/class2go/main/')
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-
+sys.path.append('/var/www/django/DevProjects/class2go2/class2go/')
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
+print sys.path
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+#os.environ['DJANGO_SETTINGS_MODULE'] = 'main.settings'
+print os.environ
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
+from django.conf import settings
+print settings.__dict__
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
+
+#import django.core.handlers.wsgi
+
+#application = django.core.handlers.wsgi.WSGIHandler()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
-# application = HelloWorldApplication(application)
+# application = HelloWorldApplicddation(application)
