@@ -426,13 +426,13 @@ except NameError:
 try:
     SERVER_EMAIL
 except NameError:
-    SERVER_EMAIL = 'noreply@class.stanford.edu'
+    SERVER_EMAIL = 'codemasry@gmail.com'
 
 # For Production, or if override is set, actually send email
 if PRODUCTION or EMAIL_ALWAYS_ACTUALLY_SEND:
-    DEFAULT_FROM_EMAIL = "noreply@class.stanford.edu" #probably change for production
+    DEFAULT_FROM_EMAIL = 'codemasry@gmail.com' #probably change for production
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = "email-smtp.us-east-1.amazonaws.com"
+    EMAIL_HOST = "smtp.gmail.com"
     EMAIL_PORT = 587
     EMAIL_HOST_USER = SES_SMTP_USER
     EMAIL_HOST_PASSWORD = SES_SMTP_PASSWD
@@ -443,7 +443,7 @@ else:
     EMAIL_FILE_PATH = LOGGING_DIR + '/emails_sent.log'
 
 #Max number of emails sent by each worker, defaults to 10
-#EMAILS_PER_WORKER = 10
+EMAILS_PER_WORKER = 10000
 
 #CELERY
 CELERY_ACKS_LATE = True
