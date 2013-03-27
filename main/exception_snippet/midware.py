@@ -8,7 +8,7 @@ from django.utils.log import getLogger
 logger = getLogger('django.request')
 
 mailto_list = getattr(settings, 'ERROR_SNIPPET_EMAILS', [])
-from_addr = getattr(settings, 'DEFAULT_FROM_EMAIL', "admin@localhost")
+from_addr = getattr(settings, 'DEFAULT_FROM_EMAIL', "codemasry@gmail.com")
 
 class error_ping(object):
     """
