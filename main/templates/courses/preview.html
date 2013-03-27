@@ -123,10 +123,7 @@
               {% include "registration/regforminputs.html" %} 
               </fieldset>
               <div class="form-actions">
-                  <p>
-                  {% url 'c2g.views.tos' as tos_url %}
-                  {{form.tos}} {% blocktrans %}I agree to {{ SITE_TITLE }}'s <a href="{{tos_url}}" target="_blank">Terms of Service</a>, <a href="{{tos_url}}#honor" target="_blank" >Honor Code</a>, and <a href="{{tos_url}}#privacy" target="_blank">Privacy Policy</a>{% endblocktrans %}
-                  </p>
+                  <input type="hidden" name="tos" data-original-title="" value='1'>
                   <input type="submit" value="{% trans 'Register' %}" class="btn btn-primary btn-large" /> &nbsp; {% trans 'Already have an account?' %}  <a href="{% url 'courses.preview.views.preview' common_page_data.course_prefix common_page_data.course_suffix %}?login"> {% trans 'Login instead' %}</a>
               </div>
             </form>
