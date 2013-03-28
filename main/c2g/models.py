@@ -1165,6 +1165,7 @@ class Video(TimestampMixin, Stageable, Sortable, Deletable, models.Model):
             # FIXME: doesn't work on local sites yet
             print "DEBUG: Multiple download links don't work on local sites yet, sorry." 
             return [('large', get_site_url() + mystore.url(myname), self.file.size, '')]
+            return [('large', mystore.url(myname), self.file.size, '')]
         else:
             # XXX: very S3 specific
             urlof = mystore.url_monkeypatched
