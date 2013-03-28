@@ -525,6 +525,18 @@ Yay. :)
 
         ./manage.py collectstatic
 
+Install Rabbitmq
+sudo apt-get install rabbitmq-server
+
+Setting up RabbitMQ http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html
+rabbitmqctl add_user myuser mypassword
+rabbitmqctl add_vhost myvhost
+rabbitmqctl set_permissions -p myvhost myuser ".*" ".*" ".*"
+
+Start RabbitMQ server
+sudo rabbitmq-server
+
+
 3. Run server on whatever port you want:
 
         python manage.py runserver 8100

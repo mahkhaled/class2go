@@ -570,7 +570,8 @@ class File(TimestampMixin, Stageable, Sortable, Deletable, models.Model):
     def dl_link(self):
         filename = self.file.name
         if is_storage_local():
-            url = get_site_url() + self.file.storage.url(filename)
+            # url = get_site_url() + self.file.storage.url(filename)
+            url = self.file.storage.url(filename)
         else:
             storecache = get_cache("file_store")
             storecache_key = filename.replace(' ','%20')[-240:]   # memcache no spaces in cache key, char limit
