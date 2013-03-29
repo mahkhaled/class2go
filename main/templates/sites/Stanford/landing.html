@@ -27,12 +27,12 @@
         <div class="row">
             <div class="span6">
                 <h3>Welcome to CodeMasry where programming isn't a tool, it is a way of thinking. </h3>
-                <h4>Join the club of wannable software developers who are learning by doing.</h4>
-                <p><strong>Videos from Egyptian experienced software engineers</strong> with interactive quizzes and then practice what you've learned.</p>
-                <p><strong>Frame extracting</strong> allows you to preview and navigate to specific parts of videos. Scroll through extracted frames underneath a video to quickly find what you're looking for.</p>
-                <p><strong>Practice not just Knowledge;</strong> you won't only watch videos and solve quizes. However, in addition to that you will also make programming assignments.</p>
-                <p><strong>Automatic programming judge</strong> will auto grade your submitted programming <strong>assignments</strong>.</p>
-                <p><strong>Love discussion forums?</strong> Piazza forums will get people talking.</p>
+                <h4>Join the club of wannable software developers who are learning by doing.</h4><br/>
+                <div class='sys_info'><img src="{{ STATIC_URL }}graphics/core/practice.png" /><div><strong>Practice not just Knowledge;</strong> you won't only watch videos and solve quizes. However, in addition to that you will also make programming assignments.</div></div>
+
+                <div class='sys_info'><img src="{{ STATIC_URL }}graphics/core/judge.png" /><div><strong><br/>Automatic programming judge</strong> will auto grade your submitted programming <strong>assignments</strong>.</div></div>
+
+                <div class='sys_info forum'><img src="{{ STATIC_URL }}graphics/core/forum.png" /><div><strong>Love discussion forums?</strong> Piazza forums will get people talking.</div></div>
             </div>
             <div class="span5">
                 <h3>It's in <a href="http://www.youtube.com/channel/UCNy1EO4T0EM4w3I3-1-AnbA" target="_blank">Arabic</a>.</h3>
@@ -60,7 +60,7 @@
     <div class="container">
         <div class="row programming">
             <h3><a href="{% url 'courses.views.main' 'pro' 'april13' %}" target="_blank">Introduction to Computer Programming</a></h3>
-            <p><strong>Class begins April 1, 2013</strong></p>
+            <p><strong>Class begins April 28, 2013</strong></p>
 	    <p>This is an introductory course on computer programming, primarily focusing on....</p>
         <ul>
             <li>What is a programming language?</li>
@@ -71,7 +71,7 @@
             <li>Loops</li>
             <li>Arrays</li>
         </ul>
-        <button class='btn btn-danger' onclick="window.open('{% url 'courses.views.main' 'pro' 'april13' %}', '_blank')">Learn Online!</button>
+        <button class='btn btn-danger' onclick="window.open('{% url 'courses.views.main' 'pro' 'april13' %}', '_blank')">Learn Online!</button>&nbsp;&nbsp;
         <button class='btn btn-danger' onclick="window.open('http://iq.codemasry.com', '_blank')">Attend in Our Office!</button>
         </div>
     </div>
@@ -94,6 +94,7 @@
                 <li>Encapsulation Public Interface/API</li>
                 <li>Coding guidelines</li>
             </ul>
+            <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg">
         </div>
     </div>
 </div>
@@ -112,6 +113,7 @@
                 <li>Queues</li>
                 <li>Trees</li>
             </ul>
+            <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg">
         </div>
     </div>
 </div>
@@ -127,6 +129,7 @@
                 <li>Sorting Techniques</li>
                 <li>Hashing</li>
             </ul>
+            <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg">
         </div>
     </div>
 </div>
@@ -142,6 +145,7 @@
                 <li>SQL</li>
                 <li>Database Modeling</li>
             </ul>
+            <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg">
         </div>
     </div>
 </div>
