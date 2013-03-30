@@ -114,7 +114,7 @@ USE_L10N = True
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = 'http://localhost:8100/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -419,7 +419,7 @@ DATABASE_ROUTERS = ['c2g.routers.CeleryDBRouter',
 try:
     EMAIL_ALWAYS_ACTUALLY_SEND
 except NameError:
-    EMAIL_ALWAYS_ACTUALLY_SEND = False
+    EMAIL_ALWAYS_ACTUALLY_SEND = True
 
 # Email Settings
 
@@ -429,6 +429,7 @@ except NameError:
     SERVER_EMAIL = 'codemasry@gmail.com'
 
 # For Production, or if override is set, actually send email
+print 'mahmoud', EMAIL_ALWAYS_ACTUALLY_SEND
 if PRODUCTION or EMAIL_ALWAYS_ACTUALLY_SEND:
     DEFAULT_FROM_EMAIL = 'codemasry@gmail.com' #probably change for production
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -452,9 +453,11 @@ CELERY_IGNORE_RESULT = True   # SQS doesn't support, so this stop lots of spurri
 
 CELERYD_PREFETCH_MULTIPLIER = 1
 
+# simple queue service
 BROKER_TRANSPORT='sqs'
 BROKER_USER = AWS_ACCESS_KEY_ID
 BROKER_PASSWORD = AWS_SECRET_ACCESS_KEY
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 BROKER_TRANSPORT_OPTIONS = {
     'region': 'us-west-2', 
     'queue_name_prefix' : INSTANCE+'-',
