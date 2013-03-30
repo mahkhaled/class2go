@@ -1761,3 +1761,35 @@ hr {
 .home-unit.home-primary .row p {
     line-height: 24px;
 }
+
+.sponsor_ad{
+    background-image: url('../../graphics/core/classroom_generic.jpg');
+    width: 432px;
+    height: 239px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    border-bottom-color: rgba(0, 0, 0, 0.247059);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgba(0, 0, 0, 0.0980392);
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-right-color: rgba(0, 0, 0, 0.0980392);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgba(0, 0, 0, 0.0980392);
+    border-top-left-radius: 4px;
+    border-top-style: solid;
+    border-top-width: 3px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.sponsor_ad .close{
+    width: 20px;
+    height: 20px;
+    background-image: url('../../graphics/core/close.png');
+    background-repeat: no-repeat;
+    margin-top: 6px;
+}
