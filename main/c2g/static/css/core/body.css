@@ -1762,7 +1762,7 @@ hr {
     line-height: 24px;
 }
 
-.sponsor_ad{
+.classroom{
     background-image: url('../../graphics/core/classroom_generic.jpg');
     width: 432px;
     height: 239px;
@@ -1784,9 +1784,10 @@ hr {
     border-top-width: 3px;
     background-repeat: no-repeat;
     cursor: pointer;
+    z-index: 1000;
 }
 
-.sponsor_ad .close{
+.classroom .close{
     width: 20px;
     height: 20px;
     background-image: url('../../graphics/core/close.png');

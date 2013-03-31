@@ -193,12 +193,17 @@
     </div>
 </div>
 
-<div class='sponsor_ad' onclick="window.open('http://iq.codemasry.com', '_blank');">
+<div class='classroom'>
     <div class='close' title='Close'></div>
-    <script>$('.sponsor_ad .close').click(function(){
-        $('.sponsor_ad').hide();
+    <script>
+    $('.classroom .close').click(function(){
+        $('.classroom').hide();
         return false;
-    })</script>
+    })
+    $('.classroom').click(function(){
+        window.open('http://iq.codemasry.com', '_blank');
+    })
+    </script>
 </div>
 
 <div id="fb-root"></div>
