@@ -28,15 +28,12 @@ sys.path.append('/root/virtualenvs/class2go/lib/python2.7/site-packages/django/'
 sys.path.append('/var/www/django/DevProjects/class2go2/class2go/main/')
 sys.path.append('/var/www/django/DevProjects/class2go2/class2go/')
 #os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
-print sys.path
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 #os.environ['DJANGO_SETTINGS_MODULE'] = 'main.settings'
-print os.environ
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 from django.conf import settings
-print settings.__dict__
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 

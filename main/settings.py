@@ -18,6 +18,7 @@ django.template.add_to_builtins('django.templatetags.future')
 #Added for celery
 djcelery.setup_loader()
 
+DJANGO_ROOT = path.dirname(path.dirname(path.abspath(__file__)))
 # the INSTANCE should be "prod" or "stage" or something like that
 # if it hasn't been set then get the user name
 # since we use this for things like queue names, we want to keep this unique
@@ -114,14 +115,14 @@ USE_L10N = True
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'http://localhost:8100/media/'
+MEDIA_URL = 'http://codemasry.com/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 try:
-    STATIC_ROOT
+    STATIC_ROOT = path.join(DJANGO_ROOT, 'static')
 except:
     STATIC_ROOT = '/opt/' + APP + '/static/'
 
@@ -172,8 +173,8 @@ MIDDLEWARE_CLASSES = (
 
 )
 
-ROOT_URLCONF = 'urls'
 
+ROOT_URLCONF = 'urls'
 
 ### CACHING ###
 # config info here: see https://docs.djangoproject.com/en/dev/topics/cache
@@ -181,7 +182,7 @@ ROOT_URLCONF = 'urls'
 try:
     LOCAL_CACHE_LOCATION
 except NameError:
-    LOCAL_CACHE_LOCATION = "/opt/class2go"
+    LOCAL_CACHE_LOCATION = "/var/www/django/DevProjects/class2go2/cache"
 
 try:
     FILE_CACHE_TIME
@@ -340,8 +341,7 @@ ACCOUNT_ACTIVATION_DAYS = 7 #used by registration
 
 
 
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
+# See http://docs.djangoproject.com/en/dev/topics/logging for more details on how to customize your logging configuration.
 # If PRODUCTION flag not set in Database.py, then set it now.
 try:
     LOGGING_DIR
@@ -455,8 +455,8 @@ CELERYD_PREFETCH_MULTIPLIER = 1
 
 # simple queue service
 BROKER_TRANSPORT='sqs'
-BROKER_USER = AWS_ACCESS_KEY_ID
-BROKER_PASSWORD = AWS_SECRET_ACCESS_KEY
+BROKER_USER = 'mahmoud'
+BROKER_PASSWORD = 'm@hmoudSheh@b'
 BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 BROKER_TRANSPORT_OPTIONS = {
     'region': 'us-west-2', 
