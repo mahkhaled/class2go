@@ -289,7 +289,7 @@ body.home {
 }
 .home .hero-header .hero {
     width:520px;
-    margin-top: 55px;
+    margin-top: 20px;
     margin-bottom: 20px;
     min-height: 233px;
 }
@@ -1764,8 +1764,8 @@ hr {
 
 .classroom{
     background-image: url('../../graphics/core/classroom_generic.jpg');
-    width: 432px;
-    height: 239px;
+    width: 348px;
+    height: 193px;
     position: fixed;
     bottom: 0;
     right: 0;
@@ -1793,4 +1793,34 @@ hr {
     background-image: url('../../graphics/core/close.png');
     background-repeat: no-repeat;
     margin-top: 6px;
+}
+
+.days_to_go{
+    background: url(../../graphics/core/days_to_go.png) no-repeat top right;
+    height: 43px;
+    width: 200px;
+    float: right;
+    padding-top: 45px;
+    font-size: 31px;
+    font-weight: bold;
+    margin-top: -28px;
+}
+
+.days_to_go span{
+    padding-left: 74px;
+}
+
+.days_to_go_header{
+    background: url(../../graphics/core/d_2_g.jpg) no-repeat top right;
+    height: 32px;
+    width: 100px;
+    float: right;
+    padding-top: 46px;
+    font-size: 13px;
+    font-weight: bold;
+    color: brown;
+}
+
+.days_to_go_header span{
+    padding-left: 74px;
 }

@@ -75,11 +75,15 @@
             <li>Loops</li>
             <li>Arrays</li>
         </ul>
-        <button class='btn btn-danger' onclick="window.open('{% url 'courses.views.main' 'pro' 'april13' %}', '_blank')">Learn Online!</button>&nbsp;&nbsp;
-        <button class='btn btn-danger' onclick="window.open('http://iq.codemasry.com', '_blank')">Attend at our sponsor office!</button>
+        <div style='display:inline'>
+            <button class='btn btn-danger' onclick="window.open('{% url 'courses.views.main' 'pro' 'april13' %}', '_blank')" style='float:left'>Learn Online!</button>
+            <button class='btn btn-danger' onclick="window.open('http://iq.codemasry.com', '_blank')" style='float:left; margin-left:20px'>Attend at our sponsor office!</button>
+            <div class='days_to_go'><span>27</span></div>
         </div>
     </div>
 </div>
+<br/>
+<br/>
 <h3 style="padding-left:50px;">Coming Soon 2013</h3>
 <div class="home-unit comingsoon">
     <div class="container">
