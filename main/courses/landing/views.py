@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.conf import settings
 from c2g.models import Course
 from django.db.models import Q
+from datetime import date 
 
 def landing(request):
     """For normal servers, return our project landing page.  For maint servers,
@@ -26,6 +27,7 @@ def landing(request):
     r = render_to_response("sites/%s/landing.html" % site,
             {'hiring': hiring, 
              'course_list':course_list,
+             'today':28-date.today().day,
              'display_login': request.GET.__contains__('login')},
              context_instance=context)
     return r
