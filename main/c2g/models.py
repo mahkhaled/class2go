@@ -2888,6 +2888,9 @@ class Contest(models.Model):
     cid = models.IntegerField(primary_key=True )
     contestname = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.contestname
+
     class Meta:
         db_table = u'contest'
 
@@ -2911,6 +2914,9 @@ class Assignment(models.Model):
     course = models.ForeignKey(Course)
     contest = models.ForeignKey(Contest, null=True)
     objects = AssignmentManager()
+
+    def __unicode__(self):
+        return self.title
 
 class TeamManager(models.Manager):
     def getByUser(self, user):
