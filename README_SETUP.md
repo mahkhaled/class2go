@@ -537,6 +537,9 @@ Start RabbitMQ server
 sudo rabbitmq-server
 
 
+Update piazza settings in database.py
+Update SMTP email settings in database.py
+
 3. Run server on whatever port you want:
 
         python manage.py runserver 8100
@@ -589,3 +592,14 @@ A helper script for this exists at main/repave\_dev\_database.sh.  It
 drops/recreates your dev database and then does the syncdb / migrate
 / db_populate steps so you end up with a clean database.  It requires
 a ~/.my.cnf file to know what database to talk to.
+
+
+
+
+
+
+
+python manage.py celery worker --loglevel=info
+
+
+./manage.py kelvinate course graphic ssss -r
