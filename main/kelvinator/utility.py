@@ -25,7 +25,7 @@ def ffmpeg_cmd():
     if sys.platform == "darwin":
         cmd = "ffmpeg"
     elif sys.platform == "linux2":
-        cmd = "/usr/local/bin/ffmpeg"   # hardcoded location since we need a special one
+        cmd = "/usr/bin/ffmpeg"   # hardcoded location since we need a special one
     else:
         VideoError("Platform not supported, got \"%s\" expected darwin or linux2" % sys.platform)
     return cmd
