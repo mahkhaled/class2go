@@ -577,3 +577,13 @@ A helper script for this exists at main/repave\_dev\_database.sh.  It
 drops/recreates your dev database and then does the syncdb / migrate
 / db_populate steps so you end up with a clean database.  It requires
 a ~/.my.cnf file to know what database to talk to.
+
+
+
+
+
+
+
+
+
+insert into c2g_mixed.team (login,name,categoryid) select username,username,1 from c2g_mixed.auth_user ;
