@@ -602,4 +602,6 @@ a ~/.my.cnf file to know what database to talk to.
 python manage.py celery worker --loglevel=info
 
 
-./manage.py kelvinate course graphic ssss -r
+./manage.py kelvinate course graphic hhh -r
+
+sudo apt-get install ffmpeg lynx
