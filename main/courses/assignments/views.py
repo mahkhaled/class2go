@@ -26,7 +26,11 @@ def view(request, course_prefix, course_suffix, assignment_id):
       raise Http404
    assignment = Assignment.objects.get(pk=assignment_id)
    problems = assignment.contest.problem_set.all()
-   return render_to_response('assignments/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problems':problems, 'request': request}, context_instance=RequestContext(request))
+   problems_correct_submissions = {}
+   for problem in problems:
+      problem.correct_submissions = problem.submission_set.getByTeam(Team.objects.getByUser(request.user)).filter(judging__result="correct").count()
+      problem.total_submissions = problem.submission_set.getByTeam(Team.objects.getByUser(request.user)).count()
+   return render_to_response('assignments/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problems':problems, 'request': request, 'correct_submissions_count': problems_correct_submissions}, context_instance=RequestContext(request))
     
 # def edit(request, course_prefix, course_suffix, assignment_id):
 #     return render_to_response('assignments/edit.html', {'course_prefix': course_prefix, 'course_suffix': course_suffix, 'assignment_id':assignment_id, 'request': request}, context_instance=RequestContext(request))
