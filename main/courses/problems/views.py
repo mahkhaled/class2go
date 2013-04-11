@@ -1,5 +1,5 @@
-from django.http import HttpResponse, Http404
-from django.shortcuts import render_to_response
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import redirect, render_to_response
 from django.template import Context, loader
 from django.template import RequestContext
 from django.contrib import messages
@@ -37,12 +37,17 @@ def submit(request, course_prefix, course_suffix, assignment_id, problem_id):
       submissions = problem.submission_set.getByTeam(team)
 
       langid = submission_file.name.split('.')[1]
-      
-      submission = Submission(problem=problem, contest=assignment.contest, team=team[0], langid=langid)
-      submission.save()
-      submission_file = SubmissionFile(submission=submission, source_code=submission_code, file_name=submission_file, rank=0)
-      submission_file.save()
 
+      try:
+         Language.objects.get(langid=langid)
+         submission = Submission(problem=problem, contest=assignment.contest, team=team[0], langid=langid)
+         submission.save()
+         submission_file = SubmissionFile(submission=submission, source_code=submission_code, file_name=submission_file, rank=0)
+         submission_file.save()
+         messages.add_message(request,messages.SUCCESS, 'Your submission was saved and will be graded shortly.')
+      except Language.DoesNotExist:
+         messages.add_message(request,messages.ERROR, 'You submitted a file with invalid extension.')
+         return redirect(reverse('courses.assignments.views.view', args=[course_prefix, course_suffix, assignment.id]))
 
    return render_to_response('problems/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problem':problem, 'team': team, 'submissions': submissions, 'request': request}, context_instance=RequestContext(request))
 

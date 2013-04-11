@@ -2989,5 +2989,11 @@ class JudgingRun(models.Model):
     class Meta:
         db_table = u'judging_run'
 
+class Language(models.Model):
+    langid = models.CharField(primary_key=True,max_length=20)
+
+    class Meta:
+        db_table = u'language'
+
 
 
