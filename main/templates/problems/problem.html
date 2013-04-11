@@ -6,8 +6,10 @@
       Language: {{submission.langid}}
       <br>
       Result: {{submission.judging.result}}
-      <br>
-      Error: {{submission.judging.judgingrun.output_error}}
+      {% if submission.judging.result != 'correct' %}
+         <br>
+         Error: {{submission.judging.judgingrun.output_error}}
+      {% endif %}
       <br>
       <a href="{% url 'courses.problems.views.submission_run' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Run</a> |
       <a href="{% url 'courses.problems.views.submission_diff' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Diff</a>
