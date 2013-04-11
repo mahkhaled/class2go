@@ -6,6 +6,9 @@
       Language: {{submission.langid}}
       <br>
       Result: {{submission.judging.result}}
+      {% if submission.judging.result == 'correct' %}
+        <i class="icon-ok correct"></i>
+      {% endif %}
       {% if submission.judging.result != 'correct' %}
          <br>
          Error: {{submission.judging.judgingrun.output_error}}
