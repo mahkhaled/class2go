@@ -2,6 +2,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render_to_response
 from django.template import Context, loader
 from django.template import RequestContext
+from django.contrib import messages
 from c2g.models import *
 from courses.common_page_data import get_common_page_data
 from courses.actions import auth_view_wrapper, auth_is_course_admin_view_wrapper
@@ -57,14 +58,18 @@ def submission_run(request, course_prefix, course_suffix, assignment_id, problem
    user = request.user
    team = Team.objects.getByUser(user)
    submissions = problem.submission_set.getByTeam(team)
-   print submission_id
    submission = submissions.get(pk=submission_id)
 
-   response = HttpResponse(content_type='text')
-   response['Content-Disposition'] = 'attachment; filename="run.txt"'
+   
+   try:
+      response = HttpResponse(content_type='text')
+      response.write(submission.judging.judgingrun.output_run)
+      response['Content-Disposition'] = 'attachment; filename="run.txt"'
+      return response
 
-   response.write(submission.judging.judgingrun.output_run)
-   return response
+   except Judging.DoesNotExist:
+      messages.add_message(request,messages.WARNING, 'The run output that you asked for is not available yet, try again shortly.')
+      return render_to_response('problems/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problem':problem, 'team': team, 'submissions': submissions, 'request': request}, context_instance=RequestContext(request))
 
 @auth_view_wrapper
 def submission_diff(request, course_prefix, course_suffix, assignment_id, problem_id, submission_id):
@@ -77,11 +82,18 @@ def submission_diff(request, course_prefix, course_suffix, assignment_id, proble
    user = request.user
    team = Team.objects.getByUser(user)
    submissions = problem.submission_set.getByTeam(team)
-   print submission_id
    submission = submissions.get(pk=submission_id)
 
    response = HttpResponse(content_type='text')
    response['Content-Disposition'] = 'attachment; filename="diff.txt"'
 
-   response.write(submission.judging.judgingrun.output_diff)
-   return response
+   try:
+      response = HttpResponse(content_type='text')
+      response.write(submission.judging.judgingrun.output_diff)
+      response['Content-Disposition'] = 'attachment; filename="diff.txt"'
+      return response
+
+   except Judging.DoesNotExist:
+      messages.add_message(request,messages.WARNING, 'The diff output that you asked for is not available yet, try again shortly.')
+      return render_to_response('problems/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problem':problem, 'team': team, 'submissions': submissions, 'request': request}, context_instance=RequestContext(request))
+

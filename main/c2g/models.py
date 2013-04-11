@@ -2972,7 +2972,7 @@ class SubmissionFile(models.Model):
 class Judging(models.Model):
     judgingid = models.IntegerField(primary_key=True)
     contest = models.ForeignKey(Contest, db_column='cid')
-    submisson = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
+    submission = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
     result = models.TextField(max_length=20)
 
     class Meta:
