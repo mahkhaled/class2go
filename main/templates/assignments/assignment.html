@@ -4,7 +4,7 @@
     
     <h4><a href="{% url 'courses.assignments.views.view' common_page_data.course_prefix common_page_data.course_suffix assignment.id %}">{% trans 'Description' %}</a></h4>
     {% autoescape off %}<p>{{assignment.description}}</p>{% endautoescape %}
-
+    {% trans 'Grade:' %} {{ grade|floatformat:"-2" }} / {{ assignment.full_mark }}
 </div>
 
 <div class="announcement">
