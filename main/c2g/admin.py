@@ -22,6 +22,7 @@ admin.site.register(CourseInstructor)
 admin.site.register(ContentGroup)
 admin.site.register(CourseCertificate)
 admin.site.register(CourseStudentList)
+admin.site.register(Assignment)
 
 
 class ProfileAdmin(admin.ModelAdmin):

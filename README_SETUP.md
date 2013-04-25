@@ -596,12 +596,13 @@ a ~/.my.cnf file to know what database to talk to.
 
 
 
-
-
-
 python manage.py celery worker --loglevel=info
 
 
 ./manage.py kelvinate course graphic hhh -r
 
 sudo apt-get install ffmpeg lynx
+
+
+insert into c2g_mixed.team (login,name,categoryid) select username,username,1 from c2g_mixed.auth_user ;
+
