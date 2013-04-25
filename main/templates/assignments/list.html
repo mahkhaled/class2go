@@ -1,9 +1,34 @@
 {% extends "course_base.html" %}
+{% load i18n %}
 {% load url from future %}
 {% block assignments_link_class %}class="active"{% endblock assignments_link_class %}
 
+{% block course_page_title %}Assignments (<a href="{% url 'courses.views.main' common_page_data.course_prefix common_page_data.course_suffix %}">{{common_page_data.course.title}}</a>){% endblock course_page_title %}
+
 {% block m_column_content %}
 
-<h2>List assignments for course "{{course_prefix}} ({{course_suffix}})" </h2>
+<div id="c2g_layout_m_column" class="span12">
+
+   
+   
+   {% for assignment in assignments %}
+      <div class="announcement">
+    
+         <h4><a href="{% url 'courses.assignments.views.view' common_page_data.course_prefix common_page_data.course_suffix assignment.id %}">{{assignment.title}}</a></h4>
+         {% autoescape off %}<p>{{assignment.description}}</p>{% endautoescape %}
+
+      </div>
+   {% empty %}
+     <p style="margin:20px;">{% trans 'No assignments to display.' %}</p>
+   {% endfor %}
+
+</div>
 
 {% endblock m_column_content %}
+
+{% if common_page_data.is_course_admin  and common_page_data.course_mode == 'draft' %}
+    {% block addl_scripts %}
+    {% include "controls/tinymce.html" %}
+    {% endblock addl_scripts %}
+{% endif %}
+

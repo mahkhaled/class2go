@@ -16,7 +16,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.db import models
 from django.db.models import Max
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.utils import encoding
 
 from c2g.util import is_storage_local, get_site_url
@@ -2885,6 +2885,105 @@ class ContentGroup(models.Model):
     
     class Meta:
         db_table = u'c2g_content_group'
+
+class Contest(models.Model):
+    cid = models.IntegerField(primary_key=True )
+    contestname = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = u'contest'
+
+class Problem(models.Model):
+    probid = models.CharField(max_length=200, primary_key=True)
+    name = models.CharField(max_length=200)
+    contest = models.ForeignKey(Contest, db_column='cid')
+
+    class Meta:
+        db_table = u'problem'
         
+class AssignmentManager(models.Manager):
+    def getByCourse(self, course):
+        return self.filter(course=course)
+
+class Assignment(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    published_at = models.DateTimeField()
+    end_at = models.DateTimeField()
+    course = models.ForeignKey(Course)
+    contest = models.ForeignKey(Contest, null=True)
+    objects = AssignmentManager()
+
+class TeamManager(models.Manager):
+    def getByUser(self, user):
+        return self.filter(login=user.username)
+
+class Team(models.Model):
+    login = models.CharField(max_length=20, primary_key=True)
+    name = models.CharField(max_length=100)
+    categoryid = models.IntegerField()
+    objects = TeamManager()
+
+    class Meta:
+        db_table = u'team'
+
+# creates a team with the sent instance (User) username 
+def create_team(sender, instance, created, raw, **kwargs):
+    if created and not raw:  #create means that a new DB entry is created, raw is set when fixtures are being loaded
+        Team.objects.create(login=instance.username, name=instance.username, categoryid=1 )
+
+# deletes the team whose login is the same as username of the sent instance
+def delete_team(sender, instance, using, **kwargs):
+    Team.objects.getByUser(instance).delete()
+
+post_save.connect(create_team, sender=User) # create a team when a user is created
+post_delete.connect(delete_team, sender=User) # delete the team when the user is deleted
+
+class SubmissionManager(models.Manager):
+    def getByTeam(self, team):
+        return self.filter(team=team)
+
+class Submission(models.Model):
+    submitid = models.AutoField(primary_key=True)
+    problem = models.ForeignKey(Problem, db_column='probid')
+    contest = models.ForeignKey(Contest, db_column='cid')
+    team = models.ForeignKey(Team, db_column='teamid')
+    langid = models.CharField(max_length=20)
+    submittime = models.DateTimeField(auto_now_add=True)
+    objects = SubmissionManager()
+
+    class Meta:
+        db_table = u'submission'
+
+class SubmissionFile(models.Model):
+    submitfileid = models.IntegerField(primary_key=True)
+    submission = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
+    source_code = models.TextField(db_column='sourcecode')
+    file_name = models.TextField(max_length=200, db_column='filename')
+    rank = models.IntegerField()
+
+    class Meta:
+        db_table = u'submission_file'
+
+class Judging(models.Model):
+    judgingid = models.IntegerField(primary_key=True)
+    contest = models.ForeignKey(Contest, db_column='cid')
+    submisson = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
+    result = models.TextField(max_length=20)
+
+    class Meta:
+        db_table = u'judging'
+
+class JudgingRun(models.Model):
+    runid = models.IntegerField(primary_key=True)
+    judging = models.OneToOneField(Judging, primary_key=True, db_column='judgingid')
+    run_result = models.TextField(max_length=20, db_column='runresult')
+    output_run = models.TextField()
+    output_diff = models.TextField()
+    output_error = models.TextField()
+
+    class Meta:
+        db_table = u'judging_run'
+
 
 

@@ -3,8 +3,10 @@
 {% load url from future %}
 {% block assignments_link_class %}class="active"{% endblock assignments_link_class %}
 
+{% block course_page_title %}{{assignment.title}} (<a href="{% url 'courses.views.main' common_page_data.course_prefix common_page_data.course_suffix %}">{{common_page_data.course.title}}</a>){% endblock course_page_title %}
+
 {% block m_column_content %}
 
-<h2>Show assignment "{{assignment_id}}" for course "{{course_prefix}} ({{course_suffix}})" </h2>
+{% include "assignments/assignment.html" %}
 
 {% endblock m_column_content %}

@@ -1,0 +1,18 @@
+{% load i18n %}
+{% for submission in submissions %}
+   <div class="announcement">
+      Submission Time: {{submission.submittime}}
+      <br>
+      Language: {{submission.langid}}
+      <br>
+      Result: {{submission.judging.result}}
+      <br>
+      Error: {{submission.judging.judgingrun.output_error}}
+      <br>
+      <a href="{% url 'courses.problems.views.submission_run' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Run</a> |
+      <a href="{% url 'courses.problems.views.submission_diff' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Diff</a>
+      
+   </div>
+{% empty %}
+   <p style="margin:20px;">{% trans 'No Submissions to display.' %}</p>
+{% endfor %}
