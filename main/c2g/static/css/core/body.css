@@ -1726,3 +1726,7 @@ hr {
     background: -o-linear-gradient(left, #bdb7a1, #fcfaf5); /* Opera 11.10+ */
     margin: 0 0 25px 0;
 }
+
+.correct {
+  color: green;
+}

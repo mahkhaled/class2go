@@ -2888,6 +2888,9 @@ class Contest(models.Model):
     cid = models.IntegerField(primary_key=True )
     contestname = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.contestname
+
     class Meta:
         db_table = u'contest'
 
@@ -2911,6 +2914,27 @@ class Assignment(models.Model):
     course = models.ForeignKey(Course)
     contest = models.ForeignKey(Contest, null=True)
     objects = AssignmentManager()
+    full_mark = models.DecimalField(max_digits=9, decimal_places=2)
+    soft_deadline = models.DateTimeField()
+    hard_deadline = models.DateTimeField()
+
+    def grade(self, user):
+        grade = 0
+        problems = self.contest.problem_set.all()
+        problem_mark = self.full_mark / problems.count()
+        for problem in problems:
+            correct_submissions_soft = problem.submission_set.getByTeam(Team.objects.getByUser(user)).filter(judging__result="correct", submittime__lt=self.soft_deadline)
+            correct_submissions_hard = problem.submission_set.getByTeam(Team.objects.getByUser(user)).filter(judging__result="correct", submittime__gt=self.soft_deadline, submittime__lt=self.hard_deadline)
+            # if submitted full mark
+            if(correct_submissions_soft.count() > 0):
+                print correct_submissions_soft.all()[0].submittime
+                grade += problem_mark
+            elif(correct_submissions_hard.count() > 0):
+                grade += problem_mark / 2
+        return grade
+
+    def __unicode__(self):
+        return self.title
 
 class TeamManager(models.Manager):
     def getByUser(self, user):
@@ -2966,7 +2990,7 @@ class SubmissionFile(models.Model):
 class Judging(models.Model):
     judgingid = models.IntegerField(primary_key=True)
     contest = models.ForeignKey(Contest, db_column='cid')
-    submisson = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
+    submission = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
     result = models.TextField(max_length=20)
 
     class Meta:
@@ -2982,6 +3006,12 @@ class JudgingRun(models.Model):
 
     class Meta:
         db_table = u'judging_run'
+
+class Language(models.Model):
+    langid = models.CharField(primary_key=True,max_length=20)
+
+    class Meta:
+        db_table = u'language'
 
 
 

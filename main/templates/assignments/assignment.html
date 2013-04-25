@@ -4,7 +4,7 @@
     
     <h4><a href="{% url 'courses.assignments.views.view' common_page_data.course_prefix common_page_data.course_suffix assignment.id %}">{% trans 'Description' %}</a></h4>
     {% autoescape off %}<p>{{assignment.description}}</p>{% endautoescape %}
-
+    {% trans 'Grade:' %} {{ grade|floatformat:"-2" }} / {{ assignment.full_mark }}
 </div>
 
 <div class="announcement">
@@ -12,7 +12,11 @@
    <h4> <a href="#"> Problems </a> </h4>
    {% for problem in problems %}
      <a href="{% url 'courses.problems.views.view' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.probid %}">{{problem.name}}</a>
-
+     <br>
+     <a href="{% url 'courses.problems.views.view' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.probid %}">  {% trans 'Show submissions' %} ({{ problem.total_submissions }}) </a>
+     {% if problem.correct_submissions > 0 %}
+        <i class="icon-ok correct"></i>
+     {% endif %}
      <form action="{% url 'courses.problems.views.submit' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.probid %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <label> Upload your solution file </label>
