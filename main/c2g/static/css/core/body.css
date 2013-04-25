@@ -1824,3 +1824,7 @@ hr {
 .days_to_go_header span{
     padding-left: 74px;
 }
+
+.correct {
+  color: green;
+}

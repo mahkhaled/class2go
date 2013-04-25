@@ -5,17 +5,22 @@
 
 {% block course_page_title %}Assignments (<a href="{% url 'courses.views.main' common_page_data.course_prefix common_page_data.course_suffix %}">{{common_page_data.course.title}}</a>){% endblock course_page_title %}
 
+
+
 {% block m_column_content %}
 
 <div id="c2g_layout_m_column" class="span12">
-
-   
+  Total Grade: {{ total_grade_obtained|floatformat:"-2" }} / {{ total_full_mark }}
+  <br>
+  <br>
+  <br>
    
    {% for assignment in assignments %}
       <div class="announcement">
     
          <h4><a href="{% url 'courses.assignments.views.view' common_page_data.course_prefix common_page_data.course_suffix assignment.id %}">{{assignment.title}}</a></h4>
          {% autoescape off %}<p>{{assignment.description}}</p>{% endautoescape %}
+         {% trans 'Grade:' %} {{ assignment.calculated_grade|floatformat:"-2" }} / {{ assignment.full_mark }}
 
       </div>
    {% empty %}
