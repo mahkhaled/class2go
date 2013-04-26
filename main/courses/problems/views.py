@@ -14,7 +14,7 @@ def view(request, course_prefix, course_suffix, assignment_id, problem_id):
    except:
       raise Http404
    assignment = Assignment.objects.get(pk=assignment_id)
-   problem = assignment.contest.problem_set.get(pk=problem_id)
+   problem = assignment.problem_set.get(pk=problem_id)
    user = request.user
    team = Team.objects.getByUser(user)
    submissions = problem.submission_set.getByTeam(team)
@@ -31,7 +31,7 @@ def submit(request, course_prefix, course_suffix, assignment_id, problem_id):
       submission_code = submission_file.read()
 
       assignment = Assignment.objects.get(pk=assignment_id)
-      problem = assignment.contest.problem_set.get(pk=problem_id)
+      problem = assignment.problem_set.get(pk=problem_id)
       user = request.user
       team = Team.objects.getByUser(user)
       submissions = problem.submission_set.getByTeam(team)
@@ -59,7 +59,7 @@ def submission_run(request, course_prefix, course_suffix, assignment_id, problem
       raise Http404
 
    assignment = Assignment.objects.get(pk=assignment_id)
-   problem = assignment.contest.problem_set.get(pk=problem_id)
+   problem = assignment.problem_set.get(pk=problem_id)
    user = request.user
    team = Team.objects.getByUser(user)
    submissions = problem.submission_set.getByTeam(team)
@@ -83,7 +83,7 @@ def submission_diff(request, course_prefix, course_suffix, assignment_id, proble
    except:
       raise Http404
    assignment = Assignment.objects.get(pk=assignment_id)
-   problem = assignment.contest.problem_set.get(pk=problem_id)
+   problem = assignment.problem_set.get(pk=problem_id)
    user = request.user
    team = Team.objects.getByUser(user)
    submissions = problem.submission_set.getByTeam(team)

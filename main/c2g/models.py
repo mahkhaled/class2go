@@ -2896,14 +2896,6 @@ class Contest(models.Model):
     class Meta:
         db_table = u'contest'
 
-class Problem(models.Model):
-    probid = models.CharField(max_length=200, primary_key=True)
-    name = models.CharField(max_length=200)
-    contest = models.ForeignKey(Contest, db_column='cid')
-
-    class Meta:
-        db_table = u'problem'
-        
 class AssignmentManager(models.Manager):
     def getByCourse(self, course):
         return self.filter(course=course)
@@ -2937,6 +2929,18 @@ class Assignment(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Problem(models.Model):
+    probid = models.CharField(max_length=200, primary_key=True)
+    name = models.CharField(max_length=200)
+    contest = models.ForeignKey(Contest, db_column='cid')
+    assignment = models.ForeignKey(Assignment)
+
+    class Meta:
+        db_table = u'problem'
+
+    def __unicode__(self):
+        return self.probid
 
 class TeamManager(models.Manager):
     def getByUser(self, user):
