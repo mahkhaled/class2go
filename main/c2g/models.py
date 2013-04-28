@@ -2924,7 +2924,6 @@ class Assignment(models.Model):
             correct_submissions_hard = problem.submission_set.getByTeam(Team.objects.getByUser(user)).filter(judging__result="correct", submittime__gt=self.soft_deadline, submittime__lt=self.hard_deadline)
             # if submitted full mark
             if(correct_submissions_soft.count() > 0):
-                print correct_submissions_soft.all()[0].submittime
                 grade += problem_mark
             elif(correct_submissions_hard.count() > 0):
                 grade += problem_mark / 2
