@@ -2914,14 +2914,16 @@ class Assignment(models.Model):
 
     def grade(self, user):
         grade = 0
-        problems = self.contest.problem_set.all()
+        problems = self.problem_set.all()
+        # no problems then grade is zero
+        if(problems.count() == 0):
+            return grade
         problem_mark = self.full_mark / problems.count()
         for problem in problems:
             correct_submissions_soft = problem.submission_set.getByTeam(Team.objects.getByUser(user)).filter(judging__result="correct", submittime__lt=self.soft_deadline)
             correct_submissions_hard = problem.submission_set.getByTeam(Team.objects.getByUser(user)).filter(judging__result="correct", submittime__gt=self.soft_deadline, submittime__lt=self.hard_deadline)
             # if submitted full mark
             if(correct_submissions_soft.count() > 0):
-                print correct_submissions_soft.all()[0].submittime
                 grade += problem_mark
             elif(correct_submissions_hard.count() > 0):
                 grade += problem_mark / 2
