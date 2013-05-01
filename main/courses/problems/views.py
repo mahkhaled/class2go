@@ -18,6 +18,8 @@ def view(request, course_prefix, course_suffix, assignment_id, problem_id):
    user = request.user
    team = Team.objects.getByUser(user)
    submissions = problem.submission_set.getByTeam(team)
+   for submission in submissions:
+      submission.judigng_to_show = submission.last_judging()
    return render_to_response('problems/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problem':problem, 'team': team, 'submissions': submissions, 'request': request}, context_instance=RequestContext(request))
    
 @auth_view_wrapper
