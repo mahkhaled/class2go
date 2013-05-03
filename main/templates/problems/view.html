@@ -7,6 +7,10 @@
 
 {% block m_column_content %}
 
+<a href="{% url 'courses.assignments.views.view' common_page_data.course_prefix common_page_data.course_suffix assignment.id %}">Go Back to {{assignment.title}}</a>
+
+<br>
+
 {% include "problems/problem.html" %}
 
 {% endblock m_column_content %}
