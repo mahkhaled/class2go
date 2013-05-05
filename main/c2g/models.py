@@ -2991,6 +2991,12 @@ class Submission(models.Model):
         else:
             return
 
+    def has_errors(self):
+        if self.judging_set.exclude(judgingrun__run_result="correct").count() > 0:
+            return True
+        else:
+            return False
+
 class SubmissionFile(models.Model):
     submitfileid = models.IntegerField(primary_key=True)
     submission = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
@@ -3010,9 +3016,15 @@ class Judging(models.Model):
     class Meta:
         db_table = u'judging'
 
+    def first_wrong_run(self):
+        if self.judgingrun_set.all().count() > 0:
+            return self.judgingrun_set.all().order_by('runid')[0]
+        else:
+            return
+
 class JudgingRun(models.Model):
     runid = models.IntegerField(primary_key=True)
-    judging = models.OneToOneField(Judging, primary_key=True, db_column='judgingid')
+    judging = models.ForeignKey(Judging, primary_key=True, db_column='judgingid')
     run_result = models.TextField(max_length=20, db_column='runresult')
     output_run = models.TextField()
     output_diff = models.TextField()

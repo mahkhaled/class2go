@@ -70,7 +70,7 @@ def submission_run(request, course_prefix, course_suffix, assignment_id, problem
    
    try:
       response = HttpResponse(content_type='text')
-      response.write(submission.judging.judgingrun.output_run)
+      response.write(submission.last_judging().first_wrong_run().output_run)
       response['Content-Disposition'] = 'attachment; filename="run.txt"'
       return response
 
@@ -96,7 +96,7 @@ def submission_diff(request, course_prefix, course_suffix, assignment_id, proble
 
    try:
       response = HttpResponse(content_type='text')
-      response.write(submission.judging.judgingrun.output_diff)
+      response.write(submission.last_judging().first_wrong_run().output_diff)
       response['Content-Disposition'] = 'attachment; filename="diff.txt"'
       return response
 

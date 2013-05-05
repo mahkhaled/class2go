@@ -15,8 +15,10 @@
          Error: {{submission.judigng_to_show.result}}
       {% endif %}
       <br>
-      <a href="{% url 'courses.problems.views.submission_run' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Run</a> |
-      <a href="{% url 'courses.problems.views.submission_diff' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Diff</a>
+      {% if submission.has_errors %}
+         <a href="{% url 'courses.problems.views.submission_run' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Run</a> |
+         <a href="{% url 'courses.problems.views.submission_diff' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Diff</a>
+      {% endif %}
    </div>
 {% empty %}
    <p style="margin:20px;">{% trans 'No Submissions to display.' %}</p>
