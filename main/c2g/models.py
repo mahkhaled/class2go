@@ -3016,6 +3016,12 @@ class Judging(models.Model):
     class Meta:
         db_table = u'judging'
 
+    def first_wrong_run(self):
+        if self.judgingrun_set.all().count() > 0:
+            return self.judgingrun_set.all().order_by('runid')[0]
+        else:
+            return
+
 class JudgingRun(models.Model):
     runid = models.IntegerField(primary_key=True)
     judging = models.ForeignKey(Judging, primary_key=True, db_column='judgingid')
