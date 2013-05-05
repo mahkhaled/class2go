@@ -2985,6 +2985,12 @@ class Submission(models.Model):
     class Meta:
         db_table = u'submission'
 
+    def last_judging(self):
+        if self.judging_set.all().count() > 0:
+            return self.judging_set.all().order_by('-judgingid')[0]
+        else:
+            return
+
 class SubmissionFile(models.Model):
     submitfileid = models.IntegerField(primary_key=True)
     submission = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
@@ -2998,7 +3004,7 @@ class SubmissionFile(models.Model):
 class Judging(models.Model):
     judgingid = models.IntegerField(primary_key=True)
     contest = models.ForeignKey(Contest, db_column='cid')
-    submission = models.OneToOneField(Submission, primary_key=True, db_column='submitid')
+    submission = models.ForeignKey(Submission, primary_key=True, db_column='submitid')
     result = models.TextField(max_length=20)
 
     class Meta:
