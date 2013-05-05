@@ -12,7 +12,7 @@
       {% endif %}
       {% if submission.judigng_to_show.result != 'correct' %}
          <br>
-         Error: {{submission.judigng_to_show.judgingrun.output_error}}
+         Error: {{submission.judigng_to_show.result}}
       {% endif %}
       <br>
       <a href="{% url 'courses.problems.views.submission_run' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Run</a> |
