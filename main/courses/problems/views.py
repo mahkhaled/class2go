@@ -104,3 +104,29 @@ def submission_diff(request, course_prefix, course_suffix, assignment_id, proble
       messages.add_message(request,messages.WARNING, 'The diff output that you asked for is not available yet, try again shortly.')
       return render_to_response('problems/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problem':problem, 'team': team, 'submissions': submissions, 'request': request}, context_instance=RequestContext(request))
 
+@auth_view_wrapper
+def submission_input(request, course_prefix, course_suffix, assignment_id, problem_id, submission_id):
+   try:
+      common_page_data = get_common_page_data(request, course_prefix, course_suffix)
+   except:
+      raise Http404
+   assignment = Assignment.objects.get(pk=assignment_id)
+   problem = assignment.problem_set.get(pk=problem_id)
+   user = request.user
+   team = Team.objects.getByUser(user)
+   submissions = problem.submission_set.getByTeam(team)
+   submission = submissions.get(pk=submission_id)
+
+   response = HttpResponse(content_type='text')
+   response['Content-Disposition'] = 'attachment; filename="diff.txt"'
+
+   try:
+      response = HttpResponse(content_type='text')
+      response.write(submission.last_judging().first_wrong_run().testcase.input_result)
+      response['Content-Disposition'] = 'attachment; filename="input.txt"'
+      return response
+
+   except Judging.DoesNotExist:
+      messages.add_message(request,messages.WARNING, 'The diff output that you asked for is not available yet, try again shortly.')
+      return render_to_response('problems/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problem':problem, 'team': team, 'submissions': submissions, 'request': request}, context_instance=RequestContext(request))
+
