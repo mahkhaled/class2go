@@ -2992,6 +2992,9 @@ class Submission(models.Model):
             return
 
     def has_errors(self):
+        if self.judging_set.filter(result="compiler-error").count() > 0:
+            return False
+
         if self.judging_set.all().count() == 0 or self.judging_set.filter(result="correct").count() > 0:
             return False
         else:
