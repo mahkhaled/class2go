@@ -3022,9 +3022,18 @@ class Judging(models.Model):
         else:
             return
 
+class Testcase(models.Model):
+    testcaseid = models.IntegerField(primary_key=True)
+    input_result = models.TextField(db_column='input')
+
+    class Meta:
+        db_table = u'testcase'
+
+
 class JudgingRun(models.Model):
     runid = models.IntegerField(primary_key=True)
     judging = models.ForeignKey(Judging, primary_key=True, db_column='judgingid')
+    testcase = models.ForeignKey(Testcase, primary_key=True, db_column='testcaseid')
     run_result = models.TextField(max_length=20, db_column='runresult')
     output_run = models.TextField()
     output_diff = models.TextField()

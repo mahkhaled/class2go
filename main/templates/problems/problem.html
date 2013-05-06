@@ -16,7 +16,8 @@
       {% endif %}
       <br>
       {% if submission.has_errors %}
-         <a href="{% url 'courses.problems.views.submission_run' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Run</a> |
+         <a href="{% url 'courses.problems.views.submission_input' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Input</a> | 
+         <a href="{% url 'courses.problems.views.submission_run' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Run</a> | 
          <a href="{% url 'courses.problems.views.submission_diff' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Diff</a>
       {% endif %}
    </div>

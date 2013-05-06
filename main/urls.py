@@ -220,6 +220,7 @@ urlpatterns = patterns('',
 
     url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/(?P<course_suffix>[a-zA-Z0-9_-]+)/assignments/(?P<assignment_id>[0-9]+)?/problems/(?P<problem_id>[a-zA-Z0-9_-]+)/submissions/(?P<submission_id>[a-zA-Z0-9_-]+)/run/?$', 'courses.problems.views.submission_run'),
     url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/(?P<course_suffix>[a-zA-Z0-9_-]+)/assignments/(?P<assignment_id>[0-9]+)?/problems/(?P<problem_id>[a-zA-Z0-9_-]+)/submissions/(?P<submission_id>[a-zA-Z0-9_-]+)/diff/?$', 'courses.problems.views.submission_diff'),
+    url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/(?P<course_suffix>[a-zA-Z0-9_-]+)/assignments/(?P<assignment_id>[0-9]+)?/problems/(?P<problem_id>[a-zA-Z0-9_-]+)/submissions/(?P<submission_id>[a-zA-Z0-9_-]+)/input/?$', 'courses.problems.views.submission_input'),
     
     # Sections
     url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/(?P<course_suffix>[a-zA-Z0-9_-]+)/sections/reorder/?$', 'courses.content_sections.views.reorder'),
