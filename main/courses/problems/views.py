@@ -51,7 +51,7 @@ def submit(request, course_prefix, course_suffix, assignment_id, problem_id):
          messages.add_message(request,messages.ERROR, 'You submitted a file with invalid extension.')
          return redirect(reverse('courses.assignments.views.view', args=[course_prefix, course_suffix, assignment.id]))
 
-   return redirect(reverse('courses.problems.views.view', args=[course_prefix, course_suffix, assignment.id, problem.pk]))
+   return redirect(reverse('courses.problems.views.view', args=[course_prefix, course_suffix, assignment_id, problem_id]))
 
 @auth_view_wrapper
 def submission_run(request, course_prefix, course_suffix, assignment_id, problem_id, submission_id):
