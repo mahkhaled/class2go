@@ -2992,10 +2992,10 @@ class Submission(models.Model):
             return
 
     def has_errors(self):
-        if self.judging_set.exclude(judgingrun__run_result="correct").count() > 0:
-            return True
-        else:
+        if self.judging_set.all().count() == 0 || self.judging_set.filter(result="correct").count() > 0:
             return False
+        else:
+            return True
 
 class SubmissionFile(models.Model):
     submitfileid = models.IntegerField(primary_key=True)
