@@ -20,7 +20,8 @@ def view(request, course_prefix, course_suffix, assignment_id, problem_id):
    submissions = problem.submission_set.getByTeam(team)
    for submission in submissions:
       submission.judigng_to_show = submission.last_judging()
-      submission.run_to_show = submission.last_judging().first_error_run()
+      if submission.judigng_to_show is not None:
+         submission.run_to_show = submission.last_judging().first_error_run()
    return render_to_response('problems/view.html', {'common_page_data':common_page_data, 'assignment':assignment, 'problem':problem, 'team': team, 'submissions': submissions, 'request': request}, context_instance=RequestContext(request))
    
 @auth_view_wrapper
