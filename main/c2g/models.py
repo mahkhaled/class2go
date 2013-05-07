@@ -3020,13 +3020,13 @@ class Judging(models.Model):
         db_table = u'judging'
 
     def first_wrong_run(self):
-        if self.judgingrun_set.all().count() > 0:
+        if self.judgingrun_set.all().count() > 0 and self.judgingrun_set.exclude(run_result="correct").count() > 0:
             return self.judgingrun_set.exclude(run_result="correct").order_by('run_result, runid')[0]
         else:
             return
 
     def first_error_run(self):
-        if self.judgingrun_set.all().count() > 0:
+        if self.judgingrun_set.all().count() > 0 and self.judgingrun_set.filter(run_result="run-error").count() > 0:
             return self.judgingrun_set.filter(run_result="run-error").order_by('runid')[0]
         else:
             return
