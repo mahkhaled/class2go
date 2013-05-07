@@ -3021,7 +3021,7 @@ class Judging(models.Model):
 
     def first_wrong_run(self):
         if self.judgingrun_set.all().count() > 0 and self.judgingrun_set.exclude(run_result="correct").count() > 0:
-            return self.judgingrun_set.exclude(run_result="correct").order_by('run_result, runid')[0]
+            return self.judgingrun_set.exclude(run_result="correct").order_by('run_result', 'runid')[0]
         else:
             return
 
