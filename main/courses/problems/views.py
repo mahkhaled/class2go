@@ -29,7 +29,11 @@ def submit(request, course_prefix, course_suffix, assignment_id, problem_id):
    except:
       raise Http404
    if request.method == 'POST':
-      submission_file = request.FILES['submission']
+      submission_file = request.FILES.get('submission', False)
+      if not submission_file:
+         messages.add_message(request,messages.ERROR, 'You must choose a file to submit.')
+         return redirect(reverse('courses.assignments.views.view', args=[course_prefix, course_suffix, assignment_id]))
+         
       submission_code = submission_file.read()
 
       assignment = Assignment.objects.get(pk=assignment_id)
