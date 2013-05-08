@@ -2992,10 +2992,13 @@ class Submission(models.Model):
             return
 
     def has_errors(self):
-        if self.judging_set.exclude(judgingrun__run_result="correct").count() > 0:
-            return True
-        else:
+        if self.judging_set.filter(result="compiler-error").count() > 0:
             return False
+
+        if self.judging_set.all().count() == 0 or self.judging_set.filter(result="correct").count() > 0:
+            return False
+        else:
+            return True
 
 class SubmissionFile(models.Model):
     submitfileid = models.IntegerField(primary_key=True)
@@ -3017,14 +3020,31 @@ class Judging(models.Model):
         db_table = u'judging'
 
     def first_wrong_run(self):
-        if self.judgingrun_set.all().count() > 0:
-            return self.judgingrun_set.all().order_by('runid')[0]
+        if self.judgingrun_set.all().count() > 0 and self.judgingrun_set.exclude(run_result="correct").count() > 0:
+            return self.judgingrun_set.exclude(run_result="correct").order_by('run_result', 'runid')[0]
         else:
             return
+
+    def first_error_run(self):
+        if self.judgingrun_set.all().count() > 0 and self.judgingrun_set.filter(run_result="run-error").count() > 0:
+            return self.judgingrun_set.filter(run_result="run-error").order_by('runid')[0]
+        else:
+            return
+
+
+
+class Testcase(models.Model):
+    testcaseid = models.IntegerField(primary_key=True)
+    input_result = models.TextField(db_column='input')
+
+    class Meta:
+        db_table = u'testcase'
+
 
 class JudgingRun(models.Model):
     runid = models.IntegerField(primary_key=True)
     judging = models.ForeignKey(Judging, primary_key=True, db_column='judgingid')
+    testcase = models.ForeignKey(Testcase, primary_key=True, db_column='testcaseid')
     run_result = models.TextField(max_length=20, db_column='runresult')
     output_run = models.TextField()
     output_diff = models.TextField()
