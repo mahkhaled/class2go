@@ -88,12 +88,13 @@
 </div>
 <br/>
 <br/>
-<h3 style="padding-left:50px;">Coming Soon 2013</h3>
-<div class="home-unit comingsoon">
+<h3 style="padding-left:50px;">June, 2013</h3>
+<!-- <div class="home-unit comingsoon"> -->
+<div class="home-unit">
     <div class="container">
         <div class="row oop" id="oop">
-            <h3>Introduction to Computer Programming II</h3>
-            <p><strong>Coming Soon, 2013</strong></p>
+            <h3><a href="{% url 'courses.views.main' 'oop' 'jun13' %}" target="_blank">Object Oriented Programming</a></h3>
+            <p><strong>Class begins June 23, 2013</strong></p>
             <p>More programming skills and Object Oriented Programming...</p>
             <ul>
                 <li>Functions</li>
@@ -106,42 +107,66 @@
                 <li>Encapsulation Public Interface/API</li>
                 <li>Coding guidelines</li>
             </ul>
-            <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg">
+            <div style='display:inline'>
+                <button class='btn btn-danger' onclick="window.open('{% url 'courses.views.main' 'oop' 'jun13' %}', '_blank')" style='float:left'>Learn Online!</button>
+                <div class='days_to_go'>
+                    <span>
+                        {{oop_today}}
+                    </span>
+                </div>
+            </div>
+            <!-- <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg"> -->
         </div>
     </div>
 </div>
 
 
-<div class="home-unit comingsoon">
+<div class="home-unit">
     <div class="container">
         <div class="row datastructure" id="datastructure">
-            <h3>Data Structures</h3>
-            <p><strong>Coming Soon, 2013</strong></p>
+            <h3><a href="{% url 'courses.views.main' 'ds' 'june13' %}" target="_blank">Data Structures</a></h3>
+            <p><strong>Class begins June 16, 2013</strong></p>
             <ul>
                 <li>Arrays</li>
                 <li>String Manipulation</li>
                 <li>Linked Lists</li>
                 <li>Stacks</li>
                 <li>Queues</li>
-                <li>Trees</li>
             </ul>
-            <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg">
+            <div style='display:inline'>
+                <button class='btn btn-danger' onclick="window.open('{% url 'courses.views.main' 'ds' 'june13' %}', '_blank')" style='float:left'>Learn Online!</button>
+                <div class='days_to_go'>
+                    <span>
+                        {{alg_today}}
+                    </span>
+                </div>
+            </div>
+            <!-- <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg"> -->
         </div>
     </div>
 </div>
 
-<div class="home-unit comingsoon">
+<div class="home-unit">
     <div class="container">
         <div class="row algorithms" id="algorithms">
-            <h3>Advanced Data Structures & Algorithms</h3>
-            <p><strong>Coming Soon, 2013</strong></p>
+            <h3><a href="{% url 'courses.views.main' 'alg' 'june13' %}" target="_blank">Advanced Data Structures & Algorithms</a></h3>
+            <p><strong>Class begins June 16, 2013</strong></p>
             <p>More and more practice with advaced programming assignments...</p>
             <ul>
                 <li>Searching Techniques</li>
+                <li>Trees</li>
                 <li>Sorting Techniques</li>
                 <li>Hashing</li>
             </ul>
-            <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg">
+            <div style='display:inline'>
+                <button class='btn btn-danger' onclick="window.open('{% url 'courses.views.main' 'alg' 'june13' %}', '_blank')" style='float:left'>Learn Online!</button>
+                <div class='days_to_go'>
+                    <span>
+                        {{alg_today}}
+                    </span>
+                </div>
+            </div>
+            <!-- <img src="{{ STATIC_URL }}graphics/core/soon_1.jpg"> -->
         </div>
     </div>
 </div>
