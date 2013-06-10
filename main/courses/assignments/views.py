@@ -31,7 +31,7 @@ def view(request, course_prefix, course_suffix, assignment_id):
    except:
       raise Http404
    assignment = Assignment.objects.get(pk=assignment_id)
-   problems = assignment.problem_set.all()
+   problems = assignment.problem_set.order_by('position').all()
 
    grade = assignment.grade(request.user)
    for problem in problems:

@@ -2936,6 +2936,7 @@ class Problem(models.Model):
     probid = models.CharField(max_length=200, primary_key=True)
     name = models.CharField(max_length=200)
     contest = models.ForeignKey(Contest, db_column='cid')
+    position = models.IntegerField()
     assignment = models.ForeignKey(Assignment)
 
     class Meta:
