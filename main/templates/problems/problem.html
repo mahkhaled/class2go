@@ -16,10 +16,16 @@
       {% endif %}
 
 
-      {% if submission.judigng_to_show.result == 'run-error' or submission.judigng_to_show.result == 'compiler-error' %}
+      {% if submission.judigng_to_show.result == 'run-error' %}
          <br>
          Error Message: {{submission.run_to_show.output_error}}
       {% endif %}
+
+      {% if submission.judigng_to_show.result == 'compiler-error' %}
+         <br>
+         Compiler Error Message: {{submission.run_to_show.output_run}}
+      {% endif %}
+
       <br>
       {% if submission.has_errors %}
          <a target="_blank" href="{% url 'courses.problems.views.submission_input' common_page_data.course_prefix common_page_data.course_suffix assignment.id problem.pk submission.pk %}">Download Input</a> 
