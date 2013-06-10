@@ -16,7 +16,7 @@
       {% endif %}
 
 
-      {% if submission.judigng_to_show.result == 'run-error' %}
+      {% if submission.judigng_to_show.result == 'run-error' or submission.judigng_to_show.result == 'compile-error' %}
          <br>
          Error Message: {{submission.run_to_show.output_error}}
       {% endif %}
