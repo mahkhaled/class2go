@@ -3050,6 +3050,7 @@ class JudgingRun(models.Model):
     output_run = models.TextField()
     output_diff = models.TextField()
     output_error = models.TextField()
+    output_compile = models.TextField()
 
     class Meta:
         db_table = u'judging_run'
