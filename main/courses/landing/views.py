@@ -28,7 +28,7 @@ def landing(request):
             {'hiring': hiring, 
              'course_list':course_list,
              'today':28-date.today().day,
-             'oop_today':23-date.today().day,
+             'oop_today':30-date.today().day,
              'alg_today':16-date.today().day,
              'display_login': request.GET.__contains__('login')},
              context_instance=context)
