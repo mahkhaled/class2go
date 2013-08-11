@@ -92,7 +92,7 @@ except NameError:
     SITE_ID = 1
     SITE_NAME_SHORT = 'Stanford'
     SITE_NAME_LONG = 'CodeMasry'
-    SITE_TITLE = 'CodeMasry'
+    SITE_TITLE = 'CodeMasry كود مصرى'
 
 
 # If you set this to False, Django will make some optimizations so as not
