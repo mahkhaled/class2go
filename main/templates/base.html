@@ -10,9 +10,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, target-densitydpi=device-dpi">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    {% if SITE_NAME_SHORT == 'Stanford' %}
-        <link rel='shortcut icon' type='image/x-icon' href='{{ STATIC_URL }}graphics/core/favicon.ico' />
-    {% endif %}
+    <meta name="distribution" content="Global" />
+    <meta name="author" content="CodeMasry" />
+    <meta name="copyright" content="Copyright (C) 2013 CodeMasry" />
+    <meta name="rating" content="General" />
+    <meta name="revisit-after" content="7 Days" />
+    <meta name="keywords" content="programming,arabic,java,algorithms,كود مصرى,عربى,برمجة,هياكل بيانات,خوارزميات" />
+    <meta name="description" content="CodeMasry has complete programming courses in Arabic" />
+    <meta name="robots" content="index,follow" />
+
+    <link rel='shortcut icon' type='image/x-icon' href='{{ STATIC_URL }}graphics/core/favicon.ico' />
     
     {% block top_scripts %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/core/bootstrap.css" />
