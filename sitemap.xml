@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<url>
+  <loc>http://codemasry.com/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://codemasry.com/pro/april13</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://codemasry.com/oop/jun13</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://codemasry.com/ds/june13</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://codemasry.com/alg/june13</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://codemasry.com/contactus</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.60</priority>
+</url>
+
+</urlset>
