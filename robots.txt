@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Disallow: /accounts/
+Sitemap: http://www.codemasry.com/sitemap.xml
