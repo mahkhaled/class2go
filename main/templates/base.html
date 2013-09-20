@@ -14,9 +14,10 @@
     <meta name="author" content="CodeMasry" />
     <meta name="copyright" content="Copyright (C) 2013 CodeMasry" />
     <meta name="rating" content="General" />
-    <meta name="revisit-after" content="7 Days" />
+    {% block metatags %}
     <meta name="keywords" content="programming,arabic,java,algorithms,كود مصرى,عربى,برمجة,هياكل بيانات,خوارزميات" />
-    <meta name="description" content="CodeMasry has complete programming courses in Arabic" />
+    <meta name="description" content="Learn & practice complete software development & programming courses in Arabic" />
+    {% endblock metatags %}
     <meta name="robots" content="index,follow" />
 
     <link rel='shortcut icon' type='image/x-icon' href='{{ STATIC_URL }}graphics/core/favicon.ico' />

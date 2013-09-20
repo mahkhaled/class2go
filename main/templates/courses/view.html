@@ -1,6 +1,10 @@
 {% extends "course_base.html" %}
 {% load url from future %}
 {% load i18n %}
+{% block metatags %}
+<meta name="keywords" content="programming,arabic,java,كود مصرى,عربى,برمجة" />
+<meta name="description" content="Learn & practice complete software development & programming courses in Arabic" />
+    {% endblock metatags %}
 {% block title %}{{ SITE_TITLE }} | {{ common_page_data.course.title }}{% endblock title %}
 {% block home_link_class %}class="active"{% endblock home_link_class %}
 
