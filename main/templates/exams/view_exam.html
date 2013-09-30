@@ -1138,7 +1138,7 @@
 </script>
 {% if videotest %}
 <script>
-        var videoURL = 'http://www.youtube.com/embed/{% if video.mode == 'draft' %}{{video.url}}{% else %}{{video.image.url}}{% endif %}?autoplay=0&wmode=transparent&fs=0&rel=0&modestbranding=1&showinfo=0&start={% if video_rec %}{{video_rec.start_seconds}}{% else %}0{% endif %}&enablejsapi=1&disablekb=1&amp;';
+        var videoURL = 'http://www.youtube.com/embed/{% if video.mode == 'draft' %}{{video.url}}{% else %}{{video.image.url}}{% endif %}?autoplay=0&wmode=transparent&fs=0&rel=0&iv_load_policy=3&modestbranding=1&showinfo=0&start={% if video_rec %}{{video_rec.start_seconds}}{% else %}0{% endif %}&enablejsapi=1&disablekb=1&amp;';
         var thumbnailPath = "http://codemasry.com/media/{{common_page_data.course_prefix}}/{{common_page_data.course_suffix}}/videos/{% if video.mode == 'draft' %}{{video.id}}{% else %}{{video.image.id}}{% endif %}/jpegs/";
 
         // questionTimes from parsed XML metadata 
