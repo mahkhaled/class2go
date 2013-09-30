@@ -41,7 +41,7 @@
         {% if intro_video or course.description or course.prerequisites or course.faq or course.outcomes or course.accompanying_materials or instructor_list %}
             <h3>{% trans 'Course Information' %}</h3>
              {% ifnotequal intro_video None %}
-            <iframe width="710" height="430" src="https://www.youtube.com/embed/{{intro_video.url}}?rel=0" frameborder="0" allowfullscreen></iframe>
+            <iframe width="710" height="430" src="https://www.youtube.com/embed/{{intro_video.url}}?rel=0&iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
             <br/>
              {% endifnotequal %}
             <h3>{% trans 'Course Term:' %} {{ common_page_data.course.term }} {{ common_page_data.course.year }}</h3>
