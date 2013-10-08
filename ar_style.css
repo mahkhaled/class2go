@@ -1,0 +1,35 @@
+.home-unit.home-primary .container .row .span6{
+float: right;
+text-align: right;
+}
+.home-unit.home-primary .container .row .span5{
+float: left;
+text-align: right;
+line-height: 28px;
+}
+.home-unit.home-primary .container .row .span5 img{
+ float: right;
+ margin-left: 10px;
+
+}
+.home-unit.home-primary .container .row .span5 h3{
+  margin-right: 20px;
+}
+.home-unit.home-primary .container .row .span5 div{
+
+height: 120px;
+}
+.row-fluid.hero-header{
+  background:url("http://www.codemasry.com/static/graphics/core/codemasry.png")no-repeat; 
+  background-color: rgb(148, 38, 38); 
+  background-position: 100px;
+
+}
+.row-fluid.hero-header .container .row.hero{
+  float: right;
+  text-align: right;  
+}
+
+ 
+
+
