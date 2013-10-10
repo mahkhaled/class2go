@@ -33,7 +33,11 @@ margin-bottom: 0px;
 }
 
 .row-fluid.hero-header .container{
-  background-position: left !important;
+  background-position-x: left !important;
+}
+
+a.private_btn{
+  margin-left: 50px !important;
 }
 
 .row-fluid.hero-header .container .row.hero{

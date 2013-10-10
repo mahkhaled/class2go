@@ -1825,8 +1825,9 @@ a.private_btn{
 }
 
 .row-fluid.hero-header .container{
-  background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat right 0;
-  background-position: right;
+  background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat;
+  background-position-x: right;
+  background-position-y: 0;
 }
 
 .days_to_go_header{
