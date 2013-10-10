@@ -1812,10 +1812,20 @@ hr {
 
 a.private_btn{
     background: url(http://www.codemasry.com/static/graphics/core/2.png) no-repeat;
-    width: 375px;
+    width: 435px;
+    margin-left: 60px
     height: 100px;
     position: absolute;
     top: 200px;
+}
+
+.row-fluid.hero-header{
+  background:none; 
+  background-color: rgb(148, 38, 38); 
+}
+
+.row-fluid.hero-header .container{
+  background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat;
 }
 
 .days_to_go_header{
