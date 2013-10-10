@@ -1843,13 +1843,13 @@ a.private_btn{
     border:4px solid #ddd;
     padding: 12px 8px;
     border-radius: 5px;
-    height: 106px;
+    height: 136px;
     position: relative;
     text-align: left;
 }
 .testimonials .home#content .quote{
 color: #525252;
-font-size: 14px;
+font-size: 16px;
 line-height: 1.5em;
 margin: 0;
 
@@ -1862,7 +1862,7 @@ height: auto;
 line-height: normal;
 vertical-align: baseline;
 padding-right: 0.3em;
-font-size: 40px;
+font-size: 39px;
 float: left;
 display: block;
 background-repeat: repeat;
