@@ -32,9 +32,8 @@ margin-bottom: 0px;
 	margin-top: 10px;
 }
 .row-fluid.hero-header{
-  background:url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png")no-repeat; 
+  background:none; 
   background-color: rgb(148, 38, 38); 
-  background-position-x: 100px;
 }
 
 .row-fluid.hero-header .container .row.hero{
