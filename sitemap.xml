@@ -10,6 +10,11 @@
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>http://codemasry.com/ar.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.90</priority>
+</url>
+<url>
   <loc>http://codemasry.com/pro/april13</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
