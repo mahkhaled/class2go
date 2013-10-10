@@ -32,6 +32,13 @@ margin-bottom: 0px;
 	margin-top: 10px;
 }
 
+.icon-quote-left::before{
+content: "\f10e" !important;
+}
+.icon-quote-right::before{
+content: "\f10d" !important;
+}
+
 .row-fluid.hero-header .container{
   background-position-x: left !important;
 }
@@ -53,6 +60,23 @@ margin-left: 377px;
 text-align: right;
 
 }
+.testimonials .home#content .icon-quote-left{
 
+  float: right !important;
+  padding-left: 0.3em;
+  padding-right: 0;
+}
+.testimonials .home#content .icon-quote-right{
+padding-right: 3px;
+padding-left: 0px;
+margin-right: 10px; 
+}
+.testimonials .home#content .testimonial{
+  text-align: right;
+}
+.testimonials .quote {
+  direction: rtl;
+  font-size: 17px !important;
+}
 
  
