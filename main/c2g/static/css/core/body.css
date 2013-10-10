@@ -1811,7 +1811,7 @@ hr {
 }
 
 a.private_btn{
-    background: url(http://www.codemasry.com/static/graphics/core/2.png) no-repeat right 0;
+    background: url(http://www.codemasry.com/static/graphics/core/2.png) no-repeat;
     width: 435px;
     margin-left: 50px;
     height: 100px;
@@ -1825,7 +1825,7 @@ a.private_btn{
 }
 
 .row-fluid.hero-header .container{
-  background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat;
+  background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat right 0;
   background-position: right;
 }
 
