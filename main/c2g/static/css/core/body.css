@@ -1810,6 +1810,14 @@ hr {
     padding-left: 74px;
 }
 
+a.private_btn{
+    background: url(http://www.codemasry.com/static/graphics/core/2.png) no-repeat;
+    width: 375px;
+    height: 100px;
+    position: absolute;
+    top: 200px;
+}
+
 .days_to_go_header{
     background: url(../../graphics/core/d_2_g.jpg) no-repeat top right;
     height: 32px;
