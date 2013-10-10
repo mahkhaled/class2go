@@ -31,9 +31,9 @@ margin-bottom: 0px;
 	margin-right: 10px;
 	margin-top: 10px;
 }
-.row-fluid.hero-header{
-  background:none; 
-  background-color: rgb(148, 38, 38); 
+
+.row-fluid.hero-header .container{
+  background-position: left !important;
 }
 
 .row-fluid.hero-header .container .row.hero{
