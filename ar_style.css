@@ -2,34 +2,134 @@
 float: right;
 text-align: right;
 }
+.home-unit.home-primary .container .row .span6 p{
+font-size: 18px;
+margin-right: 0;
+margin-bottom: 70px;
+}
 .home-unit.home-primary .container .row .span5{
 float: left;
 text-align: right;
 line-height: 28px;
+font-size: 18px;
 }
 .home-unit.home-primary .container .row .span5 img{
  float: right;
  margin-left: 10px;
-
 }
 .home-unit.home-primary .container .row .span5 h3{
-  margin-right: 20px;
+  margin-right: 17px;
+  margin-bottom: 20px;
 }
 .home-unit.home-primary .container .row .span5 div{
-
-height: 120px;
+text-align: right;
+margin-bottom: 0px;
+}
+#skype{
+	height: 200px;
+	width: 360px;
+	margin-right: 10px;
+	margin-top: 10px;
 }
 .row-fluid.hero-header{
-  background:url("http://www.codemasry.com/static/graphics/core/codemasry.png")no-repeat; 
+  background:url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png")no-repeat; 
   background-color: rgb(148, 38, 38); 
   background-position: 100px;
-
 }
+
 .row-fluid.hero-header .container .row.hero{
   float: right;
   text-align: right;  
+margin-right: 65px;
+}
+.row-fluid.hero-header .container .row.hero img{
+margin-left: 377px;
+
+}
+.home-unit.home-examples p{
+text-align: right;
+
+}
+.testimonials .home#content{
+
+ 	height: 200px;
+ 	width: 1000px;
+ 	margin: auto;
+ 	background-color: inherit;
+ }
+ 
+.testimonials .home#content .testimonial{
+
+	width:280px;
+	float:left;
+	margin-right: 14px;
+	margin-left: 15px;
+	margin-top: 20px;
+	background: #fff;
+	border:4px solid #ddd;
+	padding: 12px 8px;
+	border-radius: 5px;
+	height: 110px;
+	position: relative;
+	text-align: left;
+}
+.testimonials .home#content .quote{
+color: #525252;
+font-size: 14px;
+line-height: 1.5em;
+margin: 0;
+
+}
+
+.testimonials .home#content .icon-quote-left{
+
+width: auto;
+height: auto;
+line-height: normal;
+vertical-align: baseline;
+padding-right: 0.3em;
+font-size: 40px;
+float: left;
+display: block;
+background-repeat: repeat;
+color: rgb(221,221,221);
+font-family: FontAwesome;
+font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+padding-bottom: 0;
+
+}
+.testimonials .home#content .icon-quote-right{
+
+	color: rgb(221,221,221);
+	display: inline;
+font-family: FontAwesome;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: normal;
+	height: auto;
+	line-height: normal;
+	padding-left: 3px;
+	text-decoration: none;
+	vertical-align: baseline;
+	width: auto;
+    text-align: left;
+}
+.testimonials .home#content .reference{
+	border-bottom-color: rgb(153,153,153);
+font-family: helvetica,arial;
+font-size: 12px;
+height: 16px;
+line-height: 16px;
+margin-left: 3.5px;
+margin-top: 5px;
+outline-color: rgb(153,153,153);
+position: absolute;
+color: #999;
+margin: 5px 0 0 0.3em;
+bottom: -22px;
+right: 0;
 }
 
  
-
-
