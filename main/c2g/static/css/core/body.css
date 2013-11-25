@@ -461,9 +461,9 @@ padding-top: 60px;
 }
 .stanford-logo a {
     display: block;
-    padding:9px 20px;
+    /*padding:9px 20px;*/
     width:268px;
-    height:55px;
+    height:45px;
 }
 #global-footer #bottom-text{
     padding-top: 19px;
