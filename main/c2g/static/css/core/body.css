@@ -451,10 +451,10 @@ padding-top: 60px;
 }
 .stanford-logo {
     background:transparent url(../../graphics/core/header-stanford-logo.png) no-repeat 20px 10px;
-    background-size: 160px 19px;
+    background-size: 268px 45px;
     padding:9px 20px;
-    width:160px;
-    height:19px;
+    /*width:160px;*/
+    /*height:19px;*/
     /*text-indent: -999px;*/
     display:block;
     overflow:hidden;
@@ -462,8 +462,8 @@ padding-top: 60px;
 .stanford-logo a {
     display: block;
     padding:9px 20px;
-    width:160px;
-    height:19px;
+    width:268px;
+    height:55px;
 }
 .stanford-logo a img {
     display: block;
