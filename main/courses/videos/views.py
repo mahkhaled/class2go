@@ -43,7 +43,7 @@ def list(request, course_prefix, course_suffix):
 
     return render_to_response('videos/'+common_page_data['course_mode']+'/list.html', {'common_page_data': common_page_data, 'section_structures':section_structures, 'context':'video_list', 'form': form}, context_instance=RequestContext(request))
 
-@auth_view_wrapper
+#@auth_view_wrapper
 def view(request, course_prefix, course_suffix, slug):
 
     common_page_data = request.common_page_data
@@ -54,7 +54,7 @@ def view(request, course_prefix, course_suffix, slug):
     except Video.DoesNotExist:
         raise Http404
     
-    if not common_page_data['is_course_admin']:
+    if not common_page_data['is_course_admin'] and request.user.is_authenticated():
         visit_log = PageVisitLog(
             course = common_page_data['ready_course'],
             user = request.user,
@@ -93,13 +93,15 @@ def view(request, course_prefix, course_suffix, slug):
         else:
             next_slug = None
 
-    video_rec = request.user.videoactivity_set.filter(video=video)
-    if video_rec:
-        video_rec = video_rec[0]
-    else:
-        #note student field to be renamed to user, VideoActivity for all users now
-        video_rec = VideoActivity(student=request.user, course=common_page_data['course'], video=video)
-        video_rec.save()
+    video_rec = None
+    if request.user.is_authenticated():
+        video_rec = request.user.videoactivity_set.filter(video=video)
+        if video_rec:
+            video_rec = video_rec[0]
+        else:
+            #note student field to be renamed to user, VideoActivity for all users now
+            video_rec = VideoActivity(student=request.user, course=common_page_data['course'], video=video)
+            video_rec.save()
         
     course = common_page_data['course']
 
