@@ -74,7 +74,8 @@ class SimpleBackend(object):
         After registration, redirect to the home view.
         
         """
-        return (reverse('accounts.views.profile'), (), {})
+        x = request.POST.get('next', reverse('accounts.views.profile'))
+        return (x, (), {})
 
     def post_activation_redirect(self, request, user):
         raise NotImplementedError

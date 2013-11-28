@@ -1,6 +1,6 @@
 {% csrf_token %}
 {{form.course_prefix}}{{form.course_suffix}}
-
+<input type='hidden' value='{{next}}' name='next' />
 <div class="control-group">
   <label for="id_username" class="control-label">{{form.username.label}}:</label>
     <div class="controls">
