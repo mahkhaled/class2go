@@ -219,6 +219,7 @@ def register(request, backend, success_url=None, form_class=None,
     
     if extra_context is None:
         extra_context = {}
+    extra_context['next'] = request.GET.get('next', request.POST.get('next', ''))
     context = RequestContext(request)
     for key, value in extra_context.items():
         context[key] = callable(value) and value() or value

@@ -23,6 +23,9 @@ def login(request, template_name='registration/login.html',
                    redirect_field_name=REDIRECT_FIELD_NAME,
                    authentication_form=AuthenticationForm,
                    current_app=None, extra_context=None):
+    if extra_context is None:
+      extra_context = {} 
+    extra_context['next'] = request.GET.get('next','') 
     return auth_views.login(request, template_name=template_name, redirect_field_name=redirect_field_name,  authentication_form=authentication_form, current_app=current_app, extra_context=extra_context)
     
 

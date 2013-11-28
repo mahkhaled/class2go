@@ -1144,7 +1144,7 @@
         // questionTimes from parsed XML metadata 
         var questionTimes = JSON.parse('{{question_times|escapejs}}');
 
-    var video_rec_id = {{ video_rec.id }}
+    var video_rec_id = {% if video_rec %}{{ video_rec.id }}{% else %}''{% endif %}
     var csrf_token = '{{ csrf_token }}'
     {% include 'exams/videotest.js' %} 
 {% if not video.url %}
