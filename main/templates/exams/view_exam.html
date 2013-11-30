@@ -4,7 +4,7 @@
 
 {% block title %}{% if not videotest %}{{ exam.title }}{% else %}{{ video.title }}{% endif %} | CodeMasry{% endblock %}
 
-{% block course_page_title %}{% if not videotest %}{{ exam.title }}{% else %}{{ video.title }}{% endif %}{% endblock course_page_title %}
+{% block course_page_title %}{% if not videotest %}{{ exam.title }}{% else %}{{ "Course Contents" }}{% endif %}{% endblock course_page_title %}
 
 {% block exam_link_class %}
 {% if "exam" in exam.exam_type and not videotest %}class="active"{% endif %}
@@ -208,9 +208,24 @@
     {% endif %}
 
 {% endif %}
+<br>
+{% if video.title %} 
+    <div id="vid-nav-controls">
+    {% if prev_slug %}
+      <a href="{% url 'courses.videos.views.view' common_page_data.course_prefix common_page_data.course_suffix prev_slug %}" class="btn">« Previous video</a>
+    {% else %}
+      <button type="button" class="btn" disabled>« Previous video</button>
+    {% endif %}
+    {% if next_slug %}
+      <a href="{% url 'courses.videos.views.view' common_page_data.course_prefix common_page_data.course_suffix next_slug %}" class="btn pull-right">Next video »</a>
+    {% else %}
+      <button type="button" class="btn pull-right" disabled>Next video »</button>
+    {% endif %}
+{% endif %}
 
 {% endautoescape %}
 </div>
+
 {% endblock m_column_content %}
 
 {% block addl_scripts %}
