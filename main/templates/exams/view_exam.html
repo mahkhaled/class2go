@@ -210,7 +210,7 @@
 {% endif %}
 <br>
 {% if video.title %} 
-    <div id="vid-nav-controls">
+    <div id="vid-nav-controls" style="width:800px">
     {% if prev_slug %}
       <a href="{% url 'courses.videos.views.view' common_page_data.course_prefix common_page_data.course_suffix prev_slug %}" class="btn">« Previous video</a>
     {% else %}
@@ -221,6 +221,13 @@
     {% else %}
       <button type="button" class="btn pull-right" disabled>Next video »</button>
     {% endif %}
+
+    <br/>
+    <br/>
+    <a id='fb-share' class='btn' target='_blank' onclick="return openShare(this, 'facebook_share')" href='http://www.facebook.com/sharer.php?u=http://codemasry.com{% url 'courses.videos.views.view' common_page_data.course_prefix common_page_data.course_suffix video.slug %}&display=popup'></a>
+
+    <a id='twitter-share' class='btn' target='_blank' onclick="return openShare(this, 'twitter_share')" href='https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.codemasry.com&text=CodeMasry&tw_p=tweetbutton&url=http://codemasry.com{% url 'courses.videos.views.view' common_page_data.course_prefix common_page_data.course_suffix video.slug %}'></a>
+    </div>
 {% endif %}
 
 {% endautoescape %}
@@ -239,7 +246,10 @@
     var __exam_type = "{{exam.exam_type}}";
     var __autograde = {% if exam.autograde %}true{% else %}false{% endif %};
 
-    
+    function openShare(link, name){
+        window.open(link.href, 'facebook_share', 'height=420, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');
+        return false;
+    }
     /* Do all the stuff below when page loads (~700 lines!) */
     $(document).ready(function () {
                    

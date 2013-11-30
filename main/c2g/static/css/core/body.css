@@ -1954,3 +1954,18 @@ right: 0;
 .correct {
   color: green;
 }
+
+a#fb-share, a#twitter-share{
+    width: 240px;
+    height: 50px;
+    border: none;
+}
+
+a#fb-share{
+    background: url(../../graphics/core/share_on_face.png) no-repeat;
+}
+
+a#twitter-share{
+    margin-left: 50px;
+    background: url(../../graphics/core/share_on_twitter.png) no-repeat;
+}
