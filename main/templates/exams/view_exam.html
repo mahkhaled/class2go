@@ -226,7 +226,7 @@
     <br/>
     <a id='fb-share' class='btn' target='_blank' onclick="return openShare(this, 'facebook_share')" href='http://www.facebook.com/sharer.php?u=http://codemasry.com{% url 'courses.videos.views.view' common_page_data.course_prefix common_page_data.course_suffix video.slug %}&display=popup'></a>
 
-    <a id='twitter-share' class='btn' target='_blank' onclick="return openShare(this, 'twitter_share')" href='https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.codemasry.com&text=CodeMasry&tw_p=tweetbutton&url=http://codemasry.com{% url 'courses.videos.views.view' common_page_data.course_prefix common_page_data.course_suffix video.slug %}'></a>
+    <a id='twitter-share' class='btn' target='_blank' onclick="return openShare(this, 'twitter_share')" href='https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.codemasry.com&text=CodeMasry+{{video.title}}&tw_p=tweetbutton&url=http://codemasry.com{% url 'courses.videos.views.view' common_page_data.course_prefix common_page_data.course_suffix video.slug %}'></a>
     </div>
 {% endif %}
 
