@@ -196,9 +196,12 @@
             <input class="btn btn-primary pull-right" id="submit-button" type="submit" value="{% trans 'Submit Answers' %}" />
         </div>
 
-
     </div> <!-- END #exam-pane -->
     {% if videotest %}
+        <div class='video_title'>
+            <div class='course_name' style='color:red'><h3>{{common_page_data.course.title}}:</h3></div>
+            <div class='video_name'><h2>{{video.title}}</h2></div>
+        </div>
         <div id="demoplayer"></div>
         <div id="slideIndex"></div>
         {% include "content_groups/video_additional_content_style.html" %}
