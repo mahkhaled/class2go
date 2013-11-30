@@ -6,6 +6,11 @@
 
 {% block course_page_title %}{% if not videotest %}{{ exam.title }}{% else %}{{ "Course Contents" }}{% endif %}{% endblock course_page_title %}
 
+{% block metatags %}
+<meta name="keywords" content="{{ common_page_data.course.syllabus }}" />
+<meta name="description" content="{{ video.description }}" />
+{% endblock metatags %}
+
 {% block exam_link_class %}
 {% if "exam" in exam.exam_type and not videotest %}class="active"{% endif %}
 {% endblock exam_link_class %}
