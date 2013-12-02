@@ -592,7 +592,7 @@ padding-top: 60px;
 /* Body
 -------------------------------------------------- */
 .body-content {
-    padding-top:20px !important;
+    /*padding-top:20px !important;*/
     min-height:450px;
 }
 
@@ -1835,7 +1835,7 @@ a.private_btn{
 
 .inner_private_btn a{
     background: url(http://www.codemasry.com/static/graphics/core/2.png) no-repeat;
-    background-size: 100%;
+    background-size: 80%;
     width: 280px;
     height: 100%;
     position: absolute;
@@ -1933,7 +1933,7 @@ right: 0;
 .row-fluid.hero-header .container{
   background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat;
   background-position-x: right;
-  background-position-y: 0;
+  background-position-y: 50px;
 }
 
 .days_to_go_header{
@@ -1968,4 +1968,24 @@ a#fb-share{
 a#twitter-share{
     margin-left: 50px;
     background: url(../../graphics/core/share_on_twitter.png) no-repeat;
+}
+
+#left-nav h3.nav-header.nav-top-header{
+    background: none;
+    text-transform: none;
+    font-size: 24px;
+    color: #726A6A;
+}
+
+.video_title .video_name h2{
+    border-bottom: 3px solid;
+    margin-bottom: 7px;
+    font-size: 25px;
+}
+
+.video_title .course_name h3{
+    color:red;
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 0px;
 }

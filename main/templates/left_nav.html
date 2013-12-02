@@ -3,6 +3,14 @@
 {% load i18n %}
 
     <div id="left-nav" class="well tight nav" role="navigation" aria-labelledby="sidebar-nav-heading-0">
+        <div class="accordion-group">
+            <h3 class="nav-header nav-top-header">
+                <span class="leftnav-title">Course contents</span>
+            </h3>
+            <ul class="nav nav-list">
+                <li class="divider" style="background-color:black"></li>
+            </ul>
+        </div>
         {% for content_section in contentsection_list %}
             {% with contentsection_id=content_section.id %}
                 <div class="accordion-group">

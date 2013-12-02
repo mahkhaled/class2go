@@ -4,7 +4,7 @@
 
 {% block title %}{% if not videotest %}{{ exam.title }}{% else %}{{ video.title }}{% endif %} | CodeMasry{% endblock %}
 
-{% block course_page_title %}{% if not videotest %}{{ exam.title }}{% else %}{{ "Course Contents" }}{% endif %}{% endblock course_page_title %}
+{% block course_page_title %}{% if not videotest %}{{ exam.title }}{% else %}{{ "" }}{% endif %}{% endblock course_page_title %}
 
 {% block metatags %}
 <meta name="og:image" content="http://codemasry.com/static/graphics/core/codemasry-footer.png" />
@@ -205,7 +205,7 @@
     </div> <!-- END #exam-pane -->
     {% if videotest %}
         <div class='video_title'>
-            <div class='course_name' style='color:red'><h3>{{common_page_data.course.title}}:</h3></div>
+            <div class='course_name'><h3>{{common_page_data.course.title}}:</h3></div>
             <div class='video_name'><h2>{{video.title}}</h2></div>
         </div>
         <div id="demoplayer"></div>
