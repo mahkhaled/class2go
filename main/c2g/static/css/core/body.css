@@ -321,6 +321,14 @@ body.home {
 .home-unit {
     padding:30px 0;
 }
+.home-unit.courses{
+    padding-top: 0px;
+}
+.available-courses{
+    margin:auto;
+    width:940px;
+    padding-top:30px
+}
 .home-unit p {
     font-size:16px;
     margin-bottom:1em;
@@ -436,7 +444,7 @@ small.date {
 /* Header
 -------------------------------------------------- */
 #global-header {
-    background: #F0F0F0 url(../../graphics/core/shadow-header-bg.png) bottom center no-repeat;
+    background: #F0F0F0 url(../../graphics/core/shadow-header-bg.png) bottom center repeat-x;
     width:100%;
 height:60px;
 position: fixed;
@@ -446,7 +454,7 @@ z-index: 1000;
 .row-fluid.hero-header {
 background: none;
 background-color: rgb(180, 5, 5);
-height: 255px;
+height: 190px;
 padding-top: 60px;
 }
 .stanford-logo {
@@ -1739,10 +1747,10 @@ hr {
     margin: 0 0 25px 0;
 }
 
-.home-unit.comingsoon{
+.home-unit.comingsoon, .home-unit.free{
     /*opacity: 0.65;*/
 }
-.home-unit.comingsoon .row img{
+.home-unit.comingsoon .row img, .home-unit.free .row img{
     float:right;
     margin-top: -120px;
     margin-right: -20px;
@@ -1933,7 +1941,7 @@ right: 0;
 .row-fluid.hero-header .container{
   background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat;
   background-position-x: right;
-  background-position-y: 50px;
+  background-position-y: 20px;
 }
 
 .days_to_go_header{
