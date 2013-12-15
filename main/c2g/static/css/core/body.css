@@ -364,6 +364,14 @@ body.home {
     background:#fff url(/static/graphics/core/dbLogo.jpg) no-repeat top left; 
     padding:20px 20px 20px 320px;
 }
+.web{
+    background:#fff url(/static/graphics/core/web.jpg) no-repeat top left; 
+    padding:20px 20px 20px 320px;
+}
+.mobile{
+    background:#fff url(/static/graphics/core/mobileDev.png) no-repeat top left; 
+    padding:20px 20px 20px 320px;
+}
 .algorithms{
     background:#fff url(/static/graphics/core/super.png) no-repeat top left; 
     padding:20px 20px 20px 320px;
