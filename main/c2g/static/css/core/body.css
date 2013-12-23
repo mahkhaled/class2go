@@ -289,7 +289,7 @@ body.home {
 }
 .home .hero-header .hero {
     width:520px;
-    margin-top: 20px;
+    margin-top: 5px;
     margin-bottom: 20px;
     min-height: 233px;
 }
@@ -300,7 +300,7 @@ body.home {
     width: 580px;
 }
 .home .hero-header .hero h1 {
-    font-size:37px;
+    font-size:28px;
 }
 .home .hero-header .hero h2 {
     font-weight: normal;
@@ -460,10 +460,13 @@ z-index: 1000;
 
 }
 .row-fluid.hero-header {
-background: none;
-background-color: rgb(180, 5, 5);
-height: 190px;
+background: url(../../graphics/core/web-h-bg.jpg) center bottom no-repeat;
+background-color: #e70000;
+height: 131px;
 padding-top: 60px;
+}
+a.certificate-header{
+
 }
 .stanford-logo {
     background:transparent url(../../graphics/core/header-stanford-logo.png) no-repeat 20px 10px;
@@ -482,7 +485,8 @@ padding-top: 60px;
     height:45px;
 }
 #global-footer #bottom-text{
-    padding-top: 19px;
+    /*padding-top: 19px;*/
+    width: 190px;
 }
 .stanford-logo a img {
     display: block;
@@ -938,8 +942,8 @@ width: 100%;
     color: #fff;
 }
 .footer ul li {
-    float:left;
-    margin: 0 1em 0 0;
+    /*float:left;*/
+    margin: 4px 1em 0 0;
     padding: 0 1em 0 0;
 }
 .footer .vcard {
@@ -1841,7 +1845,7 @@ hr {
 }
 
 a.private_btn{
-    background: url(http://www.codemasry.com/static/graphics/core/2.png) no-repeat;
+    background: url(../../graphics/core/2.png) no-repeat;
     width: 453px;
     margin-left: 465px;
     height: 100px;
@@ -1850,7 +1854,7 @@ a.private_btn{
 }
 
 .inner_private_btn a{
-    background: url(http://www.codemasry.com/static/graphics/core/2.png) no-repeat;
+    background: url(../../graphics/core/2.png) no-repeat;
     background-size: 80%;
     width: 280px;
     height: 100%;
@@ -1859,9 +1863,14 @@ a.private_btn{
     left: 902px;
 }
 
+.inner_private_btn a.certificate-header{
+    background: url(../../graphics/core/certificate_54.png) no-repeat;
+    left: 850px;
+}
+
 .row-fluid.hero-header{
-  background:none; 
-  background-color: rgb(148, 38, 38); 
+  background:url(../../graphics/core/web-h-bg.jpg) center bottom no-repeat; 
+  background-color: #e70000; 
 }
 
 .testimonials .home#content{
@@ -1947,7 +1956,7 @@ bottom: -22px;
 right: 0;
 }
 .row-fluid.hero-header .container{
-  background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat;
+  /*background: url("http://www.codemasry.com/static/graphics/core/codemasry-simple.png") no-repeat;*/
   background-position-x: right;
   background-position-y: 20px;
 }
