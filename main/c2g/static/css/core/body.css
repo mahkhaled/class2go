@@ -1866,6 +1866,7 @@ a.private_btn{
 .inner_private_btn a.certificate-header{
     background: url(../../graphics/core/certificate_54.png) no-repeat;
     left: 850px;
+    width: 40px;
 }
 
 .row-fluid.hero-header{
