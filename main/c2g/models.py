@@ -1148,7 +1148,10 @@ class Video(TimestampMixin, Stageable, Sortable, Deletable, models.Model):
             else:
                 loc = self.file.storage.url_monkeypatched(videoname,
                     response_headers={'response-content-disposition': 'attachment'})
-            storecache_val = {'size':self.file.size, 'url':loc }
+            try:
+                storecache_val = {'size':self.file.size, 'url':loc }
+            except Exception, e:
+                return ""
             storecache.set(storecache_key, storecache_val)
             return loc
 
