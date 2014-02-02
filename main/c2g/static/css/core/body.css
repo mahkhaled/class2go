@@ -478,6 +478,8 @@ a.certificate-header{
     /*text-indent: -999px;*/
     display:block;
     overflow:hidden;
+    width: 1020px;
+    margin: 0 auto;
 }
 .stanford-logo a {
     display: block;
@@ -1854,14 +1856,28 @@ a.private_btn{
     top: 185px;
 }
 
-.inner_private_btn a{
+.inner_private_btn a.top-lnk{
     background: url(../../graphics/core/2.png) no-repeat;
     background-size: 80%;
     width: 280px;
     height: 100%;
     position: absolute;
     top: 6px;
-    left: 902px;
+    left: 720px;
+}
+
+a.login-btn {
+    position: absolute;
+    top: 20px;
+    left: 950px;
+    cursor: pointer;
+}
+
+a.register-btn {
+    position: absolute;
+    top: 20px;
+    left: 1015px;
+    cursor: pointer;
 }
 
 .inner_private_btn a.certificate-header{
@@ -2024,4 +2040,30 @@ a#twitter-share{
     font-weight: bold;
     font-size: 26px;
     margin-bottom: 0px;
+}
+
+a.tbutton,a.tbutton:link,a.tbutton:visited
+{
+display:inline-block;
+color:#ffffff;
+background-color:#d71920;
+font-weight:bold;
+font-size:12px;
+text-align:center;
+padding-left:10px;
+padding-right:10px;
+padding-top:3px;
+padding-bottom:4px;
+text-decoration:none;
+margin-left:5px;
+margin-top:0px;
+margin-bottom:5px;
+border:1px solid #efefef;
+border-radius:5px;
+white-space:nowrap;
+}
+
+a.tbutton:hover,a.tbutton:active
+{
+background-color:#ff0000;color:#ffffff;
 }

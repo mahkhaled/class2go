@@ -75,7 +75,7 @@
 <input type="hidden" name="next" value="{{ next }}" />
 {% endif %}
 </form>
-<h4>OR <a href="{% url 'registration_register' %}?pre={{common_page_data.course_prefix}}&post={{common_page_data.course_suffix}}&next={{next}}" class="btn">{% trans 'Register' %}</a>if you are not registered user</h4>
+<h4>OR <a href="{% url 'registration_register' %}?pre={{common_page_data.course_prefix}}&post={{common_page_data.course_suffix}}&next={{next}}" class="btn">{% trans 'Register' %}</a> if you are not registered user</h4>
 </div></div>
 {% endif %}
 {% endblock %}

@@ -69,13 +69,15 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
                 <a href="http://codemasry.com"></a>
             </h1>
             <div class="inner_private_btn">
-                <a href="https://docs.google.com/forms/d/1QEQaLUduphVy4yfxuTHaRzTst_DMfWGYcixpb6vv1Tg/viewform" alt="Get Private Online Course"  target="_blank"></a>
-                <a href="#" alt="Certificate" class="certificate-header" title='Certificates'></a>
-                <!--{% if request.user.is_authenticated %}
-                <a>{{request.user}}</a>
+                <a rel="nofollow" href="https://docs.google.com/forms/d/1QEQaLUduphVy4yfxuTHaRzTst_DMfWGYcixpb6vv1Tg/viewform" alt="Get Private Online Course"  target="_blank" class="top-lnk"></a>
+                <!-- <a href="#" alt="Certificate" class="certificate-header top-lnk" title='Certificates'></a> -->
+                {% if request.user.is_authenticated %}
+                <a class="tbutton login-btn" href="{% url 'auth_logout' %}?next=/">Logout</a>
+                <a class="tbutton register-btn" href="/accounts/profile">Welcome {{request.user}}</a>
                 {% else %}
-                <a>Sign in</a>
-                {% endif %}-->
+                <a class="tbutton login-btn" href="{% url 'auth_login' %}?next=/">Sign in</a> 
+                <a class="tbutton register-btn" href="{% url 'registration_register' %}?next=/">Register</a>
+                {% endif %}
             </div>
             <p id="skip-nav"><a href="#main-content" class="hidden-accessible">{% trans 'Jump to content' %}</a></p>
         </div>
