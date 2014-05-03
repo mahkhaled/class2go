@@ -25,11 +25,23 @@
 {% block bodytag %}<body>{% endblock bodytag %}
     <div id="viewport">
       {% if not request.session.headless %}
-        <div id="global-header">
-            <h1 class="stanford-logo">
-                <a href="http://www.stanford.edu">Stanford University</a>
-            </h1>
-            <p id="skip-nav"><a href="#main-content" class="hidden-accessible">Jump to content</a></p>
+        <div id="tglobal-header">
+          <div class="theader-holder">
+            <div class="tleft-header">
+              <div class="tlogo">
+                <a href="/" class="codemasry-logo"></a>
+              </div>
+            </div>
+            <div class="tright-header">
+              <ul class="menu-header">
+                <li><a href="#login"><div href="#" class="menu-login"></div></a></li>
+                <li><a href="#consult"><div href="#" class="menu-consult"></div></a></li>
+                <li><a href="{% url 'private_course_list'%}?category=0"><div href="#" class="menu-private"></div></a></li>
+                <li><a href="{% url 'private_course_list'%}?category=1"><div href="#" class="menu-group"></div></a></li>
+              </ul>
+            </div>
+          </div>
+          <p id="skip-nav"><a href="#main-content" class="hidden-accessible">Jump to content</a></p>
         </div>
         {% block topcontent %}<div id="top-content"></div>{% endblock topcontent %}
       {% endif %}

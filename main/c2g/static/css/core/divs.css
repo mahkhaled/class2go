@@ -13,6 +13,147 @@
     -khtml-border-radius: 10px;
     -o-border-radius: 10px;
 }
+div.tcourse
+{
+width:290px;
+height:200px;
+display:inline-block;
+color:#000;
+background-color:#eee;
+font-weight:normal;
+font-size:12px;
+text-align:center;
+padding-left:10px;
+padding-right:10px;
+padding-top:7px;
+padding-bottom:4px;
+text-decoration:none;
+margin-left:5px;
+margin-top:5px;
+margin-bottom:5px;
+border:1px solid #fff;
+border-radius:10px;
+}
+
+div.tcourse:hover
+{
+background-color:#721414;
+color:#fff;
+}
+
+ul.menu-header
+{
+list-style-type:none;
+margin:0;
+margin-top:5px;
+padding:0;
+overflow:hidden;
+}
+ul.menu-header li
+{
+float:right;
+}
+ul.menu-header li a
+{
+display:block;
+width:120px;
+}
+
+.menu-consult
+{
+    background: url(/static/graphics/core/consult_inactive.png) no-repeat;
+    width:120px;
+    height:45px;
+}
+.menu-consult:hover
+{
+    background: url(/static/graphics/core/consult_active.png) no-repeat;
+}
+.menu-private
+{
+    background: url(/static/graphics/core/private_inactive.png) no-repeat;
+    width:120px;
+    height:45px;
+}
+.menu-private:hover
+{
+    background: url(/static/graphics/core/private_active.png) no-repeat;
+}
+.menu-group
+{
+    background: url(/static/graphics/core/group_inactive.png) no-repeat;
+    width:120px;
+    height:45px;
+}
+.menu-group:hover
+{
+    background: url(/static/graphics/core/group_active.png) no-repeat;
+}
+
+
+
+.menu-login
+{
+    background: url(/static/graphics/core/login_inactive.png) no-repeat;
+    width:120px;
+    height:45px;
+}
+
+.menu-login:hover
+{
+    background: url(/static/graphics/core/login_active.png) no-repeat;
+}
+p.tcourse-title
+{
+text-align: center;
+margin-top: 20px;
+font-size:28px;
+font-weight: bold;
+line-height: 30px;
+width:260;
+}
+p.tcourse-hours
+{
+    color: #ff0000;
+    font-weight: bold;
+}
+p.tcourse-remaining
+{
+    color:#06a42b;font-weight:bold;padding-top:3px;margin-top:4px;background: #eee;
+}
+
+#tglobal-header{
+background: #F0F0F0;
+width: 100%;
+height: 60px;
+position: fixed;
+z-index: 1000;
+margin:0 auto;
+border-bottom: #8e8e8e solid 1px;
+}
+
+.theader-holder
+{
+max-width: 960px;
+margin:0 auto;
+}
+.tright-header
+{
+float:right;
+}
+.tleft-header
+{
+float:left;
+}
+.tlogo
+{
+width:300px; height:60px; padding-top: 5px;
+}
+
+.codemasry-logo
+{
+width:300px; height:50px; background: url(/static/graphics/core/header-stanford-logo.png) no-repeat; display: inline-block;    
+}
 
 .framed {
     margin: 10px;

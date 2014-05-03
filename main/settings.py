@@ -202,6 +202,7 @@ INSTALLED_APPS = (
                       'convenience_redirect',
                       'exception_snippet',
                        #'reversion',
+                       'private_course',
                       )
 if INSTANCE != "prod":
     INSTALLED_APPS += (
@@ -260,7 +261,7 @@ ACCOUNT_ACTIVATION_DAYS = 7 #used by registration
 # more details on how to customize your logging configuration.
 # If PRODUCTION flag not set in Database.py, then set it now.
 try:
-    LOGGING_DIR
+    LOGGING_DIR = '/home/hassan/projects/django/class2go/main/'
 except NameError:
     LOGGING_DIR = '/var/log/django/'
 
