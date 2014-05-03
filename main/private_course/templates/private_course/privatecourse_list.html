@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block l_column_content %}
+<div class="container">
+    <div class="row">
+    {% for object in object_list %}
+      <div class="tcourse">
+        <div style="display:inline">
+            <button class="btn btn-danger" onclick="window.open('{% url 'private_course_member_create'  object.id %}?category={{category}}', '_blank')" style="float:left">Enroll now!</button><p class="tcourse-remaining"> {% if object.is_full %}
+            Full
+            {% else %}{{ object.remaining }} seats available!{% endif %}</p>
+        </div>
+        <br>
+        <p class="tcourse-title">
+            {{ object.title }}
+        </p>
+        <p>
+            {{ object.description}}
+        </p>
+        <p class="tcourse-hours">
+            Around {{ object.hours }} hours
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock l_column_content %}
