@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block l_column_content %}
-
-<div class="registration preview-registration">
+{% block l_column_content %}<div class="span2"></div>{% endblock %}
+{% block m_column_content %}
+<div class="span8">
   <div class="well">
     {% if category == '0' %}
     <h2>Private Course Signup</h2>
@@ -13,54 +13,71 @@
       <fieldset>
         {% csrf_token %}
         <input type="hidden" name='category' value='{{ category }}'/>
-        <div class="control-group">
+        <div class="control-group {% if form.name.errors %} error {% endif %}">
           <label for="id_username" class="control-label">{{form.name.label}}:</label>
             <div class="controls">
             {{ form.name }}
-            <span class="help-block">Your Full Name</span>
+            {% if form.name.errors %}
+            <span class="help-inline">{{form.description.errors}}</span>
+            {% else %}
+            <span class="help-inline">Your Full Name</span>
+            {% endif %}
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group {% if form.description.errors %} error {% endif %}">
           <label for="id_username" class="control-label">{{form.description.label}}:</label>
             <div class="controls">
             {{ form.description }}
-            <span class="help-block">What subjects/courses you need to learn?</span>
+            {% if form.name.errors %}
+            <span class="help-inline">{{form.description.errors}}</span>
+            {% else %}
+            <span class="help-inline">What subjects/courses you need to learn?</span>
+            {% endif %}
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group {% if form.email.errors %} error {% endif %}">
           <label for="id_email" class="control-label">{{form.email.label}}:</label>
           <div class="controls">
             {{ form.email }}
+            <span class="help-inline">{{form.email.errors}}</span>
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group {% if form.skype.errors %} error {% endif %}">
           <label for="id_email" class="control-label">{{form.skype.label}}:</label>
           <div class="controls">
             {{ form.skype }}
+            <span class="help-inline">{{form.skype.errors}}</span>
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group {% if form.country.errors %} error {% endif %}">
           <label for="id_first_name" class="control-label">{{form.country.label}}:</label>
           <div class="controls">
             {{ form.country }}
+            <span class="help-inline">{{form.country.errors}}</span>
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group {% if form.dob.errors %} error {% endif %}">
           <label for="id_last_name" class="control-label">{{form.dob.label}}:</label>
           <div class="controls">
             {{ form.dob }}
+            {% if form.dob.errors %}
+            <span class="help-inline">{{form.dob.errors}}</span>
+            {% endif %}
+            <span class="help-inline">Date forma YYYY-MM-DD  (1990-04-23)</span>
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group {% if form.specialization.errors %} error {% endif %}">
           <label for="id_last_name" class="control-label">{{form.specialization.label}}:</label>
           <div class="controls">
             {{ form.specialization }}
+            <span class="help-inline">{{form.specialization.errors}}</span>
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group {% if form.payment.errors %} error {% endif %}">
           <label for="id_last_name" class="control-label">{{form.payment.label}}:</label>
           <div class="controls">
             {{ form.payment }}
+            <span class="help-inline">{{form.payment.errors}}</span>
           </div>
         </div>
       </fieldset>
@@ -70,4 +87,4 @@
     </form>
   </div>
 </div>
-{% endblock l_column_content %}
+{% endblock m_column_content %}

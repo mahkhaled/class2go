@@ -74,7 +74,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
             <div class="tright-header">
               <ul class="menu-header">
                 {% if request.user.is_authenticated %}
-                <li><a href="{% url 'auth_logout' %}?next=/"><div href="#" class="menu-login"></div></a></li>
+                <li><a href="{% url 'auth_logout' %}?next=/"><div href="#" class="menu-logout">Logout</div></a></li>
                 <li><a href="/accounts/profile">Welcome {{request.user}}</a></li>
                 {% else %}
                   <li><a href="{% url 'auth_login' %}?next=/"><div href="#" class="menu-login"></div></a></li>
@@ -191,7 +191,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
             <div class="row-fluid">
                 {% block l_column_content %}
                     {% for available_course in available_course_list %}
-                	<h1>Current courses available for signup</h1>
+                	   <h1>Current courses available for signup</h1>
                 		{% ifequal available_course.3 'False' %}
                 		    <form name="signup" action="{% url 'courses.actions.signup' %}" method="POST">
                                 <input type="hidden" id="handle" name="handle" value={{available_course.1}} />
