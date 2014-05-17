@@ -1,0 +1,1104 @@
+ERROR 2014-05-02 13:59:12,101 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:01:08,737 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:04:27,184 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:06:46,012 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:06:47,079 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:06:48,022 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:07:20,753 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:07:35,007 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:07:46,072 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:08:05,957 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 155, in render
+    return self.render_template(self.template, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 137, in render_template
+    output = template.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:09:45,529 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 155, in render
+    return self.render_template(self.template, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 137, in render_template
+    output = template.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+ERROR 2014-05-02 14:13:18,125 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 155, in render
+    return self.render_template(self.template, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 137, in render_template
+    output = template.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/videos/views.py", line 13, in <module>
+    from courses.videos.forms import *
+  File "/home/hassan/projects/django/class2go/main/courses/videos/forms.py", line 7, in <module>
+    import gdata.youtube.service
+ImportError: No module named gdata.youtube.service
+WARNING 2014-05-02 14:17:59,745 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /db/Winter2013 
+WARNING 2014-05-02 14:18:19,862 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /solar/Fall2012 
+WARNING 2014-05-02 14:49:02,714 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_course 
+WARNING 2014-05-02 14:49:13,765 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+WARNING 2014-05-02 14:50:01,706 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+WARNING 2014-05-02 14:50:23,919 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+WARNING 2014-05-02 14:50:42,550 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+WARNING 2014-05-02 14:50:44,656 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+WARNING 2014-05-02 14:52:57,323 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses/register 
+WARNING 2014-05-02 14:52:59,333 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses/ 
+WARNING 2014-05-02 14:53:06,719 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courseasd 
+WARNING 2014-05-02 14:53:11,917 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses/ 
+WARNING 2014-05-02 14:54:40,941 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses/ 
+WARNING 2014-05-02 14:55:44,240 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses/ 
+WARNING 2014-05-02 14:55:53,307 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses/ 
+WARNING 2014-05-02 14:56:30,712 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses/ 
+WARNING 2014-05-02 14:56:34,924 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+ERROR 2014-05-02 14:59:51,785 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 136, in get_response
+    response = response.render()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 185, in render
+    nodelist.append(node.render(context))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 424, in render
+    raise e
+NoReverseMatch: Reverse for '' with arguments '(2L,)' and keyword arguments '{}' not found.
+ERROR 2014-05-02 15:07:44,219 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses1/register/ 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/base.py", line 48, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/base.py", line 69, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 50, in post
+    return self.form_invalid(form)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/edit.py", line 63, in form_invalid
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 31, in get_context_data
+    context = super(MemberCreateView, self).get_context_data(**kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/edit.py", line 117, in get_context_data
+    if self.object:
+AttributeError: 'MemberCreateView' object has no attribute 'object'
+ERROR 2014-05-02 15:10:18,760 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses1/register/ 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/base.py", line 48, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/base.py", line 69, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 50, in post
+    return self.form_invalid(form)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/edit.py", line 63, in form_invalid
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 31, in get_context_data
+    context = super(MemberCreateView, self).get_context_data(**kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/edit.py", line 117, in get_context_data
+    if self.object:
+AttributeError: 'MemberCreateView' object has no attribute 'object'
+ERROR 2014-05-02 15:18:19,248 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses1/register/ 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/base.py", line 48, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/views/generic/base.py", line 69, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 50, in post
+    self.object = form.object
+AttributeError: 'MemberForm' object has no attribute 'object'
+ERROR 2014-05-02 16:10:12,365 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 14, in landing
+    r = render_to_response('landing/landing.html', context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 424, in render
+    raise e
+NoReverseMatch: Reverse for 'private_course_detail' with arguments '()' and keyword arguments '{}' not found.
+ERROR 2014-05-07 22:30:54,517 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 101, in get_response
+    request.path_info)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 298, in resolve
+    for pattern in self.url_patterns:
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 328, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 323, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/urls.py", line 10, in <module>
+    admin.autodiscover()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/contrib/admin/__init__.py", line 29, in autodiscover
+    import_module('%s.admin' % app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/djcelery/admin.py", line 296, in <module>
+    class PeriodicTaskAdmin(admin.ModelAdmin):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/djcelery/admin.py", line 298, in PeriodicTaskAdmin
+    form = periodic_task_form()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/djcelery/admin.py", line 251, in periodic_task_form
+    current_app.loader.import_default_modules()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/djcelery/loaders.py", line 141, in import_default_modules
+    self.autodiscover()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/djcelery/loaders.py", line 144, in autodiscover
+    self.task_modules.update(mod.__name__ for mod in autodiscover() or ())
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/djcelery/loaders.py", line 179, in autodiscover
+    for app in settings.INSTALLED_APPS])
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/djcelery/loaders.py", line 203, in find_related_module
+    return importlib.import_module('{0}.{1}'.format(app, related_name))
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/certificates/tasks.py", line 6, in <module>
+    from xhtml2pdf import pisa
+ImportError: No module named xhtml2pdf
+ERROR 2014-05-07 22:32:02,730 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 117, in get_response
+    response = middleware_method(request, e)
+  File "/home/hassan/projects/django/class2go/main/exception_snippet/midware.py", line 31, in process_exception
+    send_mail(email_subj, email_msg, from_addr, mailto_list)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/mail/__init__.py", line 61, in send_mail
+    connection=connection).send()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/mail/message.py", line 248, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/mail/backends/smtp.py", line 85, in send_messages
+    new_conn_created = self.open()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/mail/backends/smtp.py", line 54, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python2.7/smtplib.py", line 615, in login
+    raise SMTPAuthenticationError(code, resp)
+SMTPAuthenticationError: (535, '5.7.8 Username and Password not accepted. Learn more at\n5.7.8 http://support.google.com/mail/bin/answer.py?answer=14257 x42sm6445902eel.41 - gsmtp')
+ERROR 2014-05-07 22:33:07,711 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 117, in get_response
+    response = middleware_method(request, e)
+  File "/home/hassan/projects/django/class2go/main/exception_snippet/midware.py", line 31, in process_exception
+    send_mail(email_subj, email_msg, from_addr, mailto_list)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/mail/__init__.py", line 61, in send_mail
+    connection=connection).send()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/mail/message.py", line 248, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/mail/backends/smtp.py", line 85, in send_messages
+    new_conn_created = self.open()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/mail/backends/smtp.py", line 54, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python2.7/smtplib.py", line 615, in login
+    raise SMTPAuthenticationError(code, resp)
+SMTPAuthenticationError: (535, '5.7.8 Username and Password not accepted. Learn more at\n5.7.8 http://support.google.com/mail/bin/answer.py?answer=14257 w46sm48637738eeo.35 - gsmtp')
+ERROR 2014-05-07 22:33:59,520 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 34, in landing
+    context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/accounts/views.py", line 31, in <module>
+    from pysimplesoap.client import SoapClient
+ImportError: No module named pysimplesoap.client
+ERROR 2014-05-07 22:38:58,981 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: / 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/courses/landing/views.py", line 34, in landing
+    context_instance=context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/courses/exams/views.py", line 7, in <module>
+    import markdown
+ImportError: No module named markdown
+ERROR 2014-05-07 22:40:05,007 /home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /accounts/profile 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/projects/django/class2go/main/accounts/views.py", line 49, in profile
+    is_student_list = user_profile.is_student_list(group_list, courses)
+  File "/home/hassan/projects/django/class2go/main/c2g/models.py", line 829, in is_student_list
+    for course in courses:
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 205, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'c2g_courses.short_description' in 'field list'")

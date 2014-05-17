@@ -127,6 +127,8 @@ try:
 except:
     STATIC_ROOT = '/opt/' + APP + '/static/'
 
+#STATIC_ROOT = '/home/mahmoud/DevProjects/class2go/class2go/main/static/'
+
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
@@ -181,7 +183,7 @@ ROOT_URLCONF = 'urls'
 # config info here: see https://docs.djangoproject.com/en/dev/topics/cache
 
 try:
-    LOCAL_CACHE_LOCATION
+    LOCAL_CACHE_LOCATION = '/tmp'
 except NameError:
     LOCAL_CACHE_LOCATION = "/var/www/django/DevProjects/class2go2/cache"
 
@@ -293,6 +295,7 @@ INSTALLED_APPS = (
                       'rest_framework',
                        #'reversion',
                        'certificates',
+                       'private_course',
                       )
 if INSTANCE != "prod":
     INSTALLED_APPS += (
@@ -347,7 +350,7 @@ ACCOUNT_ACTIVATION_DAYS = 7 #used by registration
 # See http://docs.djangoproject.com/en/dev/topics/logging for more details on how to customize your logging configuration.
 # If PRODUCTION flag not set in Database.py, then set it now.
 try:
-    LOGGING_DIR
+    LOGGING_DIR = '/home/hassan/projects/django/class2go/main/'
 except NameError:
     LOGGING_DIR = '/var/log/django/'
 
@@ -432,18 +435,18 @@ except NameError:
     SERVER_EMAIL = 'codemasry@gmail.com'
 
 # For Production, or if override is set, actually send email
-if PRODUCTION or EMAIL_ALWAYS_ACTUALLY_SEND:
-    DEFAULT_FROM_EMAIL = 'codemasry@gmail.com' #probably change for production
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_PORT = 587
-    EMAIL_HOST_USER = SES_SMTP_USER
-    EMAIL_HOST_PASSWORD = SES_SMTP_PASSWD
-    EMAIL_USE_TLS = True
-#Otherwise, send email to a file in the logging directory
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-    EMAIL_FILE_PATH = LOGGING_DIR + '/emails_sent.log'
+# if PRODUCTION or EMAIL_ALWAYS_ACTUALLY_SEND:
+#     DEFAULT_FROM_EMAIL = 'codemasry@gmail.com' #probably change for production
+#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#     EMAIL_HOST = "smtp.gmail.com"
+#     EMAIL_PORT = 587
+#     EMAIL_HOST_USER = SES_SMTP_USER
+#     EMAIL_HOST_PASSWORD = SES_SMTP_PASSWD
+#     EMAIL_USE_TLS = True
+# #Otherwise, send email to a file in the logging directory
+# else:
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = LOGGING_DIR + '/emails_sent.log'
 
 #Max number of emails sent by each worker, defaults to 10
 EMAILS_PER_WORKER = 10000

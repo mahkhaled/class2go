@@ -472,6 +472,10 @@ probably Windows too).
 
         pip install selenium selenose
 
+    ./manage.py syncdb
+
+    Might need to issue "syncdb" command a couple times if there are errors. The first time, it will ask you for username and password for the database 
+
 3. Install chrome for Selenium testing
 
         # chromedriver - list of options available here:

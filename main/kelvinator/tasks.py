@@ -19,6 +19,7 @@ import os
 import subprocess
 import math
 import operator
+from PIL import Image
 import time
 import numpy as np
 import shutil
@@ -27,7 +28,7 @@ from django.core.files.storage import default_storage
 from django.conf import settings
 from celery import task
 
-import Image
+# import Image
 
 from utility import *
 

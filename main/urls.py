@@ -155,6 +155,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/?', include(admin.site.urls)),
 
+    # HZ
+    url(r'^private_courses/?', include('private_course.urls')),
+
     # The following line is temprarily commented out until we figure out how django cascades its URL matching operations.
     # After this is figured out, the rest of the matches below shall be moved to courses.url.
     #url(r'.*', include('courses.urls')),
@@ -316,6 +319,7 @@ urlpatterns = patterns('',
     
     #Current course redirects THIS SHOULD PROBABLY ALWAYS BE THE LAST ITEM THAT HAS TO DO WITH COURSES
     url(r'^(?P<course_prefix>[a-zA-Z0-9_-]+)/?$', 'courses.views.current_redirects'),
+
 
 )
 

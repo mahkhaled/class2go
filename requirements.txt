@@ -1,7 +1,7 @@
 Django==1.4.3
 MySQL-python
 #psycopg2
-PIL
+#PIL
 South
 django-storages
 boto

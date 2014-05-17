@@ -26,7 +26,11 @@ problem-sets/quizzes/Advanced-Maxent/test_json_load.html~
 
 nohup.out
 
+emails_sent.log
+
 class2go-venv/
 sophi-venv
+
+class2go-django.log
 
 .idea
