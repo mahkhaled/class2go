@@ -9,7 +9,7 @@
     {% else %}
     <h2>Group Course Signup</h2>
     {% endif %}
-    <form action="{{request.get_full_path }}" method="post" class="form-horizontal">
+    <form action="{{request.get_full_path }}" method="post" class="form-horizontal" id="private-course-form">
       <fieldset>
         {% csrf_token %}
         <input type="hidden" name='category' value='{{ category }}'/>
@@ -66,17 +66,46 @@
             <span class="help-inline">Date format YYYY-MM-DD  (1990-04-23)</span>
           </div>
         </div>
-        <div class="control-group {% if form.specialization.errors %} error {% endif %}">
-          <label for="id_last_name" class="control-label">{{form.specialization.label}}:</label>
+        <div class="control-group {% if form.lesson_date.errors %} error {% endif %}">
+          <label for="id_last_name" class="control-label">{{form.lesson_date.label}}:</label>
           <div class="controls">
-            {{ form.specialization }}
+            {{ form.lesson_date }}
+            {% if form.lesson_date.errors %}
+            <span class="help-inline">{{form.lesson_date.errors}}</span>
+            {% endif %}
+            <span class="help-inline">Date format YYYY-MM-DD  (2015-04-23)</span>
+          </div>
+        </div>
+        <div class="control-group {% if form.specialization.errors %} error {% endif %}">
+          <label for="id_last_name" class="control-label radio-label">{{form.specialization.label}}:</label>
+          <div class="controls">
+            <div>Programing
+              <span class="radio"><input type="radio" name="specialization" value="Programing"></span> 
+            </div>
+            <div>CS
+              <span class="radio"><input type="radio" name="specialization" value="CS"></span> 
+            </div>
+            <div>IT
+              <span class="radio"><input type="radio" name="specialization" value="IT"></span> 
+            </div>
+            <div>Other
+              <span class="radio"><input type="radio" name="_sepcialization" value=""></span> <input type="text" name="specialization" value="">
+            </div>
             <span class="help-inline">{{form.specialization.errors}}</span>
           </div>
         </div>
         <div class="control-group {% if form.payment.errors %} error {% endif %}">
-          <label for="id_last_name" class="control-label">{{form.payment.label}}:</label>
+          <label for="id_last_name" class="control-label radio-label">{{form.payment.label}}:</label>
           <div class="controls">
-            {{ form.payment }}
+            <div>Credit Card using Paypal
+              <span class="radio"><input type="radio" name="payment" value="Credit Card using Paypal"></span> 
+            </div>
+            <div>Bank (Inside Egypt Only)
+              <span class="radio"><input type="radio" name="payment" value="Bank (Inside Egypt Only)"></span>
+            </div>
+            <div>Other
+              <span class="radio"><input type="radio" name="_payment" value="IT"></span> <input type="text" name="payment" value="">
+            </div>
             <span class="help-inline">{{form.payment.errors}}</span>
           </div>
         </div>

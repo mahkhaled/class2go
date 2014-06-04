@@ -2,13 +2,21 @@ from django.db import models
 
 # Create your models here.
 
-PAYMENTS = (('1', '2'),)
+PAYMENTS = (
+  ('Credit Card using Paypal ', 'Credit Card using Paypal '), 
+  ('Bank (Inside Egypt Only)', 'Bank (Inside Egypt Only)')
+)
+
 CATEGORIES = (
   ('0', 'Individual'),
   ('1', 'Group'),
 )
 
-SPECIALIZATION = (('a', 'a'),)
+SPECIALIZATION = (
+  ('Programing', 'Programing'), 
+  ('CS', 'CS'),
+  ('IT', 'IT')
+)
 
 
 class PrivateCourse(models.Model):
@@ -50,11 +58,12 @@ class Member(models.Model):
   name = models.CharField('Name', max_length=255)
   email = models.EmailField('Email', max_length=255)
   country = models.CharField('Country', max_length=255)
-  description = models.TextField('You need a private lesson about:')
+  description = models.TextField('You need a private lesson about')
   dob = models.DateField('Date of Birth')
+  lesson_date = models.DateField('When do you want the lesson?')
   skype = models.CharField('Skype', max_length=255)
-  specialization = models.CharField('Specialization', max_length=255, choices=SPECIALIZATION)
-  payment = models.CharField('Payment', max_length=255, choices=PAYMENTS)
+  specialization = models.CharField('Specialization', max_length=255)
+  payment = models.CharField('Payment', max_length=255)
   courses = models.ManyToManyField(PrivateCourse, through='Membership', related_name='members')
 
   def __unicode__(self):
