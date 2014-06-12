@@ -74,8 +74,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
             <div class="tright-header">
               <ul class="menu-header">
                 {% if request.user.is_authenticated %}
-                <li><a href="{% url 'auth_logout' %}?next=/"><div href="#" class="menu-logout">Logout</div></a></li>
-                <li><a href="/accounts/profile">Welcome {{request.user}}</a></li>
+                <li class="logout_user"><b>Welcome {{request.user}},</b><br><a href="{% url 'auth_logout' %}?next=/">log out</a></li>
                 {% else %}
                   <li><a href="{% url 'auth_login' %}?next=/"><div href="#" class="menu-login"></div></a></li>
                 {% endif %}
