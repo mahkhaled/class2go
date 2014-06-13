@@ -1102,3 +1102,402 @@ Traceback (most recent call last):
   File "/home/hassan/.virtualenvs/class2go/local/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
     raise errorclass, errorvalue
 DatabaseError: (1054, "Unknown column 'c2g_courses.short_description' in 'field list'")
+ERROR 2014-06-04 22:16:17,714 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /admin 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 213, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 89, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 195, in inner
+    return self.login(request)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 89, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 326, in login
+    return login(request, **defaults)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/views/decorators/debug.py", line 69, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 89, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/contrib/auth/views.py", line 53, in login
+    current_site = get_current_site(request)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/contrib/sites/models.py", line 92, in get_current_site
+    current_site = Site.objects.get_current()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/contrib/sites/models.py", line 25, in get_current
+    current_site = self.get(pk=sid)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: Site matching query does not exist.
+ERROR 2014-06-04 23:01:47,202 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses3/register/ 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 101, in get_response
+    request.path_info)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 298, in resolve
+    for pattern in self.url_patterns:
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 328, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 323, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/urls.py", line 159, in <module>
+    url(r'^private_courses/?', include('private_course.urls')),
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/conf/urls/__init__.py", line 24, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/private_course/urls.py", line 3, in <module>
+    from .views import PrivateCourseListView, PrivateCourseDetailView, MemberCreateView
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 30
+    def form_invalid(self, form)
+                               ^
+SyntaxError: invalid syntax
+ERROR 2014-06-04 23:02:24,269 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 89, in get_response
+    response = middleware_method(request)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/middleware/common.py", line 67, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 531, in is_valid_path
+    resolve(path, urlconf)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 420, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 298, in resolve
+    for pattern in self.url_patterns:
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 328, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 323, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/urls.py", line 159, in <module>
+    url(r'^private_courses/?', include('private_course.urls')),
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/conf/urls/__init__.py", line 24, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/private_course/urls.py", line 3, in <module>
+    from .views import PrivateCourseListView, PrivateCourseDetailView, MemberCreateView
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 30
+    def form_invalid(self, form)
+                               ^
+SyntaxError: invalid syntax
+ERROR 2014-06-04 23:02:24,558 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /favicon.ico 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 89, in get_response
+    response = middleware_method(request)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/middleware/common.py", line 67, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 531, in is_valid_path
+    resolve(path, urlconf)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 420, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 298, in resolve
+    for pattern in self.url_patterns:
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 328, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 323, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/urls.py", line 159, in <module>
+    url(r'^private_courses/?', include('private_course.urls')),
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/conf/urls/__init__.py", line 24, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/private_course/urls.py", line 3, in <module>
+    from .views import PrivateCourseListView, PrivateCourseDetailView, MemberCreateView
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 30
+    def form_invalid(self, form)
+                               ^
+SyntaxError: invalid syntax
+WARNING 2014-06-04 23:02:41,199 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses/3/register/ 
+WARNING 2014-06-04 23:04:58,231 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+WARNING 2014-06-04 23:05:08,262 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+WARNING 2014-06-04 23:05:12,707 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses 
+ERROR 2014-06-04 23:05:50,517 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses/ 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 136, in get_response
+    response = response.render()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 185, in render
+    nodelist.append(node.render(context))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 424, in render
+    raise e
+NoReverseMatch: Reverse for 'private_course_member_create' with arguments '(2L,)' and keyword arguments '{}' not found.
+WARNING 2014-06-04 23:09:12,529 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses//register/ 
+WARNING 2014-06-04 23:11:09,785 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /private_courses//register/ 
+ERROR 2014-06-04 23:46:00,776 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses/3/register/ 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 101, in get_response
+    request.path_info)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 298, in resolve
+    for pattern in self.url_patterns:
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 328, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 323, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/urls.py", line 159, in <module>
+    url(r'^private_courses/?', include('private_course.urls')),
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/conf/urls/__init__.py", line 24, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/hassan/projects/django/class2go/main/private_course/urls.py", line 3, in <module>
+    from .views import PrivateCourseListView, PrivateCourseDetailView, MemberCreateView
+  File "/home/hassan/projects/django/class2go/main/private_course/views.py", line 10, in <module>
+    from .forms import MemberForm
+  File "/home/hassan/projects/django/class2go/main/private_course/forms.py", line 5, in <module>
+    class MemberForm(forms.ModelForm):
+  File "/home/hassan/projects/django/class2go/main/private_course/forms.py", line 6, in MemberForm
+    specialization = forms.ChoiceField(widget=forms.RadioSelect, choices=Member.SPECIALIZATION)
+AttributeError: type object 'Member' has no attribute 'SPECIALIZATION'
+ERROR 2014-06-13 16:43:39,917 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 136, in get_response
+    response = response.render()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 79, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 55, in resolve_template
+    return loader.select_template(template)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 187, in select_template
+    return get_template(template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 214, in do_extends
+    nodelist = parser.parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 189, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 762, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 897, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 830, in __init__
+    super(TemplateIfParser, self).__init__(*args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/smartif.py", line 163, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/smartif.py", line 174, in translate_token
+    return self.create_var(token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 833, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 557, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 352, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+TemplateSyntaxError: Invalid filter: 'mod'
+ERROR 2014-06-13 16:44:13,337 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 136, in get_response
+    response = response.render()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 79, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 55, in resolve_template
+    return loader.select_template(template)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 187, in select_template
+    return get_template(template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 214, in do_extends
+    nodelist = parser.parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 189, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 762, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 897, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 830, in __init__
+    super(TemplateIfParser, self).__init__(*args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/smartif.py", line 163, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/smartif.py", line 174, in translate_token
+    return self.create_var(token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 833, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '%' from '%'
+ERROR 2014-06-13 16:45:59,011 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 136, in get_response
+    response = response.render()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 79, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 55, in resolve_template
+    return loader.select_template(template)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 187, in select_template
+    return get_template(template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 214, in do_extends
+    nodelist = parser.parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 189, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 762, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 897, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 830, in __init__
+    super(TemplateIfParser, self).__init__(*args, **kwargs)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/smartif.py", line 163, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/smartif.py", line 174, in translate_token
+    return self.create_var(token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 833, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '!=' from 'forloop.counter!='
+WARNING 2014-06-13 16:50:53,695 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /bb/availablecourses.jpg 
+WARNING 2014-06-13 16:50:54,015 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- get_response -- line# 142 : Not Found: /bb/availablecourses.jpg 
+ERROR 2014-06-13 16:58:47,061 /home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py -- handle_uncaught_exception -- line# 215 : Internal Server Error: /private_courses 
+Traceback (most recent call last):
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 136, in get_response
+    response = response.render()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 101, in render
+    compiled_parent = self.get_parent(context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 98, in get_parent
+    return get_template(parent)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 148, in get_template
+    template = get_template_from_string(template, origin, template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 262, in do_include
+    isolated_context=isolated_context)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 145, in __init__
+    t = get_template(template_path)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/home/hassan/.virtualenvs/c2g/local/lib/python2.7/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: footer.html

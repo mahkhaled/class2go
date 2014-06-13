@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 
+{% block topcontent %}{% endblock topcontent %}
+
+{% block body_class %}home{% endblock body_class %}
+
 {% block l_column_content %}
+<div style="padding-top:15px;">
+    <div class="available-courses">
+        <img src="/static/graphics/core/availablecourses.jpg">
+    </div>
+</div>
 <div class="container">
     <div class="row">
     {% for object in object_list %}
@@ -21,6 +30,9 @@
             Around {{ object.hours }} hours
         </p>
       </div>
+        {% if forloop.counter != object_list.count and forloop.counter|divisibleby:3 %}
+            </div><div class="row">
+        {% endif %}
     {% endfor %}
   </div>
 </div>
