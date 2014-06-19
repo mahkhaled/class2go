@@ -112,6 +112,9 @@ font-weight: bold;
 line-height: 30px;
 width:260;
 }
+#category_0 p.tcourse-title{
+    margin-top: 50px;
+}
 p.tcourse-hours
 {
     color: #ff0000;
