@@ -115,6 +115,9 @@ width:260;
 div.no_remaining p.tcourse-title{
     margin-top: 50px;
 }
+div.no_remaining p.tcourse-hours{
+    display: none;
+}
 p.tcourse-hours
 {
     color: #ff0000;

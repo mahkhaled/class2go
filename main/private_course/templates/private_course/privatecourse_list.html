@@ -10,10 +10,10 @@
         <img src="/static/graphics/core/availablecourses.jpg">
     </div>
 </div>
-<div class="container {% if category == "1" %}category_1{% else %}category_0{% endif %} {% if category != "1" or object.capacity >= 10000 %}no_remaining{% endif %}">
+<div class="container {% if category == "1" %}category_1{% else %}category_0{% endif %}">
     <div class="row">
     {% for object in object_list %}
-      <div class="tcourse">
+      <div class="tcourse {% if category != "1" or object.capacity >= 10000 %}no_remaining{% endif %}">
         <div style="display:inline">
             <button class="btn btn-danger" onclick="window.open('/private_courses/{{ object.id }}/register/?category={{category}}', '_blank')" style="float:left">Enroll now!</button>{% if category == "1" and object.capacity < 10000 %}<p class="tcourse-remaining"> {% if object.is_full %}
             Full
