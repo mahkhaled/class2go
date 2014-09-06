@@ -15,22 +15,27 @@
   <priority>0.90</priority>
 </url>
 <url>
-  <loc>http://codemasry.com/pro/april13</loc>
+  <loc>http://codemasry.com/pro/april13/videos/mSddyADSUEc</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://codemasry.com/oop/jun13</loc>
+  <loc>http://codemasry.com/oop/jun13/videos/MJddRkYY88U</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://codemasry.com/ds/june13</loc>
+  <loc>http://codemasry.com/ds/june13/videos/31oqfm1iStI</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://codemasry.com/alg/june13</loc>
+  <loc>http://codemasry.com/alg/june13/videos/uLBMCOAq2js</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://codemasry.com/feb14/web/videos/Hfk4enx9tZQ</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
