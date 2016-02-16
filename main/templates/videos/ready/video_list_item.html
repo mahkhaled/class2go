@@ -13,13 +13,13 @@
             <div class="pull-right">
                 {% if video.has_storage %}
                     {% for tag, url, size, sizedesc in video.dl_links_all %}
-                    <div class="btn-group" style="float: left">
+                    <!--div class="btn-group" style="float: left">
                         <a href="{{url}}" onclick="record_video_download( {{video.id}}, {{common_page_data.request.user.id}}, {{video.course_id}}, '{{tag}}' );">
                             <button class="btn btn-mini" title="{{sizedesc}} ({{size|filesizeformat}})">
                                 <em class="icon-download-alt"></em>&nbsp;{{tag}}
                             </button>
                         </a>
-                    </div>
+                    </div-->
                     {% endfor %}
                 {% endif %}
                 
